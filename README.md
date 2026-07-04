@@ -35,7 +35,7 @@
 | 項目 | 内容 |
 |---|---|
 | ブラウザ | Chrome または Edge 最新版を推奨 |
-| PLATEAUデータ | 国土交通省 CityGML データ（<a href="https://front.geospatial.jp/plateau_portal_site/" target="_blank">ダウンロードはこちら（G空間情報センター）</a>） |
+| PLATEAUデータ | 国土交通省 CityGML データ（<a href="https://www.mlit.go.jp/plateau/open-data/">ダウンロードはこちら</a>） |
 | Minecraft | Java 版（変換後のワールドでプレイする場合） |
 
 ---
