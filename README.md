@@ -15,7 +15,7 @@
 
 ## 変換例（横浜市中区）
 
-<img src="img/yokohama.png" width="49%"> <img src="img/2.png" width="49%">
+<img src="img/yokohama1.png" width="49%"> <img src="img/2.png" width="49%">
 
 ---
 
