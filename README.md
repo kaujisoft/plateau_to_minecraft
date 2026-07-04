@@ -2,20 +2,18 @@
 
 **Ver 1.0**　© 2026 kauji
 
-**ツールを使う：** https://kaujisoft.github.io/plateau_to_minecraft/
-
 <img src="img/1.png" width="100%">
 
 国土交通省「PLATEAU（プラトー）」が公開している 3D 都市データ（CityGML 形式の GML ファイル）を読み込み、**Minecraft（Java 版）でそのまま遊べるワールドデータに一発変換するブラウザアプリ**です。
 インストール不要。ブラウザだけで動作します。
 
-> ツールの詳しい使い方は[操作説明書（PDF）](/doc/PLATEAU_to_Minecraft_ver1.0_manual.pdf)を参照してください。
+> ツールの詳しい使い方は[操作説明書（PDF）](plateau_minecraft_ver.1.0.pdf)を参照してください。
 
 ---
 
 ## 変換例（横浜市中区）
 
-<img src="img/yokohama1.png" width="49%"> <img src="img/2.png" width="49%">
+<img src="img/yokohama2.png" style="width:49%;height:320px;object-fit:cover;"> <img src="img/2.png" style="width:49%;height:320px;object-fit:cover;">
 
 ---
 
@@ -35,7 +33,7 @@
 | 項目 | 内容 |
 |---|---|
 | ブラウザ | Chrome または Edge 最新版を推奨 |
-| PLATEAUデータ | 国土交通省 CityGML データ（<a href="https://www.mlit.go.jp/plateau/open-data/">ダウンロードはこちら</a>） |
+| PLATEAUデータ | 国土交通省 CityGML データ（<a href="https://front.geospatial.jp/plateau_portal_site/" target="_blank">ダウンロードはこちら（G空間情報センター）</a>） |
 | Minecraft | Java 版（変換後のワールドでプレイする場合） |
 
 ---
@@ -154,9 +152,9 @@ PLATEAUのダウンロード ZIP に含まれるインデックス図（例：`1
 ## 利用条件
 
 - ソースコードおよび関連ドキュメントの著作権は開発者に帰属します。
-- ファイルの転載・販売・および第三者がダウンロード・閲覧できる場所への公開を禁止します。
-- 本アプリで生成したワールドデータを公開・配布・二次利用する際は、PLATEAUおよび元データの利用規約・ライセンスに従ってください。
+- ファイルの転載・販売、および第三者がダウンロード・閲覧できる場所への公開を禁止します。
 - 本アプリの利用によって生じたいかなる損害についても、制作者は責任を負いません。
+- 本アプリで生成したワールドデータを公開・配布・二次利用する際は、PLATEAUおよび元データの利用規約・ライセンスに従ってください。
 
 ---
 
