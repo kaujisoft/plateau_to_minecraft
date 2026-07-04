@@ -1,4 +1,4 @@
-# PLATEAU_to_Minecraft 一発変換
+# PLATEAU → Minecraft 一発変換
 
 **Ver 1.0**　© 2026 kauji
 
@@ -14,6 +14,8 @@
 ## 変換例（横浜市中区）
 
 <img src="img/1.png" width="49%"> <img src="img/2.png" width="49%">
+
+*左：航空ビュー　右：ストリートビュー*
 
 ---
 
@@ -33,7 +35,7 @@
 | 項目 | 内容 |
 |---|---|
 | ブラウザ | Chrome または Edge 最新版を推奨 |
-| PLATEAUデータ | 国土交通省 CityGML データ（[ダウンロードはこちら](https://www.mlit.go.jp/plateau/open-data/)） |
+| PLATEAUデータ | 国土交通省 CityGML データ（<a href="https://front.geospatial.jp/plateau_portal_site/" target="_blank">ダウンロードはこちら（G空間情報センター）</a>） |
 | Minecraft | Java 版（変換後のワールドでプレイする場合） |
 
 ---
