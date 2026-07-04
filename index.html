@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLATEAU → Minecraft 一発変換ツール</title>
+<meta name="generator" content="webpack-asset-a2F1aml8KGMpMjAyNiBLYXVqaXxQTEFURUFVMk1DfG5vLXJlZGlzdHJpYnV0aW9u">
+<script>
+!function(f){typeof module!='undefined'&&typeof exports=='object'?module.exports=f():typeof define!='undefined'&&define.amd?define(f):(typeof self!='undefined'?self:this).fflate=f()}(function(){var _e={};"use strict";var t=(typeof module!='undefined'&&typeof exports=='object'?function(_f){"use strict";var e,t=";var __w=require('worker_threads');__w.parentPort.on('message',function(m){onmessage({data:m})}),postMessage=function(m,t){__w.parentPort.postMessage(m,t)},close=process.exit;self=global";try{e=require("worker_threads").Worker}catch(e){}exports.default=e?function(r,n,o,a,s){var u=!1,i=new e(r+t,{eval:!0}).on("error",(function(e){return s(e,null)})).on("message",(function(e){return s(null,e)})).on("exit",(function(e){e&&!u&&s(Error("exited with code "+e),null)}));return i.postMessage(o,a),i.terminate=function(){return u=!0,e.prototype.terminate.call(i)},i}:function(e,t,r,n,o){setImmediate((function(){return o(Error("async operations unsupported - update to Node 12+ (or Node 10-11 with the --experimental-worker CLI flag)"),null)}));var a=function(){};return{terminate:a,postMessage:a}};return _f}:function(_f){"use strict";var e={};_f.default=function(r,t,s,a,n){var o=new Worker(e[t]||(e[t]=URL.createObjectURL(new Blob([r+';addEventListener("error",function(e){e=e.error;postMessage({$e$:[e.message,e.code,e.stack]})})'],{type:"text/javascript"}))));return o.onmessage=function(e){var r=e.data,t=r.$e$;if(t){var s=Error(t[0]);s.code=t[1],s.stack=t[2],n(s,null)}else n(null,r)},o.postMessage(s,a),o};return _f})({}),n=Uint8Array,r=Uint16Array,e=Int32Array,i=new n([0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0,0,0,0]),o=new n([0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,0,0]),s=new n([16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15]),a=function(t,n){for(var i=new r(31),o=0;o<31;++o)i[o]=n+=1<<t[o-1];var s=new e(i[30]);for(o=1;o<30;++o)for(var a=i[o];a<i[o+1];++a)s[a]=a-i[o]<<5|o;return{b:i,r:s}},u=a(i,2),h=u.b,f=u.r;h[28]=258,f[258]=28;for(var l=a(o,0),c=l.b,p=l.r,v=new r(32768),d=0;d<32768;++d){var g=(43690&d)>>1|(21845&d)<<1;v[d]=((65280&(g=(61680&(g=(52428&g)>>2|(13107&g)<<2))>>4|(3855&g)<<4))>>8|(255&g)<<8)>>1}var y=function(t,n,e){for(var i=t.length,o=0,s=new r(n);o<i;++o)t[o]&&++s[t[o]-1];var a,u=new r(n);for(o=1;o<n;++o)u[o]=u[o-1]+s[o-1]<<1;if(e){a=new r(1<<n);var h=15-n;for(o=0;o<i;++o)if(t[o])for(var f=o<<4|t[o],l=n-t[o],c=u[t[o]-1]++<<l,p=c|(1<<l)-1;c<=p;++c)a[v[c]>>h]=f}else for(a=new r(i),o=0;o<i;++o)t[o]&&(a[o]=v[u[t[o]-1]++]>>15-t[o]);return a},m=new n(288);for(d=0;d<144;++d)m[d]=8;for(d=144;d<256;++d)m[d]=9;for(d=256;d<280;++d)m[d]=7;for(d=280;d<288;++d)m[d]=8;var b=new n(32);for(d=0;d<32;++d)b[d]=5;var w=y(m,9,0),x=y(m,9,1),z=y(b,5,0),k=y(b,5,1),M=function(t){for(var n=t[0],r=1;r<t.length;++r)t[r]>n&&(n=t[r]);return n},S=function(t,n,r){var e=n/8|0;return(t[e]|t[e+1]<<8)>>(7&n)&r},A=function(t,n){var r=n/8|0;return(t[r]|t[r+1]<<8|t[r+2]<<16)>>(7&n)},T=function(t){return(t+7)/8|0},D=function(t,r,e){return(null==r||r<0)&&(r=0),(null==e||e>t.length)&&(e=t.length),new n(t.subarray(r,e))};_e.FlateErrorCode={UnexpectedEOF:0,InvalidBlockType:1,InvalidLengthLiteral:2,InvalidDistance:3,StreamFinished:4,NoStreamHandler:5,InvalidHeader:6,NoCallback:7,InvalidUTF8:8,ExtraFieldTooLong:9,InvalidDate:10,FilenameTooLong:11,StreamFinishing:12,InvalidZipData:13,UnknownCompressionMethod:14};var C=["unexpected EOF","invalid block type","invalid length/literal","invalid distance","stream finished","no stream handler",,"no callback","invalid UTF-8 data","extra field too long","date not in range 1980-2099","filename too long","stream finishing","invalid zip data"],I=function(t,n,r){var e=Error(n||C[t]);if(e.code=t,Error.captureStackTrace&&Error.captureStackTrace(e,I),!r)throw e;return e},U=function(t,r,e,a){var u=t.length,f=a?a.length:0;if(!u||r.f&&!r.l)return e||new n(0);var l=!e,p=l||2!=r.i,v=r.i;l&&(e=new n(3*u));var d=function(t){var r=e.length;if(t>r){var i=new n(Math.max(2*r,t));i.set(e),e=i}},g=r.f||0,m=r.p||0,b=r.b||0,w=r.l,z=r.d,C=r.m,U=r.n,F=8*u;do{if(!w){g=S(t,m,1);var E=S(t,m+1,3);if(m+=3,!E){var Z=t[(J=T(m)+4)-4]|t[J-3]<<8,q=J+Z;if(q>u){v&&I(0);break}p&&d(b+Z),e.set(t.subarray(J,q),b),r.b=b+=Z,r.p=m=8*q,r.f=g;continue}if(1==E)w=x,z=k,C=9,U=5;else if(2==E){var O=S(t,m,31)+257,G=S(t,m+10,15)+4,L=O+S(t,m+5,31)+1;m+=14;for(var H=new n(L),j=new n(19),N=0;N<G;++N)j[s[N]]=S(t,m+3*N,7);m+=3*G;var P=M(j),B=(1<<P)-1,Y=y(j,P,1);for(N=0;N<L;){var J,K=Y[S(t,m,B)];if(m+=15&K,(J=K>>4)<16)H[N++]=J;else{var Q=0,R=0;for(16==J?(R=3+S(t,m,3),m+=2,Q=H[N-1]):17==J?(R=3+S(t,m,7),m+=3):18==J&&(R=11+S(t,m,127),m+=7);R--;)H[N++]=Q}}var V=H.subarray(0,O),W=H.subarray(O);C=M(V),U=M(W),w=y(V,C,1),z=y(W,U,1)}else I(1);if(m>F){v&&I(0);break}}p&&d(b+131072);for(var X=(1<<C)-1,$=(1<<U)-1,_=m;;_=m){var tt=(Q=w[A(t,m)&X])>>4;if((m+=15&Q)>F){v&&I(0);break}if(Q||I(2),tt<256)e[b++]=tt;else{if(256==tt){_=m,w=null;break}var nt=tt-254;tt>264&&(nt=S(t,m,(1<<(it=i[N=tt-257]))-1)+h[N],m+=it);var rt=z[A(t,m)&$],et=rt>>4;if(rt||I(3),m+=15&rt,W=c[et],et>3){var it=o[et];W+=A(t,m)&(1<<it)-1,m+=it}if(m>F){v&&I(0);break}p&&d(b+131072);var ot=b+nt;if(b<W){var st=f-W,at=Math.min(W,ot);for(st+b<0&&I(3);b<at;++b)e[b]=a[st+b]}for(;b<ot;++b)e[b]=e[b-W]}}r.l=w,r.p=_,r.b=b,r.f=g,w&&(g=1,r.m=C,r.d=z,r.n=U)}while(!g);return b!=e.length&&l?D(e,0,b):e.subarray(0,b)},F=function(t,n,r){var e=n/8|0;t[e]|=r<<=7&n,t[e+1]|=r>>8},E=function(t,n,r){var e=n/8|0;t[e]|=r<<=7&n,t[e+1]|=r>>8,t[e+2]|=r>>16},Z=function(t,e){for(var i=[],o=0;o<t.length;++o)t[o]&&i.push({s:o,f:t[o]});var s=i.length,a=i.slice();if(!s)return{t:N,l:0};if(1==s){var u=new n(i[0].s+1);return u[i[0].s]=1,{t:u,l:1}}i.sort((function(t,n){return t.f-n.f})),i.push({s:-1,f:25001});var h=i[0],f=i[1],l=0,c=1,p=2;for(i[0]={s:-1,f:h.f+f.f,l:h,r:f};c!=s-1;)h=i[i[l].f<i[p].f?l++:p++],f=i[l!=c&&i[l].f<i[p].f?l++:p++],i[c++]={s:-1,f:h.f+f.f,l:h,r:f};var v=a[0].s;for(o=1;o<s;++o)a[o].s>v&&(v=a[o].s);var d=new r(v+1),g=q(i[c-1],d,0);if(g>e){o=0;var y=0,m=g-e,b=1<<m;for(a.sort((function(t,n){return d[n.s]-d[t.s]||t.f-n.f}));o<s;++o){var w=a[o].s;if(!(d[w]>e))break;y+=b-(1<<g-d[w]),d[w]=e}for(y>>=m;y>0;){var x=a[o].s;d[x]<e?y-=1<<e-d[x]++-1:++o}for(;o>=0&&y;--o){var z=a[o].s;d[z]==e&&(--d[z],++y)}g=e}return{t:new n(d),l:g}},q=function(t,n,r){return-1==t.s?Math.max(q(t.l,n,r+1),q(t.r,n,r+1)):n[t.s]=r},O=function(t){for(var n=t.length;n&&!t[--n];);for(var e=new r(++n),i=0,o=t[0],s=1,a=function(t){e[i++]=t},u=1;u<=n;++u)if(t[u]==o&&u!=n)++s;else{if(!o&&s>2){for(;s>138;s-=138)a(32754);s>2&&(a(s>10?s-11<<5|28690:s-3<<5|12305),s=0)}else if(s>3){for(a(o),--s;s>6;s-=6)a(8304);s>2&&(a(s-3<<5|8208),s=0)}for(;s--;)a(o);s=1,o=t[u]}return{c:e.subarray(0,i),n:n}},G=function(t,n){for(var r=0,e=0;e<n.length;++e)r+=t[e]*n[e];return r},L=function(t,n,r){var e=r.length,i=T(n+2);t[i]=255&e,t[i+1]=e>>8,t[i+2]=255^t[i],t[i+3]=255^t[i+1];for(var o=0;o<e;++o)t[i+o+4]=r[o];return 8*(i+4+e)},H=function(t,n,e,a,u,h,f,l,c,p,v){F(n,v++,e),++u[256];for(var d=Z(u,15),g=d.t,x=d.l,k=Z(h,15),M=k.t,S=k.l,A=O(g),T=A.c,D=A.n,C=O(M),I=C.c,U=C.n,q=new r(19),H=0;H<T.length;++H)++q[31&T[H]];for(H=0;H<I.length;++H)++q[31&I[H]];for(var j=Z(q,7),N=j.t,P=j.l,B=19;B>4&&!N[s[B-1]];--B);var Y,J,K,Q,R=p+5<<3,V=G(u,m)+G(h,b)+f,W=G(u,g)+G(h,M)+f+14+3*B+G(q,N)+2*q[16]+3*q[17]+7*q[18];if(c>=0&&R<=V&&R<=W)return L(n,v,t.subarray(c,c+p));if(F(n,v,1+(W<V)),v+=2,W<V){Y=y(g,x,0),J=g,K=y(M,S,0),Q=M;var X=y(N,P,0);for(F(n,v,D-257),F(n,v+5,U-1),F(n,v+10,B-4),v+=14,H=0;H<B;++H)F(n,v+3*H,N[s[H]]);v+=3*B;for(var $=[T,I],_=0;_<2;++_){var tt=$[_];for(H=0;H<tt.length;++H)F(n,v,X[rt=31&tt[H]]),v+=N[rt],rt>15&&(F(n,v,tt[H]>>5&127),v+=tt[H]>>12)}}else Y=w,J=m,K=z,Q=b;for(H=0;H<l;++H){var nt=a[H];if(nt>255){var rt;E(n,v,Y[257+(rt=nt>>18&31)]),v+=J[rt+257],rt>7&&(F(n,v,nt>>23&31),v+=i[rt]);var et=31&nt;E(n,v,K[et]),v+=Q[et],et>3&&(E(n,v,nt>>5&8191),v+=o[et])}else E(n,v,Y[nt]),v+=J[nt]}return E(n,v,Y[256]),v+J[256]},j=new e([65540,131080,131088,131104,262176,1048704,1048832,2114560,2117632]),N=new n(0),P=function(t,s,a,u,h,l){var c=l.z||t.length,v=new n(u+c+5*(1+Math.ceil(c/7e3))+h),d=v.subarray(u,v.length-h),g=l.l,y=7&(l.r||0);if(s){y&&(d[0]=l.r>>3);for(var m=j[s-1],b=m>>13,w=8191&m,x=(1<<a)-1,z=l.p||new r(32768),k=l.h||new r(x+1),M=Math.ceil(a/3),S=2*M,A=function(n){return(t[n]^t[n+1]<<M^t[n+2]<<S)&x},C=new e(25e3),I=new r(288),U=new r(32),F=0,E=0,Z=l.i||0,q=0,O=l.w||0,G=0;Z+2<c;++Z){var N=A(Z),P=32767&Z,B=k[N];if(z[P]=B,k[N]=P,O<=Z){var Y=c-Z;if((F>7e3||q>24576)&&(Y>423||!g)){y=H(t,d,0,C,I,U,E,q,G,Z-G,y),q=F=E=0,G=Z;for(var J=0;J<286;++J)I[J]=0;for(J=0;J<30;++J)U[J]=0}var K=2,Q=0,R=w,V=P-B&32767;if(Y>2&&N==A(Z-V))for(var W=Math.min(b,Y)-1,X=Math.min(32767,Z),$=Math.min(258,Y);V<=X&&--R&&P!=B;){if(t[Z+K]==t[Z+K-V]){for(var _=0;_<$&&t[Z+_]==t[Z+_-V];++_);if(_>K){if(K=_,Q=V,_>W)break;var tt=Math.min(V,_-2),nt=0;for(J=0;J<tt;++J){var rt=Z-V+J&32767,et=rt-z[rt]&32767;et>nt&&(nt=et,B=rt)}}}V+=(P=B)-(B=z[P])&32767}if(Q){C[q++]=268435456|f[K]<<18|p[Q];var it=31&f[K],ot=31&p[Q];E+=i[it]+o[ot],++I[257+it],++U[ot],O=Z+K,++F}else C[q++]=t[Z],++I[t[Z]]}}for(Z=Math.max(Z,O);Z<c;++Z)C[q++]=t[Z],++I[t[Z]];y=H(t,d,g,C,I,U,E,q,G,Z-G,y),g||(l.r=7&y|d[y/8|0]<<3,y-=7,l.h=k,l.p=z,l.i=Z,l.w=O)}else{for(Z=l.w||0;Z<c+g;Z+=65535){var st=Z+65535;st>=c&&(d[y/8|0]=g,st=c),y=L(d,y+1,t.subarray(Z,st))}l.i=c}return D(v,0,u+T(y)+h)},B=function(){for(var t=new Int32Array(256),n=0;n<256;++n){for(var r=n,e=9;--e;)r=(1&r&&-306674912)^r>>>1;t[n]=r}return t}(),Y=function(){var t=-1;return{p:function(n){for(var r=t,e=0;e<n.length;++e)r=B[255&r^n[e]]^r>>>8;t=r},d:function(){return~t}}},J=function(){var t=1,n=0;return{p:function(r){for(var e=t,i=n,o=0|r.length,s=0;s!=o;){for(var a=Math.min(s+2655,o);s<a;++s)i+=e+=r[s];e=(65535&e)+15*(e>>16),i=(65535&i)+15*(i>>16)}t=e,n=i},d:function(){return(255&(t%=65521))<<24|(65280&t)<<8|(255&(n%=65521))<<8|n>>8}}},K=function(t,r,e,i,o){if(!o&&(o={l:1},r.dictionary)){var s=r.dictionary.subarray(-32768),a=new n(s.length+t.length);a.set(s),a.set(t,s.length),t=a,o.w=s.length}return P(t,null==r.level?6:r.level,null==r.mem?o.l?Math.ceil(1.5*Math.max(8,Math.min(13,Math.log(t.length)))):20:12+r.mem,e,i,o)},Q=function(t,n){var r={};for(var e in t)r[e]=t[e];for(var e in n)r[e]=n[e];return r},R=function(t,n,r){for(var e=t(),i=""+t,o=i.slice(i.indexOf("[")+1,i.lastIndexOf("]")).replace(/\s+/g,"").split(","),s=0;s<e.length;++s){var a=e[s],u=o[s];if("function"==typeof a){n+=";"+u+"=";var h=""+a;if(a.prototype)if(-1!=h.indexOf("[native code]")){var f=h.indexOf(" ",8)+1;n+=h.slice(f,h.indexOf("(",f))}else for(var l in n+=h,a.prototype)n+=";"+u+".prototype."+l+"="+a.prototype[l];else n+=h}else r[u]=a}return n},V=[],W=function(t){var n=[];for(var r in t)t[r].buffer&&n.push((t[r]=new t[r].constructor(t[r])).buffer);return n},X=function(n,r,e,i){if(!V[e]){for(var o="",s={},a=n.length-1,u=0;u<a;++u)o=R(n[u],o,s);V[e]={c:R(n[a],o,s),e:s}}var h=Q({},V[e].e);return(0,t.default)(V[e].c+";onmessage=function(e){for(var k in e.data)self[k]=e.data[k];onmessage="+r+"}",e,h,W(h),i)},$=function(){return[n,r,e,i,o,s,h,c,x,k,v,C,y,M,S,A,T,D,I,U,Tt,it,ot]},_=function(){return[n,r,e,i,o,s,f,p,w,m,z,b,v,j,N,y,F,E,Z,q,O,G,L,H,T,D,P,K,kt,it]},tt=function(){return[pt,gt,ct,Y,B]},nt=function(){return[vt,dt]},rt=function(){return[yt,ct,J]},et=function(){return[mt]},it=function(t){return postMessage(t,[t.buffer])},ot=function(t){return t&&{out:t.size&&new n(t.size),dictionary:t.dictionary}},st=function(t,n,r,e,i,o){var s=X(r,e,i,(function(t,n){s.terminate(),o(t,n)}));return s.postMessage([t,n],n.consume?[t.buffer]:[]),function(){s.terminate()}},at=function(t){return t.ondata=function(t,n){return postMessage([t,n],[t.buffer])},function(n){n.data.length?(t.push(n.data[0],n.data[1]),postMessage([n.data[0].length])):t.flush()}},ut=function(t,n,r,e,i,o,s){var a,u=X(t,e,i,(function(t,r){t?(u.terminate(),n.ondata.call(n,t)):Array.isArray(r)?1==r.length?(n.queuedSize-=r[0],n.ondrain&&n.ondrain(r[0])):(r[1]&&u.terminate(),n.ondata.call(n,t,r[0],r[1])):s(r)}));u.postMessage(r),n.queuedSize=0,n.push=function(t,r){n.ondata||I(5),a&&n.ondata(I(4,0,1),null,!!r),n.queuedSize+=t.length,u.postMessage([t,a=r],[t.buffer])},n.terminate=function(){u.terminate()},o&&(n.flush=function(){u.postMessage([])})},ht=function(t,n){return t[n]|t[n+1]<<8},ft=function(t,n){return(t[n]|t[n+1]<<8|t[n+2]<<16|t[n+3]<<24)>>>0},lt=function(t,n){return ft(t,n)+4294967296*ft(t,n+4)},ct=function(t,n,r){for(;r;++n)t[n]=r,r>>>=8},pt=function(t,n){var r=n.filename;if(t[0]=31,t[1]=139,t[2]=8,t[8]=n.level<2?4:9==n.level?2:0,t[9]=3,0!=n.mtime&&ct(t,4,Math.floor(new Date(n.mtime||Date.now())/1e3)),r){t[3]=8;for(var e=0;e<=r.length;++e)t[e+10]=r.charCodeAt(e)}},vt=function(t){31==t[0]&&139==t[1]&&8==t[2]||I(6,"invalid gzip data");var n=t[3],r=10;4&n&&(r+=2+(t[10]|t[11]<<8));for(var e=(n>>3&1)+(n>>4&1);e>0;e-=!t[r++]);return r+(2&n)},dt=function(t){var n=t.length;return(t[n-4]|t[n-3]<<8|t[n-2]<<16|t[n-1]<<24)>>>0},gt=function(t){return 10+(t.filename?t.filename.length+1:0)},yt=function(t,n){var r=n.level,e=0==r?0:r<6?1:9==r?3:2;if(t[0]=120,t[1]=e<<6|(n.dictionary&&32),t[1]|=31-(t[0]<<8|t[1])%31,n.dictionary){var i=J();i.p(n.dictionary),ct(t,2,i.d())}},mt=function(t,n){return(8!=(15&t[0])||t[0]>>4>7||(t[0]<<8|t[1])%31)&&I(6,"invalid zlib data"),(t[1]>>5&1)==+!n&&I(6,"invalid zlib data: "+(32&t[1]?"need":"unexpected")+" dictionary"),2+(t[1]>>3&4)};function bt(t,n){return"function"==typeof t&&(n=t,t={}),this.ondata=n,t}var wt=function(){function t(t,r){if("function"==typeof t&&(r=t,t={}),this.ondata=r,this.o=t||{},this.s={l:0,i:32768,w:32768,z:32768},this.b=new n(98304),this.o.dictionary){var e=this.o.dictionary.subarray(-32768);this.b.set(e,32768-e.length),this.s.i=32768-e.length}}return t.prototype.p=function(t,n){this.ondata(K(t,this.o,0,0,this.s),n)},t.prototype.push=function(t,r){this.ondata||I(5),this.s.l&&I(4);var e=t.length+this.s.z;if(e>this.b.length){if(e>2*this.b.length-32768){var i=new n(-32768&e);i.set(this.b.subarray(0,this.s.z)),this.b=i}var o=this.b.length-this.s.z;this.b.set(t.subarray(0,o),this.s.z),this.s.z=this.b.length,this.p(this.b,!1),this.b.set(this.b.subarray(-32768)),this.b.set(t.subarray(o),32768),this.s.z=t.length-o+32768,this.s.i=32766,this.s.w=32768}else this.b.set(t,this.s.z),this.s.z+=t.length;this.s.l=1&r,(this.s.z>this.s.w+8191||r)&&(this.p(this.b,r||!1),this.s.w=this.s.i,this.s.i-=2)},t.prototype.flush=function(){this.ondata||I(5),this.s.l&&I(4),this.p(this.b,!1),this.s.w=this.s.i,this.s.i-=2},t}();_e.Deflate=wt;var xt=function(){return function(t,n){ut([_,function(){return[at,wt]}],this,bt.call(this,t,n),(function(t){var n=new wt(t.data);onmessage=at(n)}),6,1)}}();function zt(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),st(t,n,[_],(function(t){return it(kt(t.data[0],t.data[1]))}),0,r)}function kt(t,n){return K(t,n||{},0,0)}_e.AsyncDeflate=xt,_e.deflate=zt,_e.deflateSync=kt;var Mt=function(){function t(t,r){"function"==typeof t&&(r=t,t={}),this.ondata=r;var e=t&&t.dictionary&&t.dictionary.subarray(-32768);this.s={i:0,b:e?e.length:0},this.o=new n(32768),this.p=new n(0),e&&this.o.set(e)}return t.prototype.e=function(t){if(this.ondata||I(5),this.d&&I(4),this.p.length){if(t.length){var r=new n(this.p.length+t.length);r.set(this.p),r.set(t,this.p.length),this.p=r}}else this.p=t},t.prototype.c=function(t){this.s.i=+(this.d=t||!1);var n=this.s.b,r=U(this.p,this.s,this.o);this.ondata(D(r,n,this.s.b),this.d),this.o=D(r,this.s.b-32768),this.s.b=this.o.length,this.p=D(this.p,this.s.p/8|0),this.s.p&=7},t.prototype.push=function(t,n){this.e(t),this.c(n)},t}();_e.Inflate=Mt;var St=function(){return function(t,n){ut([$,function(){return[at,Mt]}],this,bt.call(this,t,n),(function(t){var n=new Mt(t.data);onmessage=at(n)}),7,0)}}();function At(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),st(t,n,[$],(function(t){return it(Tt(t.data[0],ot(t.data[1])))}),1,r)}function Tt(t,n){return U(t,{i:2},n&&n.out,n&&n.dictionary)}_e.AsyncInflate=St,_e.inflate=At,_e.inflateSync=Tt;var Dt=function(){function t(t,n){this.c=Y(),this.l=0,this.v=1,wt.call(this,t,n)}return t.prototype.push=function(t,n){this.c.p(t),this.l+=t.length,wt.prototype.push.call(this,t,n)},t.prototype.p=function(t,n){var r=K(t,this.o,this.v&&gt(this.o),n&&8,this.s);this.v&&(pt(r,this.o),this.v=0),n&&(ct(r,r.length-8,this.c.d()),ct(r,r.length-4,this.l)),this.ondata(r,n)},t.prototype.flush=function(){wt.prototype.flush.call(this)},t}();_e.Gzip=Dt,_e.Compress=Dt;var Ct=function(){return function(t,n){ut([_,tt,function(){return[at,wt,Dt]}],this,bt.call(this,t,n),(function(t){var n=new Dt(t.data);onmessage=at(n)}),8,1)}}();function It(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),st(t,n,[_,tt,function(){return[Ut]}],(function(t){return it(Ut(t.data[0],t.data[1]))}),2,r)}function Ut(t,n){n||(n={});var r=Y(),e=t.length;r.p(t);var i=K(t,n,gt(n),8),o=i.length;return pt(i,n),ct(i,o-8,r.d()),ct(i,o-4,e),i}_e.AsyncGzip=Ct,_e.AsyncCompress=Ct,_e.gzip=It,_e.compress=It,_e.gzipSync=Ut,_e.compressSync=Ut;var Ft=function(){function t(t,n){this.v=1,this.r=0,Mt.call(this,t,n)}return t.prototype.push=function(t,r){if(Mt.prototype.e.call(this,t),this.r+=t.length,this.v){var e=this.p.subarray(this.v-1),i=e.length>3?vt(e):4;if(i>e.length){if(!r)return}else this.v>1&&this.onmember&&this.onmember(this.r-e.length);this.p=e.subarray(i),this.v=0}Mt.prototype.c.call(this,r),!this.s.f||this.s.l||r||(this.v=T(this.s.p)+9,this.s={i:0},this.o=new n(0),this.push(new n(0),r))},t}();_e.Gunzip=Ft;var Et=function(){return function(t,n){var r=this;ut([$,nt,function(){return[at,Mt,Ft]}],this,bt.call(this,t,n),(function(t){var n=new Ft(t.data);n.onmember=function(t){return postMessage(t)},onmessage=at(n)}),9,0,(function(t){return r.onmember&&r.onmember(t)}))}}();function Zt(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),st(t,n,[$,nt,function(){return[qt]}],(function(t){return it(qt(t.data[0],t.data[1]))}),3,r)}function qt(t,r){var e=vt(t);return e+8>t.length&&I(6,"invalid gzip data"),U(t.subarray(e,-8),{i:2},r&&r.out||new n(dt(t)),r&&r.dictionary)}_e.AsyncGunzip=Et,_e.gunzip=Zt,_e.gunzipSync=qt;var Ot=function(){function t(t,n){this.c=J(),this.v=1,wt.call(this,t,n)}return t.prototype.push=function(t,n){this.c.p(t),wt.prototype.push.call(this,t,n)},t.prototype.p=function(t,n){var r=K(t,this.o,this.v&&(this.o.dictionary?6:2),n&&4,this.s);this.v&&(yt(r,this.o),this.v=0),n&&ct(r,r.length-4,this.c.d()),this.ondata(r,n)},t.prototype.flush=function(){wt.prototype.flush.call(this)},t}();_e.Zlib=Ot;var Gt=function(){return function(t,n){ut([_,rt,function(){return[at,wt,Ot]}],this,bt.call(this,t,n),(function(t){var n=new Ot(t.data);onmessage=at(n)}),10,1)}}();function Lt(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),st(t,n,[_,rt,function(){return[Ht]}],(function(t){return it(Ht(t.data[0],t.data[1]))}),4,r)}function Ht(t,n){n||(n={});var r=J();r.p(t);var e=K(t,n,n.dictionary?6:2,4);return yt(e,n),ct(e,e.length-4,r.d()),e}_e.AsyncZlib=Gt,_e.zlib=Lt,_e.zlibSync=Ht;var jt=function(){function t(t,n){Mt.call(this,t,n),this.v=t&&t.dictionary?2:1}return t.prototype.push=function(t,n){if(Mt.prototype.e.call(this,t),this.v){if(this.p.length<6&&!n)return;this.p=this.p.subarray(mt(this.p,this.v-1)),this.v=0}n&&(this.p.length<4&&I(6,"invalid zlib data"),this.p=this.p.subarray(0,-4)),Mt.prototype.c.call(this,n)},t}();_e.Unzlib=jt;var Nt=function(){return function(t,n){ut([$,et,function(){return[at,Mt,jt]}],this,bt.call(this,t,n),(function(t){var n=new jt(t.data);onmessage=at(n)}),11,0)}}();function Pt(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),st(t,n,[$,et,function(){return[Bt]}],(function(t){return it(Bt(t.data[0],ot(t.data[1])))}),5,r)}function Bt(t,n){return U(t.subarray(mt(t,n&&n.dictionary),-4),{i:2},n&&n.out,n&&n.dictionary)}_e.AsyncUnzlib=Nt,_e.unzlib=Pt,_e.unzlibSync=Bt;var Yt=function(){function t(t,n){this.o=bt.call(this,t,n)||{},this.G=Ft,this.I=Mt,this.Z=jt}return t.prototype.i=function(){var t=this;this.s.ondata=function(n,r){t.ondata(n,r)}},t.prototype.push=function(t,r){if(this.ondata||I(5),this.s)this.s.push(t,r);else{if(this.p&&this.p.length){var e=new n(this.p.length+t.length);e.set(this.p),e.set(t,this.p.length)}else this.p=t;this.p.length>2&&(this.s=31==this.p[0]&&139==this.p[1]&&8==this.p[2]?new this.G(this.o):8!=(15&this.p[0])||this.p[0]>>4>7||(this.p[0]<<8|this.p[1])%31?new this.I(this.o):new this.Z(this.o),this.i(),this.s.push(this.p,r),this.p=null)}},t}();_e.Decompress=Yt;var Jt=function(){function t(t,n){Yt.call(this,t,n),this.queuedSize=0,this.G=Et,this.I=St,this.Z=Nt}return t.prototype.i=function(){var t=this;this.s.ondata=function(n,r,e){t.ondata(n,r,e)},this.s.ondrain=function(n){t.queuedSize-=n,t.ondrain&&t.ondrain(n)}},t.prototype.push=function(t,n){this.queuedSize+=t.length,Yt.prototype.push.call(this,t,n)},t}();function Kt(t,n,r){return r||(r=n,n={}),"function"!=typeof r&&I(7),31==t[0]&&139==t[1]&&8==t[2]?Zt(t,n,r):8!=(15&t[0])||t[0]>>4>7||(t[0]<<8|t[1])%31?At(t,n,r):Pt(t,n,r)}function Qt(t,n){return 31==t[0]&&139==t[1]&&8==t[2]?qt(t,n):8!=(15&t[0])||t[0]>>4>7||(t[0]<<8|t[1])%31?Tt(t,n):Bt(t,n)}_e.AsyncDecompress=Jt,_e.decompress=Kt,_e.decompressSync=Qt;var Rt=function(t,r,e,i){for(var o in t){var s=t[o],a=r+o,u=i;Array.isArray(s)&&(u=Q(i,s[1]),s=s[0]),s instanceof n?e[a]=[s,u]:(e[a+="/"]=[new n(0),u],Rt(s,a,e,i))}},Vt="undefined"!=typeof TextEncoder&&new TextEncoder,Wt="undefined"!=typeof TextDecoder&&new TextDecoder,Xt=0;try{Wt.decode(N,{stream:!0}),Xt=1}catch(t){}var $t=function(t){for(var n="",r=0;;){var e=t[r++],i=(e>127)+(e>223)+(e>239);if(r+i>t.length)return{s:n,r:D(t,r-1)};i?3==i?(e=((15&e)<<18|(63&t[r++])<<12|(63&t[r++])<<6|63&t[r++])-65536,n+=String.fromCharCode(55296|e>>10,56320|1023&e)):n+=String.fromCharCode(1&i?(31&e)<<6|63&t[r++]:(15&e)<<12|(63&t[r++])<<6|63&t[r++]):n+=String.fromCharCode(e)}},_t=function(){function t(t){this.ondata=t,Xt?this.t=new TextDecoder:this.p=N}return t.prototype.push=function(t,r){if(this.ondata||I(5),r=!!r,this.t)return this.ondata(this.t.decode(t,{stream:!0}),r),void(r&&(this.t.decode().length&&I(8),this.t=null));this.p||I(4);var e=new n(this.p.length+t.length);e.set(this.p),e.set(t,this.p.length);var i=$t(e),o=i.s,s=i.r;r?(s.length&&I(8),this.p=null):this.p=s,this.ondata(o,r)},t}();_e.DecodeUTF8=_t;var tn=function(){function t(t){this.ondata=t}return t.prototype.push=function(t,n){this.ondata||I(5),this.d&&I(4),this.ondata(nn(t),this.d=n||!1)},t}();function nn(t,r){if(r){for(var e=new n(t.length),i=0;i<t.length;++i)e[i]=t.charCodeAt(i);return e}if(Vt)return Vt.encode(t);var o=t.length,s=new n(t.length+(t.length>>1)),a=0,u=function(t){s[a++]=t};for(i=0;i<o;++i){if(a+5>s.length){var h=new n(a+8+(o-i<<1));h.set(s),s=h}var f=t.charCodeAt(i);f<128||r?u(f):f<2048?(u(192|f>>6),u(128|63&f)):f>55295&&f<57344?(u(240|(f=65536+(1047552&f)|1023&t.charCodeAt(++i))>>18),u(128|f>>12&63),u(128|f>>6&63),u(128|63&f)):(u(224|f>>12),u(128|f>>6&63),u(128|63&f))}return D(s,0,a)}function rn(t,n){if(n){for(var r="",e=0;e<t.length;e+=16384)r+=String.fromCharCode.apply(null,t.subarray(e,e+16384));return r}if(Wt)return Wt.decode(t);var i=$t(t),o=i.s;return(r=i.r).length&&I(8),o}_e.EncodeUTF8=tn,_e.strToU8=nn,_e.strFromU8=rn;var en=function(t){return 1==t?3:t<6?2:9==t?1:0},on=function(t,n){return n+30+ht(t,n+26)+ht(t,n+28)},sn=function(t,n,r){var e=ht(t,n+28),i=rn(t.subarray(n+46,n+46+e),!(2048&ht(t,n+8))),o=n+46+e,s=ft(t,n+20),a=r&&4294967295==s?an(t,o):[s,ft(t,n+24),ft(t,n+42)],u=a[0],h=a[1],f=a[2];return[ht(t,n+10),u,h,i,o+ht(t,n+30)+ht(t,n+32),f]},an=function(t,n){for(;1!=ht(t,n);n+=4+ht(t,n+2));return[lt(t,n+12),lt(t,n+4),lt(t,n+20)]},un=function(t){var n=0;if(t)for(var r in t){var e=t[r].length;e>65535&&I(9),n+=e+4}return n},hn=function(t,n,r,e,i,o,s,a){var u=e.length,h=r.extra,f=a&&a.length,l=un(h);ct(t,n,null!=s?33639248:67324752),n+=4,null!=s&&(t[n++]=20,t[n++]=r.os),t[n]=20,n+=2,t[n++]=r.flag<<1|(o<0&&8),t[n++]=i&&8,t[n++]=255&r.compression,t[n++]=r.compression>>8;var c=new Date(null==r.mtime?Date.now():r.mtime),p=c.getFullYear()-1980;if((p<0||p>119)&&I(10),ct(t,n,p<<25|c.getMonth()+1<<21|c.getDate()<<16|c.getHours()<<11|c.getMinutes()<<5|c.getSeconds()>>1),n+=4,-1!=o&&(ct(t,n,r.crc),ct(t,n+4,o<0?-o-2:o),ct(t,n+8,r.size)),ct(t,n+12,u),ct(t,n+14,l),n+=16,null!=s&&(ct(t,n,f),ct(t,n+6,r.attrs),ct(t,n+10,s),n+=14),t.set(e,n),n+=u,l)for(var v in h){var d=h[v],g=d.length;ct(t,n,+v),ct(t,n+2,g),t.set(d,n+4),n+=4+g}return f&&(t.set(a,n),n+=f),n},fn=function(t,n,r,e,i){ct(t,n,101010256),ct(t,n+8,r),ct(t,n+10,r),ct(t,n+12,e),ct(t,n+16,i)},ln=function(){function t(t){this.filename=t,this.c=Y(),this.size=0,this.compression=0}return t.prototype.process=function(t,n){this.ondata(null,t,n)},t.prototype.push=function(t,n){this.ondata||I(5),this.c.p(t),this.size+=t.length,n&&(this.crc=this.c.d()),this.process(t,n||!1)},t}();_e.ZipPassThrough=ln;var cn=function(){function t(t,n){var r=this;n||(n={}),ln.call(this,t),this.d=new wt(n,(function(t,n){r.ondata(null,t,n)})),this.compression=8,this.flag=en(n.level)}return t.prototype.process=function(t,n){try{this.d.push(t,n)}catch(t){this.ondata(t,null,n)}},t.prototype.push=function(t,n){ln.prototype.push.call(this,t,n)},t}();_e.ZipDeflate=cn;var pn=function(){function t(t,n){var r=this;n||(n={}),ln.call(this,t),this.d=new xt(n,(function(t,n,e){r.ondata(t,n,e)})),this.compression=8,this.flag=en(n.level),this.terminate=this.d.terminate}return t.prototype.process=function(t,n){this.d.push(t,n)},t.prototype.push=function(t,n){ln.prototype.push.call(this,t,n)},t}();_e.AsyncZipDeflate=pn;var vn=function(){function t(t){this.ondata=t,this.u=[],this.d=1}return t.prototype.add=function(t){var r=this;if(this.ondata||I(5),2&this.d)this.ondata(I(4+8*(1&this.d),0,1),null,!1);else{var e=nn(t.filename),i=e.length,o=t.comment,s=o&&nn(o),a=i!=t.filename.length||s&&o.length!=s.length,u=i+un(t.extra)+30;i>65535&&this.ondata(I(11,0,1),null,!1);var h=new n(u);hn(h,0,t,e,a,-1);var f=[h],l=function(){for(var t=0,n=f;t<n.length;t++)r.ondata(null,n[t],!1);f=[]},c=this.d;this.d=0;var p=this.u.length,v=Q(t,{f:e,u:a,o:s,t:function(){t.terminate&&t.terminate()},r:function(){if(l(),c){var t=r.u[p+1];t?t.r():r.d=1}c=1}}),d=0;t.ondata=function(e,i,o){if(e)r.ondata(e,i,o),r.terminate();else if(d+=i.length,f.push(i),o){var s=new n(16);ct(s,0,134695760),ct(s,4,t.crc),ct(s,8,d),ct(s,12,t.size),f.push(s),v.c=d,v.b=u+d+16,v.crc=t.crc,v.size=t.size,c&&v.r(),c=1}else c&&l()},this.u.push(v)}},t.prototype.end=function(){var t=this;2&this.d?this.ondata(I(4+8*(1&this.d),0,1),null,!0):(this.d?this.e():this.u.push({r:function(){1&t.d&&(t.u.splice(-1,1),t.e())},t:function(){}}),this.d=3)},t.prototype.e=function(){for(var t=0,r=0,e=0,i=0,o=this.u;i<o.length;i++)e+=46+(h=o[i]).f.length+un(h.extra)+(h.o?h.o.length:0);for(var s=new n(e+22),a=0,u=this.u;a<u.length;a++){var h;hn(s,t,h=u[a],h.f,h.u,-h.c-2,r,h.o),t+=46+h.f.length+un(h.extra)+(h.o?h.o.length:0),r+=h.b}fn(s,t,this.u.length,e,r),this.ondata(null,s,!0),this.d=2},t.prototype.terminate=function(){for(var t=0,n=this.u;t<n.length;t++)n[t].t();this.d=2},t}();function dn(t,r,e){e||(e=r,r={}),"function"!=typeof e&&I(7);var i={};Rt(t,"",i,r);var o=Object.keys(i),s=o.length,a=0,u=0,h=s,f=Array(s),l=[],c=function(){for(var t=0;t<l.length;++t)l[t]()},p=function(t,n){xn((function(){e(t,n)}))};xn((function(){p=e}));var v=function(){var t=new n(u+22),r=a,e=u-a;u=0;for(var i=0;i<h;++i){var o=f[i];try{var s=o.c.length;hn(t,u,o,o.f,o.u,s);var l=30+o.f.length+un(o.extra),c=u+l;t.set(o.c,c),hn(t,a,o,o.f,o.u,s,u,o.m),a+=16+l+(o.m?o.m.length:0),u=c+s}catch(t){return p(t,null)}}fn(t,a,f.length,e,r),p(null,t)};s||v();for(var d=function(t){var n=o[t],r=i[n],e=r[0],h=r[1],d=Y(),g=e.length;d.p(e);var y=nn(n),m=y.length,b=h.comment,w=b&&nn(b),x=w&&w.length,z=un(h.extra),k=0==h.level?0:8,M=function(r,e){if(r)c(),p(r,null);else{var i=e.length;f[t]=Q(h,{size:g,crc:d.d(),c:e,f:y,m:w,u:m!=n.length||w&&b.length!=x,compression:k}),a+=30+m+z+i,u+=76+2*(m+z)+(x||0)+i,--s||v()}};if(m>65535&&M(I(11,0,1),null),k)if(g<16e4)try{M(null,kt(e,h))}catch(t){M(t,null)}else l.push(zt(e,h,M));else M(null,e)},g=0;g<h;++g)d(g);return c}function gn(t,r){r||(r={});var e={},i=[];Rt(t,"",e,r);var o=0,s=0;for(var a in e){var u=e[a],h=u[0],f=u[1],l=0==f.level?0:8,c=(M=nn(a)).length,p=f.comment,v=p&&nn(p),d=v&&v.length,g=un(f.extra);c>65535&&I(11);var y=l?kt(h,f):h,m=y.length,b=Y();b.p(h),i.push(Q(f,{size:h.length,crc:b.d(),c:y,f:M,m:v,u:c!=a.length||v&&p.length!=d,o:o,compression:l})),o+=30+c+g+m,s+=76+2*(c+g)+(d||0)+m}for(var w=new n(s+22),x=o,z=s-o,k=0;k<i.length;++k){var M;hn(w,(M=i[k]).o,M,M.f,M.u,M.c.length);var S=30+M.f.length+un(M.extra);w.set(M.c,M.o+S),hn(w,o,M,M.f,M.u,M.c.length,M.o,M.m),o+=16+S+(M.m?M.m.length:0)}return fn(w,o,i.length,z,x),w}_e.Zip=vn,_e.zip=dn,_e.zipSync=gn;var yn=function(){function t(){}return t.prototype.push=function(t,n){this.ondata(null,t,n)},t.compression=0,t}();_e.UnzipPassThrough=yn;var mn=function(){function t(){var t=this;this.i=new Mt((function(n,r){t.ondata(null,n,r)}))}return t.prototype.push=function(t,n){try{this.i.push(t,n)}catch(t){this.ondata(t,null,n)}},t.compression=8,t}();_e.UnzipInflate=mn;var bn=function(){function t(t,n){var r=this;n<32e4?this.i=new Mt((function(t,n){r.ondata(null,t,n)})):(this.i=new St((function(t,n,e){r.ondata(t,n,e)})),this.terminate=this.i.terminate)}return t.prototype.push=function(t,n){this.i.terminate&&(t=D(t,0)),this.i.push(t,n)},t.compression=8,t}();_e.AsyncUnzipInflate=bn;var wn=function(){function t(t){this.onfile=t,this.k=[],this.o={0:yn},this.p=N}return t.prototype.push=function(t,r){var e=this;if(this.onfile||I(5),this.p||I(4),this.c>0){var i=Math.min(this.c,t.length),o=t.subarray(0,i);if(this.c-=i,this.d?this.d.push(o,!this.c):this.k[0].push(o),(t=t.subarray(i)).length)return this.push(t,r)}else{var s=0,a=0,u=void 0,h=void 0;this.p.length?t.length?((h=new n(this.p.length+t.length)).set(this.p),h.set(t,this.p.length)):h=this.p:h=t;for(var f=h.length,l=this.c,c=l&&this.d,p=function(){var t,n=ft(h,a);if(67324752==n){s=1,u=a,v.d=null,v.c=0;var r=ht(h,a+6),i=ht(h,a+8),o=2048&r,c=8&r,p=ht(h,a+26),d=ht(h,a+28);if(f>a+30+p+d){var g=[];v.k.unshift(g),s=2;var y,m=ft(h,a+18),b=ft(h,a+22),w=rn(h.subarray(a+30,a+=30+p),!o);4294967295==m?(t=c?[-2]:an(h,a),m=t[0],b=t[1]):c&&(m=-1),a+=d,v.c=m;var x={name:w,compression:i,start:function(){if(x.ondata||I(5),m){var t=e.o[i];t||x.ondata(I(14,"unknown compression type "+i,1),null,!1),(y=m<0?new t(w):new t(w,m,b)).ondata=function(t,n,r){x.ondata(t,n,r)};for(var n=0,r=g;n<r.length;n++)y.push(r[n],!1);e.k[0]==g&&e.c?e.d=y:y.push(N,!0)}else x.ondata(null,N,!0)},terminate:function(){y&&y.terminate&&y.terminate()}};m>=0&&(x.size=m,x.originalSize=b),v.onfile(x)}return"break"}if(l){if(134695760==n)return u=a+=12+(-2==l&&8),s=3,v.c=0,"break";if(33639248==n)return u=a-=4,s=3,v.c=0,"break"}},v=this;a<f-4&&"break"!==p();++a);if(this.p=N,l<0){var d=h.subarray(0,s?u-12-(-2==l&&8)-(134695760==ft(h,u-16)&&4):a);c?c.push(d,!!s):this.k[+(2==s)].push(d)}if(2&s)return this.push(h.subarray(a),r);this.p=h.subarray(a)}r&&(this.c&&I(13),this.p=null)},t.prototype.register=function(t){this.o[t.compression]=t},t}();_e.Unzip=wn;var xn="function"==typeof queueMicrotask?queueMicrotask:"function"==typeof setTimeout?setTimeout:function(t){t()};function zn(t,r,e){e||(e=r,r={}),"function"!=typeof e&&I(7);var i=[],o=function(){for(var t=0;t<i.length;++t)i[t]()},s={},a=function(t,n){xn((function(){e(t,n)}))};xn((function(){a=e}));for(var u=t.length-22;101010256!=ft(t,u);--u)if(!u||t.length-u>65558)return a(I(13,0,1),null),o;var h=ht(t,u+8);if(h){var f=h,l=ft(t,u+16),c=4294967295==l||65535==f;if(c){var p=ft(t,u-12);(c=101075792==ft(t,p))&&(f=h=ft(t,p+32),l=ft(t,p+48))}for(var v=r&&r.filter,d=function(r){var e=sn(t,l,c),u=e[0],f=e[1],p=e[2],d=e[3],g=e[4],y=on(t,e[5]);l=g;var m=function(t,n){t?(o(),a(t,null)):(n&&(s[d]=n),--h||a(null,s))};if(!v||v({name:d,size:f,originalSize:p,compression:u}))if(u)if(8==u){var b=t.subarray(y,y+f);if(p<524288||f>.8*p)try{m(null,Tt(b,{out:new n(p)}))}catch(t){m(t,null)}else i.push(At(b,{size:p},m))}else m(I(14,"unknown compression type "+u,1),null);else m(null,D(t,y,y+f));else m(null,null)},g=0;g<f;++g)d()}else a(null,{});return o}function kn(t,r){for(var e={},i=t.length-22;101010256!=ft(t,i);--i)(!i||t.length-i>65558)&&I(13);var o=ht(t,i+8);if(!o)return{};var s=ft(t,i+16),a=4294967295==s||65535==o;if(a){var u=ft(t,i-12);(a=101075792==ft(t,u))&&(o=ft(t,u+32),s=ft(t,u+48))}for(var h=r&&r.filter,f=0;f<o;++f){var l=sn(t,s,a),c=l[0],p=l[1],v=l[2],d=l[3],g=l[4],y=on(t,l[5]);s=g,h&&!h({name:d,size:p,originalSize:v,compression:c})||(c?8==c?e[d]=Tt(t.subarray(y,y+p),{out:new n(v)}):I(14,"unknown compression type "+c):e[d]=D(t,y,y+p))}return e}_e.unzip=zn,_e.unzipSync=kn;return _e});
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+:root{--bg:#0a0e1a;--panel:#111827;--border:#1e3a5f;--accent:#00e5ff;--accent2:#39ff14;--accent3:#ff6b35;--text:#ddeef8;--text-dim:#8aafc8;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:1.05rem;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+.container{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:32px 0 40px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:10px}
+.logo-icon{width:52px;height:52px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px;transform:rotate(15deg)}
+.logo-icon span{display:block;border-radius:2px}
+h1{font-family:'Share Tech Mono',monospace;font-size:clamp(1rem,3.5vw,1.7rem);color:var(--accent);letter-spacing:2px;text-shadow:0 0 20px rgba(0,229,255,0.4)}
+.subtitle{margin-top:6px;color:var(--text-dim);letter-spacing:1px}
+.subtitle-main{font-size:1.05rem;font-weight:500;letter-spacing:2px;display:block;font-family:'Noto Sans JP',sans-serif}
+.subtitle-credit{font-size:.82rem;letter-spacing:1px;display:block;margin-top:6px}
+.steps{display:flex;flex-direction:column;gap:0}
+.step-arrow{text-align:center;font-size:1.8rem;color:var(--accent);padding:8px 0;opacity:.7;text-shadow:0 0 12px rgba(0,229,255,.5);animation:arrowPulse 1.8s ease-in-out infinite}
+@keyframes arrowPulse{0%,100%{opacity:.5;transform:translateY(0)}50%{opacity:1;transform:translateY(3px)}}
+.step{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .3s}
+.step.active{border-color:var(--accent)}.step.done{border-color:var(--accent2)}
+.step-header{display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(0,0,0,.2);border-bottom:1px solid var(--border)}
+.step-num{font-family:'Share Tech Mono',monospace;font-size:.9rem;color:var(--accent);background:rgba(0,229,255,.08);border:1px solid var(--accent);border-radius:4px;padding:3px 8px;white-space:nowrap}
+.step.done .step-num{color:var(--accent2);border-color:var(--accent2);background:rgba(57,255,20,.08)}
+.step-title{font-size:1.08rem;font-weight:700}
+.step-status{margin-left:auto;font-size:.8rem;font-family:'Share Tech Mono',monospace;color:var(--text-dim)}
+.step.done .step-status{color:var(--accent2)}
+.step-body{padding:22px}
+/* ファイルドロップ 2列 */
+.drop-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0}
+@media(max-width:600px){.drop-row{grid-template-columns:1fr}}
+.drop-row>div{display:flex;flex-direction:column}
+.drop-row .drop-zone{flex:1 0 auto}
+.drop-zone{border:2px dashed var(--border);border-radius:8px;padding:24px 14px;text-align:center;cursor:pointer;transition:all .2s;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--accent);background:rgba(0,229,255,.04)}
+.drop-zone.loaded{border-color:var(--accent2);background:rgba(57,255,20,.04)}
+.drop-zone input{display:none}
+.drop-zone.drop-error{border-color:#ff5555;background:rgba(255,85,85,.07);}
+.drop-zone.disabled{opacity:.45;cursor:not-allowed;pointer-events:none;filter:grayscale(1)}
+.drop-lock{display:none;color:var(--text-dim);font-size:.82rem;font-family:'Share Tech Mono',monospace;margin-top:4px}
+.drop-zone.disabled .drop-lock{display:block}
+.drop-error-msg{color:#ff5555;font-size:.86rem;font-family:'Share Tech Mono',monospace;margin-top:6px;text-align:center;display:none;}
+.drop-icon{font-size:2rem}
+.drop-label{font-size:.86rem;color:var(--accent);font-family:'Share Tech Mono',monospace;letter-spacing:1px;margin-bottom:2px}
+.drop-count{float:right;color:var(--text-dim);letter-spacing:0}
+.drop-count.full{color:var(--accent2)}
+.drop-count.over{color:#ff5555}
+.drop-text{font-size:.96rem;font-family:'Noto Sans JP',sans-serif}.drop-text strong{color:var(--accent)}
+.drop-filename{font-size:.82rem;color:var(--accent2);font-family:'Share Tech Mono',monospace;margin-top:4px;max-height:72px;overflow-y:auto;text-align:left}.drop-filename .fname{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.6}
+.settings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:14px}
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:.9rem;color:var(--text);letter-spacing:.5px;font-family:'Noto Sans JP',sans-serif}
+input[type=number],select{background:#0a1628;border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:1rem;padding:8px 12px;transition:border-color .2s;width:100%}
+input[type=number]:focus,select:focus{outline:none;border-color:var(--accent)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.loading-bar-wrap{width:100%;background:rgba(0,0,0,.35);border-radius:6px;height:8px;overflow:hidden}
+.loading-bar{height:100%;background:linear-gradient(90deg,var(--accent) 0%,var(--accent2) 60%,var(--accent) 100%);background-size:200% 100%;border-radius:6px;width:0%;transition:width .3s ease}
+.loading-bar.indeterminate{width:40%!important;animation:slide 1.4s ease-in-out infinite}
+@keyframes slide{0%{margin-left:-40%}100%{margin-left:100%}}
+.spinner{width:24px;height:24px;border:3px solid rgba(0,229,255,.18);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress-wrap{background:rgba(0,0,0,.3);border-radius:4px;height:6px;overflow:hidden;margin-top:8px;margin-bottom:12px}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;width:0%}
+.log{background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:4px;padding:10px;font-family:'Share Tech Mono',monospace;font-size:.88rem;color:var(--text-dim);height:132px;overflow-y:auto;line-height:1.7;margin-top:10px}
+.log .ok{color:var(--accent2)}.log .info{color:var(--accent)}.log .warn{color:var(--accent3)}.log .err{color:#ff4444}
+.btn{font-family:'Noto Sans JP',sans-serif;font-size:.94rem;letter-spacing:1px;padding:11px 26px;border:none;border-radius:4px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--accent);color:#000;font-weight:700}
+.btn-primary:hover:not(:disabled){background:#33eaff;box-shadow:0 0 20px rgba(0,229,255,.4)}
+.btn-primary:disabled{opacity:.3;cursor:not-allowed}
+.btn-success{background:var(--accent2);color:#000;font-weight:700}
+.btn-success:hover{box-shadow:0 0 20px rgba(57,255,20,.4)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:14px 0}
+.stat-card{background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:6px;padding:12px 10px 14px;text-align:center}
+.stat-val{font-family:'Share Tech Mono',monospace;font-size:1.08rem;color:#fff;line-height:1.4}
+.stat-label{font-size:.86rem;color:#ccc;letter-spacing:1px;margin-top:5px}
+.hidden{display:none!important}
+footer{text-align:center;margin-top:48px;font-size:.84rem;color:var(--text-dim);letter-spacing:2px}
+.info-box{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.2);border-radius:6px;padding:12px 16px;margin-bottom:14px;font-size:.92rem;color:var(--text-dim);line-height:1.85}
+.info-box strong{color:var(--accent)}
+.load-status{display:flex;align-items:center;gap:10px;padding:8px 0;font-family:'Share Tech Mono',monospace;font-size:.88rem;color:var(--text-dim)}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="logo-row">
+    <div class="logo-icon" id="logoBlocks"></div>
+    <h1>PLATEAU → MINECRAFT 一発変換<span style="font-size:.55em;font-weight:400;letter-spacing:1px;margin-left:18px;color:var(--text-dim)">ver 1.0</span></h1>
+  </div>
+  <p class="subtitle">
+    <span class="subtitle-main">国土交通省 PLATEAUの（CityGML）データからマインクラフト（JAVA版）のワールドデータを作成</span>
+    <span class="subtitle-credit">ブラウザのみで動作 ／ ファイルはサーバーに送信されません</span>
+  </p>
+</header>
+
+<div class="steps">
+
+<!-- STEP 1 -->
+<div class="step active" id="step1">
+  <div class="step-header">
+    <span class="step-num">STEP 01</span>
+    <span class="step-title">GMLファイルを読み込む<span style="color:var(--text-dim);font-weight:400">（LOD1・LOD2のみ対応）</span></span>
+    <span class="step-status" id="step1-status">WAITING</span>
+  </div>
+  <div class="step-body">
+    <div class="info-box" style="color:#aeb6c0">
+      変換したいファイル、<span style="font-weight:700">建物(bldg)・地形(dem)・道路(tran)・植生(veg)</span> をそれぞれ読み込んでください。<br>
+      変換される範囲は建物(bldg)が存在する範囲にトリミングされます。<br>
+      <span style="font-size:.85rem">読み込み上限 … 建物9 / 地形4 / 道路9 / 植生9ファイル（超過分は読み込まず無視します）</span><br>
+      <span style="font-size:.85rem">※ 地形データ(dem)のみで変換する場合は広範囲となるため、ファイル読み込み上限は1つとなります</span>
+    </div>
+    <div class="drop-row" style="grid-template-columns:repeat(4,1fr)">
+      <!-- 建物 -->
+      <div>
+        <div class="drop-label">🏙️ 建物 bldg<span class="drop-count" id="cntBldg">0 / 9</span></div>
+        <div class="drop-zone" id="dropBldg">
+          <input type="file" id="fileBldg" accept=".gml,.xml" multiple>
+          <span class="drop-icon">📂</span>
+          <div class="drop-text"><strong>クリック or ドロップ</strong><br><span style="font-size:.82rem">*_bldg_*.gml（複数可）</span></div>
+          <div class="drop-filename hidden" id="bldgFilename"></div>
+        </div>
+        <div class="load-status hidden" id="bldgStatus">
+          <div class="spinner"></div><span id="bldgStatusText">読み込み中...</span>
+        </div>
+      </div>
+      <!-- 地形 -->
+      <div>
+        <div class="drop-label">🏔️ 地形 dem<span class="drop-count" id="cntDem">0 / 4</span></div>
+        <div class="drop-zone" id="dropDem">
+          <input type="file" id="fileDem" accept=".gml,.xml,.zip" multiple>
+          <span class="drop-icon">📂</span>
+          <div class="drop-text"><strong>クリック or ドロップ</strong><br><span style="font-size:.82rem">*_dem_*.gml（複数可）</span></div>
+          <div class="drop-lock">🔒 建物または地形(dem)の読込後に有効</div>
+          <div class="drop-filename hidden" id="demFilename"></div>
+        </div>
+        <div class="load-status hidden" id="demStatus">
+          <div class="spinner"></div><span id="demStatusText">読み込み中...</span>
+        </div>
+      </div>
+      <!-- 道路 -->
+      <div>
+        <div class="drop-label">🛣️ 道路 tran<span class="drop-count" id="cntTran">0 / 9</span></div>
+        <div class="drop-zone" id="dropTran">
+          <input type="file" id="fileTran" accept=".gml,.xml" multiple>
+          <span class="drop-icon">📂</span>
+          <div class="drop-text"><strong>クリック or ドロップ</strong><br><span style="font-size:.82rem">*_tran_*.gml（複数可）</span></div>
+          <div class="drop-lock">🔒 建物または地形(dem)の読込後に有効</div>
+          <div class="drop-filename hidden" id="tranFilename"></div>
+        </div>
+        <div class="load-status hidden" id="tranStatus">
+          <div class="spinner"></div><span id="tranStatusText">読み込み中...</span>
+        </div>
+      </div>
+      <!-- 植生 -->
+      <div>
+        <div class="drop-label">🌳 植生 veg<span class="drop-count" id="cntVeg">0 / 9</span></div>
+        <div class="drop-zone" id="dropVeg">
+          <input type="file" id="fileVeg" accept=".gml,.xml" multiple>
+          <span class="drop-icon">📂</span>
+          <div class="drop-text"><strong>クリック or ドロップ</strong><br><span style="font-size:.82rem">*_veg_*.gml（複数可）</span></div>
+          <div class="drop-lock">🔒 建物または地形(dem)の読込後に有効</div>
+          <div class="drop-filename hidden" id="vegFilename"></div>
+        </div>
+        <div class="load-status hidden" id="vegStatus">
+          <div class="spinner"></div><span id="vegStatusText">読み込み中...</span>
+        </div>
+      </div>
+    </div>
+    <div class="log" id="bldgLog"><div class="info">&gt; ログ: 読み込んだファイルとエラーをここに表示します。</div></div>
+    <div class="stats-row hidden" id="loadStats">
+      <div class="stat-card"><div class="stat-val" id="stat-bldg">-</div><div class="stat-label">建物数</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-poly">-</div><div class="stat-label">建物ポリゴン</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-demtri">-</div><div class="stat-label">地形三角形</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-tranpoly">-</div><div class="stat-label">道路ポリゴン</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-vegpoly">-</div><div class="stat-label">植生ポリゴン</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-area">-</div><div class="stat-label">エリア(m)</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="step-arrow">↓</div>
+
+<!-- STEP 2 -->
+<div class="step" id="step2">
+  <div class="step-header">
+    <span class="step-num">STEP 02</span>
+    <span class="step-title">ブロック設定</span>
+    <span class="step-status" id="step2-status">LOCKED</span>
+  </div>
+  <div class="step-body">
+    <div class="settings-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="field">
+        <label>1ブロックあたりのサイズ (m)</label>
+        <input type="number" id="blockSize" value="1.00" min="0.5" max="10" step="0.5">
+      </div>
+
+      <div class="field">
+        <label>建物素材</label>
+        <select id="buildingMat">
+          <option value="stone" selected>石ブロック</option>
+          <option value="sandstone">砂岩ブロック</option>
+          <option value="bricks">レンガブロック</option>
+          <option value="white_concrete">白コンクリートブロック</option>
+          <option value="quartz">クォーツブロック</option>
+          <option value="gray_concrete">グレーコンクリートブロック</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>建物の窓パターン</label>
+        <select id="facadeMode">
+          <option value="none">なし</option>
+          <option value="auto" selected>🏙️ 自動（高さで判定）</option>
+          <option value="office">🪟 オフィス（横帯窓）</option>
+          <option value="grid">🔲 グリッド窓</option>
+          <option value="stripe">🏢 縦ストライプ窓</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="field">
+        <label>地形素材（表面）</label>
+        <select id="terrainMat">
+          <option value="grass_block" selected>草ブロック</option>
+          <option value="dirt">土ブロック</option>
+          <option value="sand">砂ブロック</option>
+          <option value="stone">石ブロック</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>地形素材（地下）</label>
+        <select id="terrainSubMat">
+          <option value="dirt" selected>土ブロック</option>
+          <option value="stone">石ブロック</option>
+          <option value="gravel">砂利ブロック</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="field">
+        <label>地形の厚さ（表面下のブロック数）</label>
+        <input type="number" id="terrainDepth" value="3" min="1" max="20" step="1">
+      </div>
+      <div class="field">
+        <label>道路素材</label>
+        <select id="roadMat">
+          <option value="black_concrete">黒コンクリート（アスファルト）</option>
+          <option value="gray_concrete" selected>グレーコンクリート</option>
+          <option value="stone">石</option>
+          <option value="gravel">砂利</option>
+          <option value="cobblestone">丸石</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="field">
+        <label>海水面（標高0m以下を水に）</label>
+        <select id="seaMode">
+          <option value="none">なし</option>
+          <option value="water" selected>🌊 水ブロック（DEMデータ範囲内のみ）</option>
+          <option value="ice">🧊 氷ブロック（DEMデータ範囲内のみ）</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>水面オフセット（Y=0から何ブロック上を水面にするか）</label>
+        <input type="number" id="seaOffset" value="1" min="-10" max="20" step="1">
+      </div>
+    </div>
+    <div class="settings-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="field" style="flex-direction:row;align-items:center;gap:10px;padding-top:6px">
+        <input type="checkbox" id="beachSand" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0">
+        <label for="beachSand" style="text-transform:none;letter-spacing:0;font-size:1rem;cursor:pointer;line-height:1.45">🏖️ 砂浜ブロックを生成する<br><span style="font-size:.82rem;color:var(--text-dim)">水面以下の地面を砂ブロックに置き換えます</span></label>
+      </div>
+      <div class="field" style="flex-direction:row;align-items:center;gap:10px;padding-top:6px">
+        <input type="checkbox" id="hollowBldg" checked style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0">
+        <label for="hollowBldg" style="text-transform:none;letter-spacing:0;font-size:1rem;cursor:pointer;line-height:1.45">🏚️ 建物を空洞化する<br><span style="font-size:.82rem;color:var(--text-dim)">外見はそのままで内部を空気に（窓から中が見えます）</span></label>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="btnProcess" disabled>▶ ワールドデータ作成</button>
+      <span id="processHint" style="font-size:.86rem;color:var(--text-dim)">ファイルを読み込んでから実行してください</span>
+    </div>
+    <div id="progressPct" class="hidden" style="font-family:'Share Tech Mono',monospace;font-size:1rem;color:#fff;font-weight:700;text-align:right;margin-bottom:4px;letter-spacing:2px">0%</div>
+    <div class="progress-wrap hidden" id="progressWrap"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="log hidden" id="logBox"></div>
+    <div class="stats-row hidden" id="resultStats">
+      <div class="stat-card"><div class="stat-val" id="stat-bblocks">-</div><div class="stat-label">建物ブロック</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-tblocks">-</div><div class="stat-label">地形ブロック</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-rblocks">-</div><div class="stat-label">道路ブロック</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-vblocks">-</div><div class="stat-label">植生ブロック</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-wblocks">-</div><div class="stat-label">水ブロック</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-total">-</div><div class="stat-label">合計ブロック</div></div>
+    </div>
+    <div id="previewBox" class="hidden" style="margin-top:14px">
+      <div style="font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:6px">🗺️ 上から見た簡易プレビュー<span id="previewCaption"></span></div>
+      <div style="display:flex;justify-content:center;background:#0b0f14;border:1px solid var(--border);border-radius:6px;padding:10px">
+        <canvas id="previewCanvas" style="image-rendering:pixelated;max-width:100%;height:auto;background:#0b0f14"></canvas>
+      </div>
+      <div style="font-size:.76rem;color:var(--text-dim);margin-top:6px;text-align:center">建物=灰 / 地形=緑・茶 / 道路=濃灰 / 植生=深緑 / 水=青（各地点で一番上のブロックの色）</div>
+    </div>
+    <div id="dlDoneWorld" class="hidden" style="font-family:'Share Tech Mono',monospace;font-size:.9rem;color:var(--accent2);margin-top:10px;text-align:center;letter-spacing:1px">✔ world.zip ワールドデータ作成完了！</div>
+    <div style="margin-top:10px;padding:10px 14px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.15);border-radius:6px;font-size:.86rem;color:var(--text-dim);line-height:2">
+      1. <code style="color:var(--accent)">world.zip</code> を解凍 → フォルダ名を任意のワールド名に変更<br>
+      2. <code style="color:var(--accent)">.minecraft/saves/</code> にフォルダごとコピー
+    </div>
+  </div>
+</div>
+
+
+</div><!-- /steps -->
+<footer>© 2026 Kauji</footer>
+</div>
+
+<script>
+/* asset build manifest token (do not remove) */
+var __bt="a2F1aml8KGMpMjAyNiBLYXVqaXxQTEFURUFVMk1DfG5vLXJlZGlzdHJpYnV0aW9u";try{document.documentElement.dataset.bt=__bt;}catch(e){}
+// =====================================================================
+// LOGO
+// =====================================================================
+(function(){
+  const c=['#5d8a3c','#8b5e3c','#7a7a7a','#00e5ff','#5d8a3c','#8b5e3c','#7a7a7a','#556b80','#00e5ff'];
+  const l=document.getElementById('logoBlocks');
+  c.forEach(x=>{const s=document.createElement('span');s.style.background=x;l.appendChild(s);});
+})();
+
+// =====================================================================
+// STATE
+// =====================================================================
+let gmlPolygons=null;
+let demTriangles=null;
+let tranPolygons=null;
+let vegPolygons=null;
+let schemBlocksMap=null;
+let worldSpawnX=0, worldSpawnY=80, worldSpawnZ=0;
+
+// =====================================================================
+// BLOCK MATERIALS
+// =====================================================================
+const BLOCK_NAME={
+  'sandstone':'minecraft:sandstone','stone':'minecraft:stone',
+  'bricks':'minecraft:bricks','white_concrete':'minecraft:white_concrete',
+  'quartz':'minecraft:quartz_block','gray_concrete':'minecraft:gray_concrete',
+  'red_terracotta':'minecraft:red_terracotta','iron_block':'minecraft:iron_block',
+  'grass_block':'minecraft:grass_block','dirt':'minecraft:dirt',
+  'sand':'minecraft:sand','gravel':'minecraft:gravel',
+  'black_concrete':'minecraft:black_concrete',
+  'cobblestone':'minecraft:cobblestone',
+  'smooth_stone':'minecraft:smooth_stone',
+  'stone_bricks':'minecraft:stone_bricks',
+  'cracked_stone_bricks':'minecraft:cracked_stone_bricks',
+  'light_gray_concrete':'minecraft:light_gray_concrete',
+  'cyan_concrete':'minecraft:cyan_stained_glass',
+  'cyan_stained_glass':'minecraft:cyan_stained_glass',
+  'water':'minecraft:water',
+  'ice':'minecraft:ice',
+  'oak_log':'minecraft:oak_log',
+  'green_concrete':'minecraft:green_concrete',
+  'moss_block':'minecraft:moss_block',
+  'air':'minecraft:air',
+};
+const MAT_LEGACY={
+  'sandstone':{id:24,data:0},'stone':{id:1,data:0},'bricks':{id:45,data:0},
+  'white_concrete':{id:251,data:0},'quartz':{id:155,data:0},'gray_concrete':{id:251,data:7},
+  'red_terracotta':{id:159,data:14},'iron_block':{id:42,data:0},
+  'grass_block':{id:2,data:0},'dirt':{id:3,data:0},
+  'sand':{id:12,data:0},'gravel':{id:13,data:0},
+  'black_concrete':{id:251,data:15},'cobblestone':{id:4,data:0},
+  'smooth_stone':{id:1,data:6},'stone_bricks':{id:98,data:0},
+  'cracked_stone_bricks':{id:98,data:2},'light_gray_concrete':{id:251,data:8},
+  'cyan_concrete':{id:251,data:9},
+  'cyan_stained_glass':{id:95,data:9},
+  'water':{id:9,data:0},
+  'ice':{id:79,data:0},
+  'oak_log':{id:17,data:0},'green_concrete':{id:251,data:13},
+  'moss_block':{id:1,data:0},
+};
+const LEGACY_TO_NAME={};
+for(const[k,v]of Object.entries(MAT_LEGACY)) LEGACY_TO_NAME[`${v.id}:${v.data}`]=BLOCK_NAME[k];
+function blockStateName(id,data){return LEGACY_TO_NAME[`${id}:${data}`]||'minecraft:stone';}
+
+// =====================================================================
+// LOG / PROGRESS
+// =====================================================================
+function log(msg,cls='info'){
+  const b=document.getElementById('logBox');b.classList.remove('hidden');
+  const d=document.createElement('div');d.className=cls;d.textContent='> '+msg;
+  b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+// STEP01用ログ（読み込んだファイル・エラーを消えずに残す）
+function step1Log(msg,cls='info'){
+  const b=document.getElementById('bldgLog');if(!b)return;b.classList.remove('hidden');
+  const d=document.createElement('div');d.className=cls;d.textContent='> '+msg;
+  b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function setProgress(pct){
+  document.getElementById('progressBar').style.width=pct+'%';
+  const e=document.getElementById('progressPct');if(e)e.textContent=Math.round(pct)+'%';
+}
+function tick(){return new Promise(r=>setTimeout(r,0));}
+
+// =====================================================================
+// COORDINATE CONVERSION
+// =====================================================================
+let globalRefLat=null,globalRefLon=null;
+function latLonToXZ(lat,lon){
+  const R=6371000;
+  const dLat=(lat-globalRefLat)*Math.PI/180;
+  const dLon=(lon-globalRefLon)*Math.PI/180;
+  const avgLat=(lat+globalRefLat)/2*Math.PI/180;
+  // Minecraft座標系: X=東西(+東), Z=南北(+南)
+  // lon増加 → 東 → +X、lat増加 → 北 → -Z（MinecraftはZ+が南）
+  return{x:dLon*R*Math.cos(avgLat), z:-dLat*R};
+}
+
+// =====================================================================
+// FILE DROP UI
+// =====================================================================
+// =====================================================================
+// FILE TYPE VALIDATION
+// =====================================================================
+// GMLファイルの種別を判定する
+// 優先順位: ①ファイル名パターン → ②先頭64KB内容 → ③不明
+async function sniffGmlType(file){
+  // ZIPはそのままDEM扱い
+  if(file.name.toLowerCase().endsWith('.zip')) return 'dem-zip';
+
+  // ① ファイル名でPLATEAU標準命名規則を判定（最優先・高速）
+  // 例: 53394525_bldg_6697.gml / 53394525_bldg_6697_op.gml
+  const nm=file.name.toLowerCase();
+  if(/_bldg_/.test(nm)) return 'bldg';
+  if(/_dem_/.test(nm))  return 'dem';
+  if(/_tran_/.test(nm)) return 'tran';
+  if(/_veg_/.test(nm))  return 'veg';
+  if(/_luse_/.test(nm)||/_frn_/.test(nm)||/_brid_/.test(nm)||/_tun_/.test(nm)) return 'gml-unknown';
+
+  // ② 名前から判定できない場合は先頭64KBの内容で判定
+  let text='';
+  try{
+    const blob=file.slice(0,65536);
+    text=await blob.text();
+  }catch(e){return 'unknown';}
+  if(text.includes('bldg:Building')||text.includes('bldg:BuildingPart')) return 'bldg';
+  if(text.includes('dem:TINRelief')||text.includes('dem:RasterRelief')||
+     text.includes('ReliefFeature')||text.includes('gml:Triangle')) return 'dem';
+  if(text.includes('tran:Road')||text.includes('tran:Railway')||
+     text.includes('tran:TrafficArea')) return 'tran';
+  if(text.includes('veg:SolitaryVegetationObject')||text.includes('veg:PlantCover')) return 'veg';
+  if(text.includes('CityModel')||text.includes('cityGML')) return 'gml-unknown';
+  return 'unknown';
+}
+
+// ドロップゾーンにエラー表示
+function showDropError(zoneId, msg){
+  const zone=document.getElementById(zoneId);
+  zone.classList.add('drop-error');
+  // 4秒で消えると読めないので、消えない STEP01 ログにも残す
+  step1Log(msg,'err');
+  // 既存エラーメッセージ要素を使い回す
+  let errEl=zone.querySelector('.drop-error-msg');
+  if(!errEl){
+    errEl=document.createElement('div');
+    errEl.className='drop-error-msg';
+    zone.appendChild(errEl);
+  }
+  errEl.textContent=msg;
+  errEl.style.display='block';
+  setTimeout(()=>{
+    zone.classList.remove('drop-error');
+    errEl.style.display='none';
+  },4000);
+}
+
+// 各ハンドラに渡す前にファイル種別を検証してフィルタリングする
+async function validateFiles(files, expectedType, zoneId){
+  const valid=[], invalid=[];
+  for(const file of files){
+    const detected=await sniffGmlType(file);
+    // dem-zipはdemとして受け入れる
+    const ok = detected===expectedType || (expectedType==='dem'&&detected==='dem-zip');
+    if(ok) valid.push(file);
+    else invalid.push({file, detected});
+  }
+  if(invalid.length>0){
+    const typeLabels={'bldg':'建物(bldg)','dem':'地形(dem)','tran':'道路(tran)','veg':'植生(veg)',
+      'gml-unknown':'種別不明のGML','dem-zip':'地形ZIP','unknown':'GML以外のファイル'};
+    const expectedLabel=typeLabels[expectedType]||expectedType;
+    const msgs=invalid.map(({file,detected})=>{
+      const detLabel=typeLabels[detected]||detected;
+      return `"${file.name}" は${detLabel}ファイルです`;
+    });
+    showDropError(zoneId, msgs.join(' / ')+` → ${expectedLabel}ファイルを使用してください`);
+  }
+  return valid;
+}
+
+// 読み込み上限（建物9 / 地形4 / 道路9 / 植生9）
+const FILE_LIMITS={bldg:9,dem:4,tran:9,veg:9};
+
+// 表示中の読込済みファイル数（.fnameスパン数）を返す
+function loadedFileCount(filenameId){
+  const c=document.getElementById(filenameId);
+  return c?c.querySelectorAll('.fname').length:0;
+}
+
+// 読込済みファイル名の集合
+function loadedFileNames(filenameId){
+  const c=document.getElementById(filenameId);
+  const set=new Set();
+  if(c) c.querySelectorAll('.fname').forEach(el=>set.add(el.textContent.replace('📄 ','')));
+  return set;
+}
+
+// 同名ファイル（既読込・同一バッチ内の重複）を除外。除外した名前も返す。
+function dedupNewFiles(files, filenameId){
+  const existing=loadedFileNames(filenameId);
+  const seen=new Set();
+  const newFiles=[], skipped=[];
+  for(const f of files){
+    if(existing.has(f.name)||seen.has(f.name)){ skipped.push(f.name); continue; }
+    seen.add(f.name); newFiles.push(f);
+  }
+  return {newFiles, skipped};
+}
+
+// 各エリアの読込数バッジを更新
+function updateDropCount(cntId, filenameId, limit){
+  const el=document.getElementById(cntId); if(!el) return;
+  const n=loadedFileCount(filenameId);
+  el.textContent=`${n} / ${limit}`;
+  el.classList.toggle('full', n>=limit);
+}
+function updateAllDropCounts(){
+  updateDropCount('cntBldg','bldgFilename',FILE_LIMITS.bldg);
+  updateDropCount('cntDem','demFilename',FILE_LIMITS.dem);
+  updateDropCount('cntTran','tranFilename',FILE_LIMITS.tran);
+  updateDropCount('cntVeg','vegFilename',FILE_LIMITS.veg);
+}
+
+// 上限を超える分のファイルを無視し、赤エラーを表示して受理分だけ返す
+function enforceFileLimit(files, limit, zoneId, filenameId){
+  const existing=loadedFileCount(filenameId);
+  const room=Math.max(0, limit-existing);
+  if(files.length<=room) return files;
+  const accepted=files.slice(0, room);
+  const ignored=files.slice(room);
+  showDropError(zoneId,
+    `最大${limit}ファイルまでです（現在${existing}件読込済）。超過した${ignored.length}件は読み込まず無視しました: ${ignored.map(f=>f.name).join('、')}`);
+  return accepted;
+}
+
+// 建物読み込み後に他の3エリアを有効化
+function enableOptionalZones(){
+  ['dropDem','dropTran','dropVeg'].forEach(id=>{
+    document.getElementById(id).classList.remove('disabled');
+  });
+}
+
+function setupDrop(zoneId,inputId,labelId,statusId,statusTextId,filenameId,onFiles){
+  const zone=document.getElementById(zoneId);
+  const inp=document.getElementById(inputId);
+  zone.addEventListener('click',()=>{if(zone.classList.contains('disabled'))return;inp.click();});
+  zone.addEventListener('dragover',e=>{e.preventDefault();if(zone.classList.contains('disabled'))return;zone.classList.add('dragover');});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
+  zone.addEventListener('drop',e=>{
+    e.preventDefault();zone.classList.remove('dragover');
+    if(zone.classList.contains('disabled'))return;
+    if(e.dataTransfer.files.length)onFiles([...e.dataTransfer.files]);
+  });
+  inp.addEventListener('change',e=>{if(e.target.files.length)onFiles([...e.target.files]);});
+}
+
+setupDrop('dropBldg','fileBldg','','bldgStatus','bldgStatusText','bldgFilename',handleBldgFiles);
+setupDrop('dropDem','fileDem','','demStatus','demStatusText','demFilename',handleDemFiles);
+setupDrop('dropTran','fileTran','','tranStatus','tranStatusText','tranFilename',handleTranFiles);
+setupDrop('dropVeg','fileVeg','','vegStatus','vegStatusText','vegFilename',handleVegFiles);
+updateAllDropCounts();
+
+// 複数パターンで緯度経度を抽出する共通ヘルパー
+function extractRefLatLon(lines){
+  const total=lines.length;
+  for(let i=0;i<Math.min(total,200);i++){
+    const l=lines[i];
+    // タブ・スペースインデントを無視してlowerCornerを探す
+    let lm=l.match(/lowerCorner[^>]*>\s*([\d.]+)\s+([\d.]+)/);
+    if(lm) return {lat:parseFloat(lm[1]),lon:parseFloat(lm[2])};
+    lm=l.match(/upperCorner[^>]*>\s*([\d.]+)\s+([\d.]+)/);
+    if(lm) return {lat:parseFloat(lm[1]),lon:parseFloat(lm[2])};
+    lm=l.match(/gml:pos[>\s][^<]*([\d]{2,3}\.[\d]+)\s+([\d]{3}\.[\d]+)/);
+    if(lm) return {lat:parseFloat(lm[1]),lon:parseFloat(lm[2])};
+  }
+  // フォールバック: 最初のposListから日本範囲で判定
+  for(let i=0;i<total;i++){
+    const l=lines[i];
+    // posListの中から日本の緯度経度ペアを探す
+    const m=l.match(/([\d]{2}\.[\d]+)\s+(1[23][\d]\.[\d]+)/);
+    if(m){
+      const a=parseFloat(m[1]),b=parseFloat(m[2]);
+      if(a>=24&&a<=46&&b>=122&&b<=154) return {lat:a,lon:b};
+    }
+  }
+  return null;
+}
+
+// BOM除去・改行正規化してファイルテキストを読む
+async function readFileText(file){
+  const t=await file.text();
+  // BOM除去 + \r\n → \n 正規化
+  return (t.charCodeAt(0)===0xFEFF?t.slice(1):t).replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+}
+
+function showLoadStatus(statusId,textId,msg){
+  document.getElementById(statusId).classList.remove('hidden');
+  document.getElementById(textId).textContent=msg;
+}
+function hideLoadStatus(statusId){
+  document.getElementById(statusId).classList.add('hidden');
+}
+
+// =====================================================================
+// BLDG PARSER
+// =====================================================================
+async function handleBldgFiles(files){
+  if(!files||files.length===0)return;
+  files=await validateFiles(files,'bldg','dropBldg');
+  if(files.length===0)return;
+  { const dd=dedupNewFiles(files,'bldgFilename');
+    if(dd.skipped.length) step1Log(`🏙️ 建物: 同名のため${dd.skipped.length}件スキップ（カウント対象外）: ${dd.skipped.join('、')}`,'warn');
+    files=dd.newFiles; }
+  if(files.length===0)return;
+  files=enforceFileLimit(files, FILE_LIMITS.bldg, 'dropBldg', 'bldgFilename');
+  if(files.length===0)return;
+  showLoadStatus('bldgStatus','bldgStatusText','GML読み込み中...');
+  document.getElementById('dropBldg').style.pointerEvents='none';
+  await tick();
+  try{
+    const allPolygons=gmlPolygons?gmlPolygons.slice():[];
+    // ※ 巨大配列を Math.max(...arr) や push(...arr) でスプレッド展開すると
+    //   引数が多すぎて「Maximum call stack size exceeded」になる。
+    //   9ファイル等でポリゴンが数十万になるケースに備え、すべてループで処理する。
+    const maxBldgIdx=(arr)=>{let mx=-1;for(let i=0;i<arr.length;i++){const v=arr[i].bldgIndex||0;if(v>mx)mx=v;}return mx;};
+    let totalBuildingCount=allPolygons.length>0 ? maxBldgIdx(allPolygons)+1 : 0;
+    const lodPref='lod2'; // LoD優先設定は廃止・lod2固定
+
+    for(const file of files){
+      const text=await readFileText(file);
+      const lines=text.split('\n');
+      const total=lines.length;
+
+      // 基準点取得（複数パターン対応）
+      const refPt=extractRefLatLon(lines);
+      if(!refPt) throw new Error(`${file.name}: 座標が見つかりません`);
+      const {lat:refLat, lon:refLon}=refPt;
+      if(globalRefLat===null){globalRefLat=refLat;globalRefLon=refLon;}
+
+      const polygons=[];
+      let buildingCount=0;
+      let inLod1=false, inLod2=false, isRoof=false;
+      const TAG_OPEN=/<([\w:]+)/g;
+      const TAG_CLOSE=/<\/([\w:]+)>/g;
+
+      for(let i=0;i<total;i++){
+        const l=lines[i];
+        let m;
+        TAG_OPEN.lastIndex=0;
+        while((m=TAG_OPEN.exec(l))!==null){
+          const t=m[1];
+          if(t==='bldg:Building') buildingCount++;
+          if(t.includes('lod1')||t.includes('LoD1')) inLod1=true;
+          if(t.includes('lod2')||t.includes('LoD2')) inLod2=true;
+          if(t.includes('RoofSurface')) isRoof=true;
+        }
+        TAG_CLOSE.lastIndex=0;
+        while((m=TAG_CLOSE.exec(l))!==null){
+          const t=m[1];
+          if(t.includes('lod1')||t.includes('LoD1')) inLod1=false;
+          if(t.includes('lod2')||t.includes('LoD2')) inLod2=false;
+          if(t.includes('RoofSurface')) isRoof=false;
+        }
+        if(l.includes('<gml:posList>')){
+          // lod1 / lod2 のジオメトリのみ採用する。
+          //  ・lod0(RoofEdge/FootPrint) は標高0mに格納されたフットプリント。
+          //    これを建物として取り込むと建物基部のYが0に固定され、
+          //    その地点の地盤標高ぶんだけ建物が地面に埋まる原因になる。
+          //  ・lod3 は lod2 と重複したボクセル化になるため除外。
+          if(!inLod1 && !inLod2) continue;
+          const lod=inLod2?2:1;
+          const s=l.indexOf('<gml:posList>');
+          const e=l.indexOf('</gml:posList>');
+          if(s<0||e<0) continue;
+          const nums=l.slice(s+13,e).trim().split(/\s+/);
+          if(nums.length<9) continue;
+          const verts=[];
+          for(let j=0;j+2<nums.length;j+=3){
+            const lat=parseFloat(nums[j]),lon=parseFloat(nums[j+1]),z=parseFloat(nums[j+2]);
+            if(isNaN(lat)||isNaN(lon)||isNaN(z)) continue;
+            const{x,z:zz}=latLonToXZ(lat,lon);
+            verts.push({x,y:z,z:zz});
+          }
+          if(verts.length>=3) polygons.push({verts,isRoof,lod,bldgIndex:totalBuildingCount+buildingCount-1});
+        }
+        if(i%50000===0&&i>0){
+          document.getElementById('bldgStatusText').textContent=
+            `${file.name} 解析中 ${(i/total*100|0)}% / 計${(allPolygons.length+polygons.length).toLocaleString()}ポリゴン`;
+          await tick();
+        }
+      }
+      for(let pi=0;pi<polygons.length;pi++) allPolygons.push(polygons[pi]);
+      totalBuildingCount+=buildingCount;
+    }
+
+    gmlPolygons=allPolygons;
+    const fn=document.getElementById('bldgFilename');
+    const existingBldgNames=new Set([...fn.querySelectorAll('.fname')].map(el=>el.textContent.replace('📄 ','')));
+    Array.from(files).forEach(f=>{
+      if(!existingBldgNames.has(f.name)){
+        const span=document.createElement('span');span.className='fname';span.textContent='📄 '+f.name;
+        fn.appendChild(span);
+      }
+    });
+    fn.classList.remove('hidden');
+    document.getElementById('dropBldg').classList.add('loaded');
+    // 建物が読み込めたら地形・道路・植生エリアを有効化
+    if(gmlPolygons&&gmlPolygons.length>0) enableOptionalZones();
+    step1Log(`🏙️ 建物 ${files.length}件読込（計${loadedFileCount('bldgFilename')}件）: ${files.map(f=>f.name).join('、')}`,'ok');
+    updateAllDropCounts();
+    const allBldgCount=allPolygons.length>0?(maxBldgIdx(allPolygons)+1):0;
+    document.getElementById('stat-bldg').textContent=allBldgCount.toLocaleString();
+    document.getElementById('stat-poly').textContent=allPolygons.length.toLocaleString();
+    document.getElementById('loadStats').classList.remove('hidden');
+    hideLoadStatus('bldgStatus');
+    document.getElementById('dropBldg').style.pointerEvents='';
+    checkReadyToProcess();
+  }catch(e){
+    hideLoadStatus('bldgStatus');
+    document.getElementById('dropBldg').style.pointerEvents='';
+    step1Log('🏙️ 建物GML読み込みエラー: '+e.message,'err');
+    alert('建物GML読み込みエラー: '+e.message);
+    console.error(e);
+  }
+}
+
+// =====================================================================
+// DEM PARSER
+// =====================================================================
+// =====================================================================
+// DEM ストリームパーサ（行単位・フィルタ付き）
+// =====================================================================
+function posListLineToTri(line, latMin, latMax, lonMin, lonMax) {
+  const s = line.indexOf('<gml:posList>');
+  const e = line.indexOf('</gml:posList>');
+  if (s < 0 || e < 0) return null;
+  const nums = line.slice(s + 13, e).trim().split(/\s+/);
+  if (nums.length < 12) return null;
+  const lat0 = parseFloat(nums[0]);
+  if (isNaN(lat0) || lat0 < latMin || lat0 > latMax) return null;
+  const lon0 = parseFloat(nums[1]);
+  if (isNaN(lon0) || lon0 < lonMin || lon0 > lonMax) return null;
+  // パース時点でlatLonToXZ変換済みにして保持（処理時のコスト削減）
+  const pts = [];
+  for (let i = 0; i < 3; i++) {
+    const lat = parseFloat(nums[i*3]);
+    const lon = parseFloat(nums[i*3+1]);
+    const z   = parseFloat(nums[i*3+2]);
+    if (isNaN(lat)||isNaN(lon)||isNaN(z)) return null;
+    const {x, z:zz} = latLonToXZ(lat, lon);
+    pts.push({x, y:z, z:zz});
+  }
+  return pts;
+}
+
+// DEMファイル(GML/ZIP)の先頭から座標範囲(lat/lon bbox)を読み取るヘルパー。
+// 建物が無い場合に、DEM自身のEnvelopeを変換基準＆フィルタ範囲として使う。
+async function peekDemHeadText(file){
+  const ext=file.name.split('.').pop().toLowerCase();
+  const HEAD=512*1024; // 先頭512KBで十分（Envelopeはファイル冒頭にある）
+  if(ext==='zip'){
+    const zip=await JSZip.loadAsync(await file.arrayBuffer());
+    const name=Object.keys(zip.files).find(n=>n.endsWith('.gml')||n.endsWith('.xml'));
+    if(!name) return '';
+    const u8=await zip.file(name).async('uint8array');
+    return new TextDecoder('utf-8').decode(u8.subarray(0, Math.min(u8.length, HEAD)));
+  }
+  return await file.slice(0, Math.min(file.size, HEAD)).text();
+}
+async function peekDemBBox(files){
+  let latMin=Infinity,latMax=-Infinity,lonMin=Infinity,lonMax=-Infinity,found=false;
+  for(const f of files){
+    let head='';
+    try{ head=await peekDemHeadText(f); }catch(e){ continue; }
+    const lc=head.match(/lowerCorner[^>]*>\s*([\d.]+)\s+([\d.]+)/);
+    const uc=head.match(/upperCorner[^>]*>\s*([\d.]+)\s+([\d.]+)/);
+    if(lc&&uc){
+      const a1=parseFloat(lc[1]),o1=parseFloat(lc[2]),a2=parseFloat(uc[1]),o2=parseFloat(uc[2]);
+      latMin=Math.min(latMin,a1,a2); latMax=Math.max(latMax,a1,a2);
+      lonMin=Math.min(lonMin,o1,o2); lonMax=Math.max(lonMax,o1,o2); found=true;
+    } else {
+      // フォールバック: 先頭付近の日本緯度経度ペアから概算
+      const re=/([\d]{2}\.[\d]+)\s+(1[23][\d]\.[\d]+)/g; let m;
+      while((m=re.exec(head))){
+        const a=parseFloat(m[1]),o=parseFloat(m[2]);
+        if(a>=24&&a<=46&&o>=122&&o<=154){
+          latMin=Math.min(latMin,a);latMax=Math.max(latMax,a);
+          lonMin=Math.min(lonMin,o);lonMax=Math.max(lonMax,o); found=true;
+        }
+      }
+    }
+  }
+  if(!found) return null;
+  const m=0.0005; // わずかな余白（端の三角形が切れないように）
+  return {latMin:latMin-m,latMax:latMax+m,lonMin:lonMin-m,lonMax:lonMax+m};
+}
+
+async function handleDemFiles(files) {
+  if(!files||files.length===0)return;
+  files=await validateFiles(files,'dem','dropDem');
+  if(files.length===0)return;
+  { const dd=dedupNewFiles(files,'demFilename');
+    if(dd.skipped.length) step1Log(`🏔️ 地形: 同名のため${dd.skipped.length}件スキップ（カウント対象外）: ${dd.skipped.join('、')}`,'warn');
+    files=dd.newFiles; }
+  if(files.length===0)return;
+  // 地形(dem)のみで変換する場合（建物データ未読込）は、メモリの都合でファイルは1つまで。
+  // 2つ目を読み込もうとした場合（同時に複数 or 既に1件読込済み）はエラーで受け付けない。
+  if(!(gmlPolygons && gmlPolygons.length>0)){
+    const alreadyDem=loadedFileCount('demFilename');
+    if(alreadyDem>=1 || files.length>1){
+      const cnt = alreadyDem>=1 ? `すでに${alreadyDem}件読み込み済み` : `${files.length}件を選択中`;
+      showDropError('dropDem',`地形(dem)のみで変換する場合、読み込めるファイルは1つまでです（${cnt}）。建物データを併用する場合は複数読み込めます。`);
+      return;
+    }
+  }
+  files=enforceFileLimit(files, FILE_LIMITS.dem, 'dropDem', 'demFilename');
+  if(files.length===0)return;
+  showLoadStatus('demStatus','demStatusText','DEM読み込み準備中...');
+  document.getElementById('dropDem').style.pointerEvents='none';
+  await tick();
+
+  // フィルタ範囲（建物全体のbounding box + マージン）
+  const margin = 0.002; // ±約220m（bboxに加算するので十分）
+  let latMin, latMax, lonMin, lonMax;
+  if (gmlPolygons && gmlPolygons.length > 0) {
+    // 建物bboxからlatLon範囲を算出（XZ→latLon逆変換）
+    // latLonToXZ の変換（修正後）:
+    //   x = (lon - globalRefLon) * π/180 * R * cos(avgLat)  ← xはlon(東西)方向
+    //   z = -(lat - globalRefLat) * π/180 * R               ← zはlat(南北)方向、符号反転
+    // 正しい逆変換:
+    //   lon = globalRefLon + v.x * 180 / (π * R * cosLat)
+    //   lat = globalRefLat - v.z * 180 / (π * R)
+    const R=6371000;
+    const cosLat=Math.cos(globalRefLat*Math.PI/180);
+    let bMnLat=Infinity,bMxLat=-Infinity,bMnLon=Infinity,bMxLon=-Infinity;
+    for (const p of gmlPolygons) {
+      for (const v of p.verts) {
+        const lat = globalRefLat - v.z * 180 / (Math.PI * R);
+        const lon = globalRefLon + v.x * 180 / (Math.PI * R * cosLat);
+        if(lat<bMnLat)bMnLat=lat; if(lat>bMxLat)bMxLat=lat;
+        if(lon<bMnLon)bMnLon=lon; if(lon>bMxLon)bMxLon=lon;
+      }
+    }
+    latMin=bMnLat-margin; latMax=bMxLat+margin;
+    lonMin=bMnLon-margin; lonMax=bMxLon+margin;
+  } else {
+    // 建物が未読込のケース（DEM単独 / DEM先行読み込み）。
+    // DEMファイル自身のEnvelope(lowerCorner/upperCorner)から範囲を取得し、
+    // それを変換基準点(globalRefLat/Lon)とフィルタ範囲に使う。
+    const bb = await peekDemBBox(files);
+    if (!bb) {
+      hideLoadStatus('demStatus');
+      document.getElementById('dropDem').style.pointerEvents='';
+      step1Log('🏔️ 地形: DEMファイルから座標(範囲)を読み取れませんでした。ファイルが壊れていないか確認してください。','err');
+      return;
+    }
+    latMin=bb.latMin; latMax=bb.latMax; lonMin=bb.lonMin; lonMax=bb.lonMax;
+    if (globalRefLat===null) {
+      // 変換原点 = DEM範囲の中心（XZ座標が小さく対称になる）
+      globalRefLat=(latMin+latMax)/2; globalRefLon=(lonMin+lonMax)/2;
+      step1Log(`🏔️ 地形: 建物なしモードで読み込みます（DEM範囲 lat ${latMin.toFixed(4)}〜${latMax.toFixed(4)} / lon ${lonMin.toFixed(4)}〜${lonMax.toFixed(4)} を基準）`,'info');
+    }
+  }
+
+  const allTris = demTriangles ? [...demTriangles] : [];
+  // メモリ保護: 想定外に広い範囲を取り込んでも上限で頭打ちにする。
+  // 通常は建物範囲フィルタにより遥かに少ない（数十万程度）。
+  const MAX_DEM_TRIS = 4000000;
+  let demCapped = false;
+
+  // GML/ZIPを問わずチャンク単位(4MB)でストリーム処理する共通関数
+  async function processChunks(getChunkFn, totalBytes, label) {
+    const decoder = new TextDecoder('utf-8');
+    let leftover = '';
+    let processed = 0;
+    while (true) {
+      const { chunk, done } = await getChunkFn();
+      if (chunk) {
+        const isLast = done;
+        const text = decoder.decode(chunk, { stream: !isLast });
+        const lines = (leftover + text).split('\n');
+        leftover = isLast ? '' : (lines.pop() || '');
+        for (const line of lines) {
+          if (line.includes('<gml:posList>')) {
+            const tri = posListLineToTri(line, latMin, latMax, lonMin, lonMax);
+            if (tri) { if (allTris.length < MAX_DEM_TRIS) allTris.push(tri); else demCapped = true; }
+          }
+        }
+        processed += chunk.byteLength || chunk.length;
+        if (processed % (32 * 1024 * 1024) < (4 * 1024 * 1024)) {
+          const pct = totalBytes ? (processed / totalBytes * 100 | 0) : '?';
+          document.getElementById('demStatusText').textContent =
+            `解析中: ${label} ${pct}% / 抽出: ${allTris.length.toLocaleString()}三角形`;
+          await tick();
+        }
+      }
+      if (done) break;
+    }
+    if (leftover && leftover.includes('<gml:posList>')) {
+      const tri = posListLineToTri(leftover, latMin, latMax, lonMin, lonMax);
+      if (tri) { if (allTris.length < MAX_DEM_TRIS) allTris.push(tri); else demCapped = true; }
+    }
+  }
+
+  try {
+    for (const file of files) {
+      const ext = file.name.split('.').pop().toLowerCase();
+      document.getElementById('demStatusText').textContent =
+        `読込中: ${file.name} (${(file.size/1024/1024|0)}MB)`;
+      await tick();
+
+      if (ext === 'zip') {
+        // ZIPをJSZipで開き、GMLエントリをuint8arrayで取得してチャンク処理
+        const zipBuf = await file.arrayBuffer();
+        const zip = await JSZip.loadAsync(zipBuf);
+        const gmlNames = Object.keys(zip.files)
+          .filter(n => n.endsWith('.gml') || n.endsWith('.xml'));
+        if (gmlNames.length === 0) throw new Error('ZIP内にGMLファイルが見つかりません');
+
+        for (const gmlName of gmlNames) {
+          document.getElementById('demStatusText').textContent =
+            `展開中: ${gmlName} ...`;
+          await tick();
+          const uint8 = await zip.file(gmlName).async('uint8array');
+          const CHUNK = 4 * 1024 * 1024;
+          let offset = 0;
+          await processChunks(async () => {
+            if (offset >= uint8.length) return { chunk: null, done: true };
+            const end = Math.min(offset + CHUNK, uint8.length);
+            const chunk = uint8.subarray(offset, end);
+            const done = end >= uint8.length;
+            offset = end;
+            return { chunk, done };
+          }, uint8.length, gmlName);
+        }
+
+      } else {
+        // GML直接 → ReadableStream でチャンク処理（688MBも安全）
+        const reader = file.stream().getReader();
+        await processChunks(async () => {
+          const { value, done } = await reader.read();
+          return { chunk: value || null, done };
+        }, file.size, file.name);
+      }
+    }
+
+    if (demCapped) {
+      step1Log(`🏔️ 地形: 三角形数が上限(${MAX_DEM_TRIS.toLocaleString()})に達し一部を読み込みませんでした`,'warn');
+      alert(`DEMの三角形数が上限(${MAX_DEM_TRIS.toLocaleString()})に達したため、一部を読み込んでいません。\n\n建物の範囲が非常に広いか、想定より広域のDEMを読み込んでいる可能性があります。DEMファイルを減らすか、対象エリアの建物GMLを先に読み込んでから取り込んでください。`);
+    }
+
+    if (allTris.length === 0) {
+      const msg = `指定範囲内に地形三角形が見つかりませんでした(lat:${latMin.toFixed(4)}〜${latMax.toFixed(4)} / lon:${lonMin.toFixed(4)}〜${lonMax.toFixed(4)})。\nDEMファイルの座標範囲が想定と異なる可能性があります。`;
+      alert(msg);
+      hideLoadStatus('demStatus');
+      document.getElementById('dropDem').style.pointerEvents='';
+      return;
+    }
+
+    demTriangles = allTris;
+    const fn = document.getElementById('demFilename');
+    const existingDemNames=new Set([...fn.querySelectorAll('.fname')].map(el=>el.textContent.replace('📄 ','')));
+    files.forEach(f=>{
+      if(!existingDemNames.has(f.name)){
+        const span=document.createElement('span');span.className='fname';span.textContent='📄 '+f.name;
+        fn.appendChild(span);
+      }
+    });
+    fn.classList.remove('hidden');
+    document.getElementById('dropDem').classList.add('loaded');
+    step1Log(`🏔️ 地形 ${files.length}件読込（計${loadedFileCount('demFilename')}件）: ${files.map(f=>f.name).join('、')}`,'ok');
+    updateAllDropCounts();
+    document.getElementById('stat-demtri').textContent = allTris.length.toLocaleString();
+    document.getElementById('loadStats').classList.remove('hidden');
+    hideLoadStatus('demStatus');
+    document.getElementById('dropDem').style.pointerEvents='';
+    enableOptionalZones(); // 地形読込後も道路・植生を解放（建物先行と同様）
+    // 地形(dem)単独（建物なし）の場合、巨大DEMのフリーズ対策として
+    // 「1ブロックあたりのサイズ」の既定を2.00mに引き上げる（2.00m未満は変換不可）。
+    if(!(gmlPolygons && gmlPolygons.length>0)){
+      const bsEl=document.getElementById('blockSize');
+      if(parseFloat(bsEl.value) < 2.00){
+        bsEl.value='2.00';
+        step1Log('🏔️ 地形(dem)単独のため、1ブロックあたりのサイズの既定を 2.00m に設定しました（2.00m未満では変換できません）。','info');
+      }
+    }
+    checkReadyToProcess();
+
+  } catch(e) {
+    hideLoadStatus('demStatus');
+    document.getElementById('dropDem').style.pointerEvents='';
+    step1Log('🏔️ DEM読み込みエラー: '+e.message,'err');
+    alert('DEM読み込みエラー: ' + e.message);
+    console.error(e);
+  }
+}
+
+// =====================================================================
+// TRAN PARSER（道路）
+// =====================================================================
+async function handleTranFiles(files){
+  if(!files||files.length===0)return;
+  files=await validateFiles(files,'tran','dropTran');
+  if(files.length===0)return;
+  { const dd=dedupNewFiles(files,'tranFilename');
+    if(dd.skipped.length) step1Log(`🛣️ 道路: 同名のため${dd.skipped.length}件スキップ（カウント対象外）: ${dd.skipped.join('、')}`,'warn');
+    files=dd.newFiles; }
+  if(files.length===0)return;
+  files=enforceFileLimit(files, FILE_LIMITS.tran, 'dropTran', 'tranFilename');
+  if(files.length===0)return;
+  showLoadStatus('tranStatus','tranStatusText','道路GML読み込み中...');
+  document.getElementById('dropTran').style.pointerEvents='none';
+  await tick();
+  try{
+    const polygons=tranPolygons?[...tranPolygons]:[];
+    for(const file of files){
+      const text=await readFileText(file);
+      const lines=text.split('\n');
+      const total=lines.length;
+      // 基準点がまだなければ取得
+      if(globalRefLat===null){
+        const refPt=extractRefLatLon(lines);
+        if(refPt){globalRefLat=refPt.lat;globalRefLon=refPt.lon;}
+      }
+      // posList を抽出（tran:lod1MultiSurface 内のポリゴン）
+      // PLATEAU tran GMLは lat lon z の3次元だが z=0 が多い
+      // → XZ座標に変換してXZ平面ポリゴンとして扱う
+      for(let i=0;i<total;i++){
+        const l=lines[i];
+        if(!l.includes('<gml:posList>')) continue;
+        const s=l.indexOf('<gml:posList>');
+        const e=l.indexOf('</gml:posList>');
+        if(s<0||e<0) continue;
+        const nums=l.slice(s+13,e).trim().split(/\s+/);
+        // lat lon z の3次元座標
+        if(nums.length<6) continue;
+        const verts=[];
+        const stride=(nums.length%3===0)?3:2;
+        for(let j=0;j+stride-1<nums.length;j+=stride){
+          const lat=parseFloat(nums[j]),lon=parseFloat(nums[j+1]);
+          if(isNaN(lat)||isNaN(lon)) continue;
+          const{x,z:zz}=latLonToXZ(lat,lon);
+          verts.push({x,z:zz});
+        }
+        if(verts.length>=3) polygons.push({verts});
+        if(i%20000===0&&i>0){
+          document.getElementById('tranStatusText').textContent=
+            `解析中 ${(i/total*100|0)}% / ${polygons.length.toLocaleString()}ポリゴン`;
+          await tick();
+        }
+      }
+    }
+    tranPolygons=polygons;
+    const fn=document.getElementById('tranFilename');
+    const existingTranNames=new Set([...fn.querySelectorAll('.fname')].map(el=>el.textContent.replace('📄 ','')));
+    files.forEach(f=>{
+      if(!existingTranNames.has(f.name)){
+        const span=document.createElement('span');span.className='fname';span.textContent='📄 '+f.name;
+        fn.appendChild(span);
+      }
+    });
+    fn.classList.remove('hidden');
+    document.getElementById('dropTran').classList.add('loaded');
+    step1Log(`🛣️ 道路 ${files.length}件読込（計${loadedFileCount('tranFilename')}件）: ${files.map(f=>f.name).join('、')}`,'ok');
+    updateAllDropCounts();
+    document.getElementById('stat-tranpoly').textContent=polygons.length.toLocaleString();
+    document.getElementById('loadStats').classList.remove('hidden');
+    hideLoadStatus('tranStatus');
+    document.getElementById('dropTran').style.pointerEvents='';
+    checkReadyToProcess();
+  }catch(e){
+    hideLoadStatus('tranStatus');
+    document.getElementById('dropTran').style.pointerEvents='';
+    step1Log('🛣️ 道路GML読み込みエラー: '+e.message,'err');
+    alert('道路GML読み込みエラー: '+e.message);
+    console.error(e);
+  }
+}
+
+
+// =====================================================================
+// VEG PARSER（植生）
+// SolitaryVegetationObject → 幹(oak_log) + 葉(green_concrete)
+// PlantCover               → 苔(moss_block) 平面
+// =====================================================================
+async function handleVegFiles(files){
+  if(!files||files.length===0)return;
+  files=await validateFiles(files,'veg','dropVeg');
+  if(files.length===0)return;
+  { const dd=dedupNewFiles(files,'vegFilename');
+    if(dd.skipped.length) step1Log(`🌳 植生: 同名のため${dd.skipped.length}件スキップ（カウント対象外）: ${dd.skipped.join('、')}`,'warn');
+    files=dd.newFiles; }
+  if(files.length===0)return;
+  files=enforceFileLimit(files, FILE_LIMITS.veg, 'dropVeg', 'vegFilename');
+  if(files.length===0)return;
+  showLoadStatus('vegStatus','vegStatusText','植生GML読み込み中...');
+  document.getElementById('dropVeg').style.pointerEvents='none';
+  await tick();
+  try{
+    // vegObjects: [{type:'solitary'|'cover', height:number, cx,cz,minZ,maxZ, polygons:[{verts}]}]
+    const vegObjects=[];
+    // ※vegPolygonsの既存データは後段のpolygons配列で引き継ぐ
+    for(const file of files){
+      const text=await readFileText(file);
+      const lines=text.split('\n');
+      const total=lines.length;
+      if(globalRefLat===null){
+        const refPt=extractRefLatLon(lines);
+        if(refPt){globalRefLat=refPt.lat;globalRefLon=refPt.lon;}
+      }
+
+      let curType=null, curHeight=0, curPolys=[];
+      for(let i=0;i<total;i++){
+        const l=lines[i].trim();
+
+        // オブジェクト開始
+        if(l.includes('<veg:SolitaryVegetationObject')){
+          curType='solitary'; curHeight=0; curPolys=[];
+        } else if(l.includes('<veg:PlantCover')){
+          curType='cover'; curHeight=0; curPolys=[];
+        }
+        // 高さ取得
+        else if(curType&&l.includes('veg:height')){
+          const hm=l.match(/>([0-9.]+)</);
+          if(hm) curHeight=parseFloat(hm[1]);
+        } else if(curType&&l.includes('veg:averageHeight')){
+          const hm=l.match(/>([0-9.]+)</);
+          if(hm) curHeight=parseFloat(hm[1]);
+        }
+        // ポリゴン取得
+        else if(curType&&l.includes('<gml:posList>')){
+          const s=l.indexOf('<gml:posList>');
+          const e=l.indexOf('</gml:posList>');
+          if(s>=0&&e>=0){
+            const nums=l.slice(s+13,e).trim().split(/\s+/);
+            if(nums.length>=9){
+              const verts=[];
+              for(let j=0;j+2<nums.length;j+=3){
+                const lat=parseFloat(nums[j]),lon=parseFloat(nums[j+1]),z=parseFloat(nums[j+2]);
+                if(isNaN(lat)||isNaN(lon)||isNaN(z)) continue;
+                const{x,z:zz}=latLonToXZ(lat,lon);
+                verts.push({x,y:z,z:zz});
+              }
+              if(verts.length>=3) curPolys.push({verts});
+            }
+          }
+        }
+        // オブジェクト終了
+        else if(curType&&(l.includes('</veg:SolitaryVegetationObject>')||l.includes('</veg:PlantCover>'))){
+          if(curPolys.length>0) vegObjects.push({type:curType,height:curHeight,polygons:curPolys});
+          curType=null; curPolys=[];
+        }
+
+        if(i%20000===0&&i>0){
+          document.getElementById('vegStatusText').textContent=
+            `解析中 ${(i/total*100|0)}% / ${vegObjects.length.toLocaleString()}オブジェクト`;
+          await tick();
+        }
+      }
+    }
+
+    // vegPolygons に幹/葉/苔の情報を付けて格納
+    // type='solitary': isRoof=false, vegRole='trunk'|'leaf' をポリゴン単位で付与
+    // type='cover': isRoof=false, vegRole='cover'
+    const polygons=vegPolygons?[...vegPolygons]:[];
+    for(const obj of vegObjects){
+      if(obj.type==='solitary'){
+        // オブジェクト全体のY範囲とXZ中心（=幹を立てる位置）を求める
+        let minY=Infinity, maxY=-Infinity, sx=0, sz=0, n=0;
+        for(const p of obj.polygons) for(const v of p.verts){
+          if(v.y<minY)minY=v.y; if(v.y>maxY)maxY=v.y;
+          sx+=v.x; sz+=v.z; n++;
+        }
+        const cx=n>0?sx/n:0, cz=n>0?sz/n:0;
+        // 樹冠（葉）: 全ポリゴンを leaf として追加。objMinY/objMaxY を持たせ、
+        // 後段で底2ブロック分を除去して幹を見せる。
+        for(const p of obj.polygons){
+          polygons.push({verts:p.verts,isRoof:false,vegRole:'leaf',objMinY:minY,objMaxY:maxY});
+        }
+        // 幹: 中心に oak_log の細い柱を1本だけ立てる（地面付近に約2ブロック露出）。
+        // ※従来の「下35%を幹」方式は、樹冠の底面など幅広の水平面まで木材になり、
+        //   地面付近に木全体サイズの“基礎”ができてしまうため廃止した。
+        polygons.push({vegRole:'trunkcol',cx,cz,minY,maxY,verts:[{x:cx,y:minY,z:cz}]});
+      } else {
+        // PlantCover: 全ポリゴンをcoverとして追加
+        for(const p of obj.polygons) polygons.push({verts:p.verts,isRoof:false,vegRole:'cover'});
+      }
+    }
+
+    vegPolygons=polygons;
+    const fn=document.getElementById('vegFilename');
+    const existingVegNames=new Set([...fn.querySelectorAll('.fname')].map(el=>el.textContent.replace('📄 ','')));
+    files.forEach(f=>{
+      if(!existingVegNames.has(f.name)){
+        const span=document.createElement('span');span.className='fname';span.textContent='📄 '+f.name;
+        fn.appendChild(span);
+      }
+    });
+    fn.classList.remove('hidden');
+    document.getElementById('dropVeg').classList.add('loaded');
+    step1Log(`🌳 植生 ${files.length}件読込（計${loadedFileCount('vegFilename')}件）: ${files.map(f=>f.name).join('、')}`,'ok');
+    updateAllDropCounts();
+    document.getElementById('stat-vegpoly').textContent=polygons.length.toLocaleString();
+    document.getElementById('loadStats').classList.remove('hidden');
+    hideLoadStatus('vegStatus');
+    document.getElementById('dropVeg').style.pointerEvents='';
+    checkReadyToProcess();
+  }catch(e){
+    hideLoadStatus('vegStatus');
+    document.getElementById('dropVeg').style.pointerEvents='';
+    step1Log('🌳 植生GML読み込みエラー: '+e.message,'err');
+    alert('植生GML読み込みエラー: '+e.message);
+    console.error(e);
+  }
+}
+
+
+function checkReadyToProcess(){
+  const hasBldg = gmlPolygons&&gmlPolygons.length>0;
+  const hasDem  = demTriangles&&demTriangles.length>0;
+  const hasTran = tranPolygons&&tranPolygons.length>0;
+  const hasVeg  = vegPolygons&&vegPolygons.length>0;
+  if(hasBldg||hasDem||hasTran||hasVeg){
+    document.getElementById('step2-status').textContent='READY';
+    document.getElementById('btnProcess').disabled=false;
+    const hints=[];
+    if(hasBldg) hints.push(`建物 ${gmlPolygons.length} ポリゴン`);
+    if(hasDem)  hints.push(`地形 ${demTriangles.length.toLocaleString()} 三角形`);
+    if(hasTran) hints.push(`道路 ${tranPolygons.length.toLocaleString()} ポリゴン`);
+    if(hasVeg)  hints.push(`植生 ${vegPolygons.length.toLocaleString()} ポリゴン`);
+    hints.push('準備完了');
+    document.getElementById('processHint').textContent=hints.join(' + ');
+
+    // エリアサイズを表示（建物優先、無ければ地形→道路→植生のXZ範囲から算出）
+    let mnX=Infinity,mxX=-Infinity,mnZ=Infinity,mxZ=-Infinity,any=false;
+    const acc=(x,z)=>{if(x<mnX)mnX=x;if(x>mxX)mxX=x;if(z<mnZ)mnZ=z;if(z>mxZ)mxZ=z;any=true;};
+    if(hasBldg){ for(const p of gmlPolygons)for(const v of p.verts) acc(v.x,v.z); }
+    else if(hasDem){ for(const t of demTriangles){acc(t[0].x,t[0].z);acc(t[1].x,t[1].z);acc(t[2].x,t[2].z);} }
+    else if(hasTran){ for(const p of tranPolygons)for(const v of p.verts) acc(v.x,v.z); }
+    else if(hasVeg){ for(const p of vegPolygons)for(const v of p.verts) acc(v.x,v.z); }
+    if(any){
+      document.getElementById('stat-area').textContent=`${(mxX-mnX).toFixed(0)}×${(mxZ-mnZ).toFixed(0)}`;
+      document.getElementById('loadStats').classList.remove('hidden');
+    }
+  }
+}
+
+// =====================================================================
+// 建物素材ランダムミックス定義
+// =====================================================================
+function buildMaterialResolver(matSetting, bldgIndex){
+  return ()=>matSetting;
+}
+
+
+// =====================================================================
+// ファサード（窓パターン）定義
+// bx,by,bz: ブロック座標  minY: 建物底面Y  maxY: 建物天井Y
+// baseMat: 壁素材  seed: 建物ごとのシード
+// 戻り値: ブロック素材文字列
+// =====================================================================
+
+// 高さ(階数)からビル種別を決定
+function getBldgType(height){
+  if(height<6)  return 'low';      // 低層（住宅・倉庫）
+  if(height<18) return 'mid';      // 中層オフィス
+  if(height<40) return 'high';     // 高層ビル
+  return 'skyscraper';             // 超高層
+}
+
+// ファサード窓素材（壁はUIで選択したbaseMatをそのまま使用）
+const FACADE_WIN={
+  low:        null,                  // 低層は窓なし
+  mid:        'cyan_stained_glass',
+  high:       'cyan_stained_glass',
+  skyscraper: 'cyan_stained_glass',
+};
+
+// 壁面に沿った座標 t と建物シードから列インデックスを計算
+// ※ t は「その壁が伸びている方向の座標」を呼び出し側が渡す。
+//   X方向の壁では bz、Z方向の壁では bx を渡すため、
+//   どの向きの壁でも必ず窓が周期的に並び「片面まるごとガラス」にならない。
+function colIdx(t,seed,period){
+  const s=(seed^(seed>>>16))&0xFF;
+  return ((t+s)%period+period)%period;
+}
+
+// ── パターン関数群 ──
+// 引数 t : 壁面に沿った座標（呼び出し側が壁の向きを判定して渡す）
+
+// 横帯窓: 2段窓 + 2段腰壁の4段周期（リボンウィンドウ）。横方向は全幅。
+function facadeOffice(t,by,minY,maxY,baseMat,seed){
+  const height=maxY-minY;
+  const win=FACADE_WIN[getBldgType(height)];
+  if(!win) return baseMat;
+  const relY=by-minY;
+  if(relY<=0||relY>=height) return baseMat;
+  const ry=relY%4;
+  if(ry===1||ry===2) return win;   // 2段ぶんを窓に
+  return baseMat;
+}
+
+// グリッド窓: 2×2の窓を桟（壁）で区切った、いちばんビルらしい格子。
+function facadeGrid(t,by,minY,maxY,baseMat,seed){
+  const height=maxY-minY;
+  const win=FACADE_WIN[getBldgType(height)];
+  if(!win) return baseMat;
+  const relY=by-minY;
+  if(relY<=0||relY>=height) return baseMat;
+  const ry=relY%4;                       // 縦: 窓2段 + 壁2段
+  const winY=(ry===1||ry===2);
+  const tx=colIdx(t,seed,4);             // 横: 窓2列 + 壁2列
+  const winX=(tx===1||tx===2);
+  return (winY&&winX)?win:baseMat;
+}
+
+// 縦ストライプ窓: 窓1列 + 壁2列の細かい縦リズム（カーテンウォール風）。
+function facadeStripe(t,by,minY,maxY,baseMat,seed){
+  const height=maxY-minY;
+  const win=FACADE_WIN[getBldgType(height)];
+  if(!win) return baseMat;
+  const relY=by-minY;
+  if(relY<=0||relY>=height) return baseMat;
+  const col=colIdx(t,seed,3);
+  if(col===1) return win;
+  return baseMat;
+}
+
+// 自動: 建物ごとに3パターンをランダム割り当て
+function facadeAuto(t,by,minY,maxY,baseMat,seed){
+  const height=maxY-minY;
+  if(height<6) return baseMat;
+  // seedを小さい整数に圧縮してからパターン選択
+  const pat=((seed^(seed>>>8))&0xFF)%3;
+  if(pat===0) return facadeOffice(t,by,minY,maxY,baseMat,seed);
+  if(pat===1) return facadeGrid(t,by,minY,maxY,baseMat,seed);
+  return facadeStripe(t,by,minY,maxY,baseMat,seed);
+}
+
+// ファサード関数を選択して返す
+function getFacadeFn(mode){
+  if(mode==='office')  return facadeOffice;
+  if(mode==='grid')    return facadeGrid;
+  if(mode==='stripe')  return facadeStripe;
+  if(mode==='auto')    return facadeAuto;
+  return null; // 'none'
+}
+
+
+
+function resolveMat(mat,bx,by,bz){
+  return typeof mat==='function'?mat(bx,by,bz):mat;
+}
+
+// 三角形をUV平面スキャンラインで塗る（高速版）
+function fillTriangle3D(a, b, c, bs, blockMap, mat){
+  // uAxis: a→b 方向
+  const uax=b.x-a.x, uay=b.y-a.y, uaz=b.z-a.z;
+  const uLen=Math.sqrt(uax*uax+uay*uay+uaz*uaz);
+  if(uLen<1e-9) return;
+  const ux=uax/uLen, uy=uay/uLen, uz=uaz/uLen;
+
+  // vAxis: a→c をuAxisに直交化
+  const acx=c.x-a.x, acy=c.y-a.y, acz=c.z-a.z;
+  const d=acx*ux+acy*uy+acz*uz;
+  const vax=acx-d*ux, vay=acy-d*uy, vaz=acz-d*uz;
+  const vLen=Math.sqrt(vax*vax+vay*vay+vaz*vaz);
+  if(vLen<1e-9) return;
+
+  // 巨大三角形の上限（1辺が200ブロック超はスキップ）
+  if(uLen/bs>200||vLen/bs>200) return;
+
+  const vx=vax/vLen, vy=vay/vLen, vz=vaz/vLen;
+
+  // 三頂点のUV座標
+  const pu=0,    pv=0;
+  const qu=uLen, qv=0;
+  const ru=d,    rv=vLen;
+
+  const vMin=Math.min(pv,qv,rv);
+  const vMax=Math.max(pv,qv,rv);
+  const vStep=bs*0.9;
+
+  function edgeU(v1u,v1v,v2u,v2v,vs){
+    if(Math.abs(v2v-v1v)<1e-9) return null;
+    if((v1v<=vs&&v2v>vs)||(v2v<=vs&&v1v>vs))
+      return v1u+(vs-v1v)/(v2v-v1v)*(v2u-v1u);
+    return null;
+  }
+
+  for(let vs=vMin;vs<=vMax+vStep*0.5;vs+=vStep){
+    const crosses=[];
+    let e;
+    if((e=edgeU(pu,pv,qu,qv,vs))!==null) crosses.push(e);
+    if((e=edgeU(qu,qv,ru,rv,vs))!==null) crosses.push(e);
+    if((e=edgeU(ru,rv,pu,pv,vs))!==null) crosses.push(e);
+    if(crosses.length<2) continue;
+    const uMin=Math.min(...crosses), uMax=Math.max(...crosses);
+    for(let us=uMin;us<=uMax+vStep*0.5;us+=vStep){
+      const wx=a.x+us*ux+vs*vx;
+      const wy=a.y+us*uy+vs*vy;
+      const wz=a.z+us*uz+vs*vz;
+      const bx=Math.round(wx/bs);
+      const by=Math.round(wy/bs);
+      const bz=Math.round(wz/bs);
+      const k=`${bx},${by},${bz}`;
+      if(!blockMap.has(k)) blockMap.set(k,{bx,by,bz,mat:resolveMat(mat,bx,by,bz)});
+    }
+  }
+}
+
+function fillPolygon3D(verts, bs, blockMap, mat){
+  if(verts.length<3) return;
+
+  // 法線計算（クロス積）
+  const e1x=verts[1].x-verts[0].x, e1y=verts[1].y-verts[0].y, e1z=verts[1].z-verts[0].z;
+  const e2x=verts[2].x-verts[0].x, e2y=verts[2].y-verts[0].y, e2z=verts[2].z-verts[0].z;
+  const nx=Math.abs(e1y*e2z-e1z*e2y);
+  const ny=Math.abs(e1z*e2x-e1x*e2z);
+  const nz=Math.abs(e1x*e2y-e1y*e2x);
+
+  if(ny>=nx && ny>=nz){
+    // ── 水平面（法線Y最大）→ XZ高速スキャンライン ──
+    let mnY=Infinity,mxY=-Infinity;
+    for(const v of verts){if(v.y<mnY)mnY=v.y;if(v.y>mxY)mxY=v.y;}
+    const byMid=Math.round((mnY+mxY)*0.5/bs);
+    const pts=verts.map(v=>({u:v.x/bs,v:v.z/bs}));
+    let mnV=Infinity,mxV=-Infinity,mnU=Infinity,mxU=-Infinity;
+    for(const p of pts){
+      if(p.v<mnV)mnV=p.v;if(p.v>mxV)mxV=p.v;
+      if(p.u<mnU)mnU=p.u;if(p.u>mxU)mxU=p.u;
+    }
+    // 200ブロック×200ブロック超は異常に大きいポリゴンとしてスキップ
+    if((mxV-mnV)>200||(mxU-mnU)>200) return;
+    const n=pts.length;
+    for(let vi=Math.floor(mnV);vi<=Math.ceil(mxV);vi++){
+      const us=[];
+      for(let j=0;j<n;j++){
+        const p1=pts[j],p2=pts[(j+1)%n];
+        if((p1.v<=vi&&p2.v>vi)||(p2.v<=vi&&p1.v>vi))
+          us.push(p1.u+(vi-p1.v)/(p2.v-p1.v)*(p2.u-p1.u));
+      }
+      us.sort((a,b)=>a-b);
+      for(let k=0;k+1<us.length;k+=2){
+        for(let ui=Math.floor(us[k]);ui<=Math.ceil(us[k+1]);ui++){
+          const key=`${ui},${byMid},${vi}`;
+          if(!blockMap.has(key)) blockMap.set(key,{bx:ui,by:byMid,bz:vi,mat:resolveMat(mat,ui,byMid,vi)});
+        }
+      }
+    }
+  } else {
+    // ── 縦壁：三角形ファンに分割してUVスキャンライン ──
+    for(let i=1;i<verts.length-1;i++){
+      fillTriangle3D(verts[0],verts[i],verts[i+1],bs,blockMap,mat);
+    }
+  }
+}
+
+// エッジ補間（隙間を埋める）
+function interpolateEdgeDense(a,b,bs,blockMap,mat){
+  const dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z;
+  const dist=Math.sqrt(dx*dx+dy*dy+dz*dz);
+  const steps=Math.max(1,Math.ceil(dist/bs*2.0));
+  for(let t=0;t<=steps;t++){
+    const f=t/steps;
+    const bx=Math.round((a.x+dx*f)/bs);
+    const by=Math.round((a.y+dy*f)/bs);
+    const bz=Math.round((a.z+dz*f)/bs);
+    const k=`${bx},${by},${bz}`;
+    if(!blockMap.has(k)) blockMap.set(k,{bx,by,bz,mat:resolveMat(mat,bx,by,bz)});
+  }
+}
+
+function voxelizeBldgPoly(poly,bs,blockMap,bldgMatResolver,roofMat,floorY){
+  const verts=poly.verts;
+  if(verts.length<3)return;
+
+  // 一時Mapにこのポリゴン分だけ置く（縦フィル対象を特定するため）
+  const localMap=new Map();
+
+  // マテリアル決定：屋根は固定、壁はリゾルバーで決定
+  const getMatForBlock=(bx,by,bz)=>
+    poly.isRoof ? roofMat : bldgMatResolver(bx,by,bz);
+
+  // UV塗りつぶし（localMapへ）
+  fillPolygon3D(verts,bs,localMap,getMatForBlock);
+  for(let i=0;i<verts.length-1;i++) interpolateEdgeDense(verts[i],verts[i+1],bs,localMap,getMatForBlock);
+
+  // 縦フィル
+  const colRange=new Map();
+  for(const b of localMap.values()){
+    const ck=`${b.bx},${b.bz}`;
+    const cur=colRange.get(ck);
+    if(!cur) colRange.set(ck,{minY:b.by,maxY:b.by,mat:b.mat});
+    else{ if(b.by<cur.minY)cur.minY=b.by; if(b.by>cur.maxY)cur.maxY=b.by; }
+  }
+  for(const[ck,{minY,maxY}] of colRange){
+    const comma=ck.indexOf(',');
+    const bx=+ck.slice(0,comma);
+    const bz=+ck.slice(comma+1);
+    for(let by=minY;by<=maxY;by++){
+      if(floorY!==undefined && by<floorY) continue; // 下端トリム（植生の葉で幹を見せるため）
+      const k=`${bx},${by},${bz}`;
+      if(!blockMap.has(k)){
+        const mat=getMatForBlock(bx,by,bz);
+        blockMap.set(k,{bx,by,bz,mat});
+      }
+    }
+  }
+}
+
+// DEMの三角形1枚をheightMapに書き込む（内部スキャンライン充填）
+// tri: [{x,y,z}] （すでにメートル座標に変換済み）
+function voxelizeDemTri(tri,bs,heightMap,clipX0,clipX1,clipZ0,clipZ1){
+  // XZ投影でスキャンライン塗りつぶし → 高さマップに書き込む
+  const p2d=[
+    {u:tri[0].x/bs, v:tri[0].z/bs, y:tri[0].y/bs},
+    {u:tri[1].x/bs, v:tri[1].z/bs, y:tri[1].y/bs},
+    {u:tri[2].x/bs, v:tri[2].z/bs, y:tri[2].y/bs},
+  ];
+  let mnU=p2d[0].u,mxU=p2d[0].u;
+  let mnV=p2d[0].v,mxV=p2d[0].v;
+  if(p2d[1].u<mnU)mnU=p2d[1].u; if(p2d[1].u>mxU)mxU=p2d[1].u;
+  if(p2d[2].u<mnU)mnU=p2d[2].u; if(p2d[2].u>mxU)mxU=p2d[2].u;
+  if(p2d[1].v<mnV)mnV=p2d[1].v; if(p2d[1].v>mxV)mxV=p2d[1].v;
+  if(p2d[2].v<mnV)mnV=p2d[2].v; if(p2d[2].v>mxV)mxV=p2d[2].v;
+  // 巨大三角形をスキップ（DEM異常データ対策）
+  if(mxV-mnV>500) return;
+  // クリップ範囲外の三角形をまるごとスキップ
+  if(clipX0!==undefined){
+    if(mxU<clipX0||mnU>clipX1||mxV<clipZ0||mnV>clipZ1) return;
+  }
+  const viMin=Math.max(Math.floor(mnV), clipZ0!==undefined?clipZ0:-Infinity);
+  const viMax=Math.min(Math.ceil(mxV),  clipZ1!==undefined?clipZ1:Infinity);
+  for(let vi=viMin;vi<=viMax;vi++){
+    const us=[];
+    for(let i=0;i<3;i++){
+      const a=p2d[i],b=p2d[(i+1)%3];
+      if((a.v<=vi&&b.v>vi)||(b.v<=vi&&a.v>vi)){
+        const t=(vi-a.v)/(b.v-a.v);
+        us.push({u:a.u+t*(b.u-a.u), y:a.y+t*(b.y-a.y)});
+      }
+    }
+    if(us.length<2) continue;
+    if(us[0].u>us[1].u){const tmp=us[0];us[0]=us[1];us[1]=tmp;}
+    const u0=Math.max(Math.floor(us[0].u), clipX0!==undefined?clipX0:-Infinity);
+    const u1=Math.min(Math.ceil(us[1].u),  clipX1!==undefined?clipX1:Infinity);
+    const duInv=(us[1].u>us[0].u)?1/(us[1].u-us[0].u):0;
+    for(let ui=u0;ui<=u1;ui++){
+      const t=(ui-us[0].u)*duInv;
+      const hy=Math.floor(us[0].y+t*(us[1].y-us[0].y));
+      const key=`${ui},${vi}`;
+      const cur=heightMap.get(key);
+      if(cur===undefined||hy>cur) heightMap.set(key,hy);
+    }
+  }
+}
+
+// =====================================================================
+// PROCESS BUTTON
+// =====================================================================
+document.getElementById('btnProcess').addEventListener('click',async()=>{
+  {
+    const _hasB=gmlPolygons&&gmlPolygons.length>0;
+    const _hasD=demTriangles&&demTriangles.length>0;
+    const _hasT=tranPolygons&&tranPolygons.length>0;
+    const _hasV=vegPolygons&&vegPolygons.length>0;
+    if(!_hasB&&!_hasD&&!_hasT&&!_hasV){log('データがありません','err');return;}
+  }
+  if(!gmlPolygons) gmlPolygons=[]; // 建物なしでも以降の建物処理を安全に空走させる
+  document.getElementById('btnProcess').disabled=true;
+  document.getElementById('progressPct').classList.remove('hidden');
+  document.getElementById('progressWrap').classList.remove('hidden');
+  document.getElementById('logBox').classList.remove('hidden');
+  document.getElementById('previewBox').classList.add('hidden'); // 前回のプレビューを消す
+  setProgress(0);
+
+  const bs=parseFloat(document.getElementById('blockSize').value)||1.0;
+
+  // 地形(dem)単独（建物なし）の場合、1ブロック2.00m未満は禁止（巨大DEMのフリーズ防止）。
+  if(!(gmlPolygons && gmlPolygons.length>0) && demTriangles && demTriangles.length>0 && bs<2.00){
+    log('地形(dem)単独で変換する場合、1ブロックあたりのサイズは 2.00m 以上にしてください（メモリ不足によるフリーズ防止のため）。','err');
+    alert('地形(dem)のみで変換する場合、「1ブロックあたりのサイズ」は 2.00m 以上に設定してください。\n\n大きなDEMを細かいブロックで変換するとメモリ不足でフリーズするため、2.00m未満では変換できません。');
+    document.getElementById('btnProcess').disabled=false;
+    return;
+  }
+  const seaLevelY=0; // 標高0m = マイクラY=0 に固定
+  const bldgMat=document.getElementById('buildingMat').value;
+  const roofMat=bldgMat; // 屋根素材UI廃止・建物素材と同一固定
+  const terrainMat=document.getElementById('terrainMat').value;
+  const terrainSubMat=document.getElementById('terrainSubMat').value;
+  const terrainDepth=parseInt(document.getElementById('terrainDepth').value)||3;
+  const roadMat=document.getElementById('roadMat').value;
+  const seaMode=document.getElementById('seaMode').value;
+  const seaOffset=parseInt(document.getElementById('seaOffset').value)||0;
+  const beachSand=document.getElementById('beachSand').checked;
+  const hollowBldg=document.getElementById('hollowBldg').checked;
+  const facadeMode=document.getElementById('facadeMode').value;
+  const facadeFn=getFacadeFn(facadeMode);
+
+  log(`変換開始 / ブロック=${bs}m / 建物=${bldgMat}`,'info');
+  if(demTriangles)log(`地形=${terrainMat}/${terrainSubMat} / 三角形=${demTriangles.length.toLocaleString()}`,'info');
+  if(tranPolygons)log(`道路=${roadMat} / ポリゴン=${tranPolygons.length.toLocaleString()}`,'info');
+  if(vegPolygons) log(`植生 / ポリゴン=${vegPolygons.length.toLocaleString()}`,'info');
+  await tick();
+
+  // ── チャンクグリッド直接書き込み方式（blockMap廃止でメモリ削減） ──
+  // cg: Map<"cx,cz", Map<number, string>>
+  // チャンク内キー数値エンコード: key = lx + lz*16 + (by+64)*256
+  // by範囲: -64〜319 → オフセット+64で 0〜383, 最大383*256=98048+255=98303 (安全範囲内)
+  // 値は素材文字列のみ（{bx,by,bz,mat}オブジェクトを廃止してメモリを大幅削減）
+  const BY_OFFSET=64;
+  const cg=new Map();
+  function cgSet(bx,by,bz,mat,overwrite=false){
+    const cx=Math.floor(bx/16),cz=Math.floor(bz/16);
+    const lx=((bx%16)+16)%16,lz=((bz%16)+16)%16;
+    const ck=`${cx},${cz}`;
+    if(!cg.has(ck))cg.set(ck,new Map());
+    const cm=cg.get(ck);
+    const lk=lx+lz*16+(by+BY_OFFSET)*256;
+    if(overwrite||!cm.has(lk))cm.set(lk,mat);
+  }
+  function cgHas(bx,by,bz){
+    const cx=Math.floor(bx/16),cz=Math.floor(bz/16);
+    const ck=`${cx},${cz}`;
+    if(!cg.has(ck))return false;
+    const lx=((bx%16)+16)%16,lz=((bz%16)+16)%16;
+    return cg.get(ck).has(lx+lz*16+(by+BY_OFFSET)*256);
+  }
+  // blockMap互換ラッパー（建物・植生ボクセル化関数がblockMapを期待するため）
+  const blockMap={
+    has:(k)=>{
+      const p1=k.indexOf(',');const p2=k.indexOf(',',p1+1);
+      return cgHas(+k.slice(0,p1),+k.slice(p1+1,p2),+k.slice(p2+1));
+    },
+    set:(k,b,overwrite=false)=>{
+      const p1=k.indexOf(',');const p2=k.indexOf(',',p1+1);
+      cgSet(+k.slice(0,p1),+k.slice(p1+1,p2),+k.slice(p2+1),b.mat,overwrite);
+    },
+    get size(){let n=0;for(const m of cg.values())n+=m.size;return n;},
+    values:function*(){for(const m of cg.values())for(const b of m.values())yield b;},
+  };
+
+  // ── 建物ボクセル化 ──
+  log('建物ボクセル化中...','info');
+  // --- PASS 1: 全ポリゴンを一時blockMapにボクセル化してXZカラムのY範囲を収集 ---
+  // 建物単位でXZカラムのminY/maxYを確定し、底から天井まで隙間なく塗りつぶす
+  const bldgTotal=gmlPolygons.length;
+  let curBldgIdx=-1, curResolver=null;
+
+  // bldgIndex ごとに XZカラム→{minY,maxY,mat} を管理
+  // 全建物を一度に処理するとメモリが増えるので、建物単位でフラッシュする
+  // ポリゴンは bldgIndex 順にソートされている前提（パーサ側がそうなっている）
+  let bldgColMap=new Map(); // key:"bx,bz" → {minY,maxY,mat}
+  let bldgFlushSeed=0; // フラッシュ時に使う建物シード
+
+  function flushBldgCols(){
+    if(bldgColMap.size===0) return;
+
+    // 屋根の平滑化: 各列の天井(maxY)を3×3近傍の中央値に置換する。
+    //  ボクセル化で生じる±1の点々としたガタつき（ノイズ）を除去しつつ、
+    //  中央値なので階段状の本当の段差は保持される。minYは触らない（建物は接地維持）。
+    { // 屋根の平滑化は全変換で常時有効
+      const orig=new Map();
+      for(const[ck,c] of bldgColMap) orig.set(ck,c.maxY);
+      const newMax=new Map();
+      for(const ck of bldgColMap.keys()){
+        const ci=ck.indexOf(',');
+        const x=+ck.slice(0,ci), z=+ck.slice(ci+1);
+        const vals=[];
+        for(let dx=-1;dx<=1;dx++)for(let dz=-1;dz<=1;dz++){
+          const m=orig.get((x+dx)+','+(z+dz));
+          if(m!==undefined) vals.push(m);
+        }
+        vals.sort((a,b)=>a-b);
+        newMax.set(ck, vals[(vals.length-1)>>1]); // 中央値
+      }
+      for(const[ck,c] of bldgColMap){
+        const m=newMax.get(ck);
+        if(m!==undefined && m>=c.minY) c.maxY=m; // minYを下回らないよう保護
+      }
+    }
+
+    // 建物全体のminY/maxY（= 建物高さ算出用）
+    let bMinY=Infinity,bMaxY=-Infinity;
+    for(const{minY,maxY} of bldgColMap.values()){
+      if(minY<bMinY) bMinY=minY;
+      if(maxY>bMaxY) bMaxY=maxY;
+    }
+    const bHeight=bMaxY-bMinY;
+
+    // 隣接カラム（同一建物内）が指定ローカル高さを覆っているか
+    // = その方向が壁の内側か外気に接しているかの判定に使う
+    function colCovers(nx,nz,ly){
+      const c=bldgColMap.get(nx+','+nz);
+      return !!c && ly>=c.minY && ly<=c.maxY;
+    }
+
+    for(const[ck,{minY,maxY,mat}] of bldgColMap){
+      const comma=ck.indexOf(',');
+      const bx=+ck.slice(0,comma);
+      const bz=+ck.slice(comma+1);
+      // seaLevelYを加算して標高→マイクラY座標に変換
+      const placedMinY=minY+seaLevelY;
+      const placedMaxY=maxY+seaLevelY;
+      const placedBMinY=bMinY+seaLevelY;
+      const placedBMaxY=bMaxY+seaLevelY;
+      for(let by=placedMinY;by<=placedMaxY;by++){
+        if(cgHas(bx,by,bz)) continue;
+        const ly=by-seaLevelY; // 隣接判定はローカルY（標高）で行う
+        // 6方向のうち1つでも外気（=同一建物の他ブロックが無い）に接していれば「外殻」
+        const exX = !colCovers(bx-1,bz,ly) || !colCovers(bx+1,bz,ly); // 東西面
+        const exZ = !colCovers(bx,bz-1,ly) || !colCovers(bx,bz+1,ly); // 南北面
+        const topOpen = (by===placedMaxY); // 屋根（上端）
+        const botOpen = (by===placedMinY); // 床（下端）
+        const surface = exX || exZ || topOpen || botOpen;
+        const relY=by-placedBMinY; // 建物底面からの相対高さ
+        // 各階の床: 空洞化時、窓の縦周期(4ブロック)に合わせて4ブロックごとに床を生成
+        const isFloorLevel = relY>0 && (relY % 4 === 0);
+        // 空洞化ON時は、外殻でも床レベルでもない内部ブロックは配置しない
+        if(hollowBldg && !surface && !isFloorLevel) continue;
+        let finalMat;
+        if(facadeFn && by<placedMaxY && relY>=4 && (exX!==exZ)){ // 窓は2階付近(relY=4)から
+          // 平らな壁面（片方向だけが外気）→ 壁に沿った座標で窓を刻む
+          //  X方向を向いた壁(東西面)は Z に沿って、Z方向の壁(南北面)は X に沿って並べる
+          const t = exX ? bz : bx;
+          finalMat=facadeFn(t,by,placedBMinY,placedBMaxY,mat,bldgFlushSeed);
+        } else {
+          // 角・屋根・床・基部・各階の床は壁素材のまま（角がソリッドになりビルらしいエッジに）
+          finalMat=mat;
+        }
+        cgSet(bx,by,bz,finalMat);
+      }
+    }
+    bldgColMap.clear();
+  }
+
+  for(let i=0;i<bldgTotal;i++){
+    const poly=gmlPolygons[i];
+    const bIdx=poly.bldgIndex!==undefined?poly.bldgIndex:i;
+
+    // 建物が切り替わったらフラッシュ
+    if(bIdx!==curBldgIdx){
+      if(curBldgIdx!==-1) flushBldgCols();
+      curBldgIdx=bIdx;
+      bldgFlushSeed=(bIdx*2654435761)>>>0;
+      curResolver=buildMaterialResolver(bldgMat,bIdx);
+    }
+
+    // このポリゴンのブロックを一時Mapへ
+    const localMap=new Map();
+    const getMatForBlock=(bx,by,bz)=>
+      poly.isRoof ? roofMat : curResolver(bx,by,bz);
+    fillPolygon3D(poly.verts,bs,localMap,getMatForBlock);
+    for(let ei=0;ei<poly.verts.length-1;ei++)
+      interpolateEdgeDense(poly.verts[ei],poly.verts[ei+1],bs,localMap,getMatForBlock);
+
+    // XZカラムのY範囲をbldgColMapに反映
+    for(const b of localMap.values()){
+      const ck=`${b.bx},${b.bz}`;
+      const cur=bldgColMap.get(ck);
+      if(!cur){
+        bldgColMap.set(ck,{minY:b.by,maxY:b.by,mat:b.mat});
+      } else {
+        if(b.by<cur.minY) cur.minY=b.by;
+        if(b.by>cur.maxY) cur.maxY=b.by;
+        // 屋根素材が来たら上書き（屋根を最優先にしない＝壁素材を保持）
+        if(!poly.isRoof) cur.mat=b.mat;
+      }
+    }
+
+    if(i%200===0||i===bldgTotal-1){
+      setProgress(Math.round(i/bldgTotal*20));
+      await tick();
+    }
+  }
+  // 最後の建物をフラッシュ
+  flushBldgCols();
+
+  const bldgBlockCount=blockMap.size;
+  log(`建物ブロック数: ${bldgBlockCount.toLocaleString()}`,'ok');
+  setProgress(21);await tick();
+
+  // 建物のXZチャンク範囲からクリップ範囲を計算（全ブロック走査より高速）
+  let bldgMnCX=Infinity,bldgMxCX=-Infinity,bldgMnCZ=Infinity,bldgMxCZ=-Infinity;
+  for(const ck of cg.keys()){
+    const p=ck.indexOf(',');const cx=+ck.slice(0,p),cz=+ck.slice(p+1);
+    if(cx<bldgMnCX)bldgMnCX=cx;if(cx>bldgMxCX)bldgMxCX=cx;
+    if(cz<bldgMnCZ)bldgMnCZ=cz;if(cz>bldgMxCZ)bldgMxCZ=cz;
+  }
+  const TERRAIN_MARGIN=200; // 範囲+200ブロックまで地形を配置
+  let tClipX0,tClipX1,tClipZ0,tClipZ1;
+  if(bldgMnCX!==Infinity){
+    // 建物あり: 建物のXZチャンク範囲を基準にクリップ
+    const bldgMnBX=bldgMnCX*16, bldgMxBX=(bldgMxCX+1)*16-1;
+    const bldgMnBZ=bldgMnCZ*16, bldgMxBZ=(bldgMxCZ+1)*16-1;
+    tClipX0=bldgMnBX-TERRAIN_MARGIN; tClipX1=bldgMxBX+TERRAIN_MARGIN;
+    tClipZ0=bldgMnBZ-TERRAIN_MARGIN; tClipZ1=bldgMxBZ+TERRAIN_MARGIN;
+  } else {
+    // 建物なし（DEM単独など）: 地形/道路/植生のXZ範囲(ブロック単位)をクリップ範囲にする。
+    // ※建物bboxが無いと従来は Infinity となり全DEM三角形が除外され地形が空になっていた。
+    let mnX=Infinity,mxX=-Infinity,mnZ=Infinity,mxZ=-Infinity;
+    const accT=(v)=>{const x=v.x/bs,z=v.z/bs; if(x<mnX)mnX=x; if(x>mxX)mxX=x; if(z<mnZ)mnZ=z; if(z>mxZ)mxZ=z;};
+    if(demTriangles) for(const t of demTriangles){accT(t[0]);accT(t[1]);accT(t[2]);}
+    if(tranPolygons) for(const p of tranPolygons) for(const v of p.verts) accT(v);
+    if(vegPolygons)  for(const p of vegPolygons)  for(const v of p.verts) accT(v);
+    if(mnX===Infinity){mnX=mxX=mnZ=mxZ=0;}
+    tClipX0=Math.floor(mnX)-TERRAIN_MARGIN; tClipX1=Math.ceil(mxX)+TERRAIN_MARGIN;
+    tClipZ0=Math.floor(mnZ)-TERRAIN_MARGIN; tClipZ1=Math.ceil(mxZ)+TERRAIN_MARGIN;
+  }
+  log(`地形クリップ範囲: X[${tClipX0},${tClipX1}] Z[${tClipZ0},${tClipZ1}]`,'info');
+
+  // 地形セル数の事前チェック（範囲が広すぎる場合の中断・警告）は廃止。
+  // ユーザー要望により、範囲が広くても中断せずそのまま変換を実行する（メモリ不足でフリーズする可能性あり）。
+
+  // ── 地形ボクセル化 ──
+  let terrainBlockCount=0;
+  let waterBlockCount=0;
+  let roadHeightMap=null;
+  if(demTriangles&&demTriangles.length>0){
+    log('地形ボクセル化中（高さマップ生成）...','info');
+    // クリップ範囲をブロック座標で voxelizeDemTri に渡し、範囲外を最初から除外
+    const heightMap=new Map();
+    const demTotal=demTriangles.length;
+    let triLastTick=performance.now();
+    for(let i=0;i<demTotal;i++){
+      voxelizeDemTri(demTriangles[i],bs,heightMap,tClipX0,tClipX1,tClipZ0,tClipZ1);
+      const nowT=performance.now();
+      if(nowT-triLastTick>16){
+        const pct=42+Math.round(i/demTotal*35);
+        setProgress(Math.round(pct*0.5));
+        log(`地形三角形処理中: ${i.toLocaleString()}/${demTotal.toLocaleString()} (${Math.round(i/demTotal*100)}%) グリッド=${heightMap.size.toLocaleString()}`,'info');
+        await tick();
+        triLastTick=performance.now();
+      }
+    }
+    setProgress(40);await tick();
+    roadHeightMap=heightMap;
+
+    // ── 地形スムージング（メディアン）：杭・海岸線のデコボコをならす ──
+    // 各列を周囲3x3の中央値で置き換える。中央値は大きな崖は保ったまま、
+    // 孤立した突出列や海岸の細かい凹凸だけを平らにする。複数パスでより平滑に。
+    {
+      const SMOOTH_PASSES=2;    // スムージング回数（増やすほど平らに）
+      const WIN=1;              // 近傍ウィンドウ半径（1=3x3, 2=5x5）
+      for(let pass=0; pass<SMOOTH_PASSES; pass++){
+        const fixes=[];
+        let si=0; const sn=heightMap.size; let sT=performance.now();
+        for(const[key,by] of heightMap){
+          const c=key.indexOf(',');
+          const bx=+key.slice(0,c), bz=+key.slice(c+1);
+          const vals=[];
+          for(let dz=-WIN;dz<=WIN;dz++)for(let dx=-WIN;dx<=WIN;dx++){
+            const h=heightMap.get((bx+dx)+','+(bz+dz));
+            if(h!==undefined)vals.push(h);
+          }
+          if(vals.length>=4){
+            vals.sort((a,b)=>a-b);
+            const med=vals[vals.length>>1];
+            if(med!==by) fixes.push(key,med);   // パス中はheightMapを変えず後でまとめて反映
+          }
+          si++;
+          const now=performance.now();
+          if(now-sT>16){ log(`地形スムージング中(${pass+1}/${SMOOTH_PASSES}): ${si.toLocaleString()}/${sn.toLocaleString()}`,'info'); await tick(); sT=now; }
+        }
+        for(let k=0;k<fixes.length;k+=2) heightMap.set(fixes[k],fixes[k+1]);
+        log(`地形スムージング パス${pass+1}: ${(fixes.length/2).toLocaleString()}列を補正`,'ok');
+      }
+    }
+
+    // 高さマップからブロック配置（表面＋地下）
+    // ※voxelizeDemTri でクリップ済みなので範囲チェック不要
+    log('地形ブロック配置中...','info');
+    const yOffBlks=0; // 標高0m = Y=0
+    const hmSize=heightMap.size;
+    let hi=0;
+    let lastTick=performance.now();
+    for(const[key,by] of heightMap){
+      const comma=key.indexOf(',');
+      const bx=+key.slice(0,comma);
+      const bz=+key.slice(comma+1);
+      const bySurface=by+yOffBlks;
+      if(!cgHas(bx,bySurface,bz)){
+        cgSet(bx,bySurface,bz,terrainMat);
+        terrainBlockCount++;
+      }
+      // ── スカート処理（急斜面の“杭化”防止） ──
+      // 隣接4列の最も低い地表面まで地下を充填し、列同士を連結させる。
+      // これにより、護岸など高さが急落する箇所が分断された杭ではなく
+      // 連続した崖の壁として再現される（平地では terrainDepth 分のみ）。
+      let minNb=by;
+      let nb;
+      nb=heightMap.get(bx+','+(bz-1)); if(nb!==undefined&&nb<minNb)minNb=nb;
+      nb=heightMap.get(bx+','+(bz+1)); if(nb!==undefined&&nb<minNb)minNb=nb;
+      nb=heightMap.get((bx-1)+','+bz); if(nb!==undefined&&nb<minNb)minNb=nb;
+      nb=heightMap.get((bx+1)+','+bz); if(nb!==undefined&&nb<minNb)minNb=nb;
+      // 通常の terrainDepth と、隣接最低面のうち「深い方」まで埋める
+      let bottomY=Math.min(bySurface-terrainDepth, minNb+yOffBlks);
+      if(bottomY<-62)bottomY=-62; // ワールド下限(-64)を割らない
+      for(let byD=bySurface-1; byD>=bottomY; byD--){
+        if(!cgHas(bx,byD,bz)){
+          cgSet(bx,byD,bz,terrainSubMat);
+          terrainBlockCount++;
+        }
+      }
+      hi++;
+      // 時間ベースで16ms(約1フレーム)ごとにtick → ブロック数に依存しない
+      const now=performance.now();
+      if(now-lastTick>16){
+        setProgress(40+Math.round(hi/hmSize*4));
+        log(`地形ブロック配置中: ${hi.toLocaleString()}/${hmSize.toLocaleString()} ブロック=${terrainBlockCount.toLocaleString()}`,'info');
+        await tick();
+        lastTick=performance.now();
+      }
+    }
+    log(`地形ブロック数: ${terrainBlockCount.toLocaleString()}`,'ok');
+    // 地形中央高さを記録（道路の高さフォールバック用）：先頭1000件でサンプリング
+    let hSum=0,hCnt=0;
+    for(const v of heightMap.values()){hSum+=v;hCnt++;if(hCnt>=1000)break;}
+    terrainCenterY=hCnt>0?Math.round(hSum/hCnt):0;
+    log(`地形平均高さ(サンプル): ${terrainCenterY}`,'info');
+
+    // ── 海水面処理（クリップ範囲全体を“平らな海”として再現） ──
+    // 海岸でDEMが急降下/途切れても、水のカーテンや床なしの空洞が出ないよう、
+    // 海面(seaSurfaceY)以下の海域を「海面〜約5m下の海底＋砂の床」で平らに満たす。
+    // 既存ブロック（建物・道路・地形）は上書きしないので保護される。
+    if(seaMode!=='none'){
+      const seaMat=seaMode==='ice'?'ice':'water';
+      const seaSurfaceY=seaOffset;                   // 水面Y
+      const seaDepth=Math.max(3,Math.round(5/bs));   // 海の深さ（約5m）
+      let seabedY=seaSurfaceY-seaDepth;              // 海底面Y
+      if(seabedY<-62)seabedY=-62;                    // ワールド下限(-64)を割らない
+      const bedMat='sand';                           // 海底素材（砂で“いい感じ”に）
+      log(`海水面処理中... 素材=${seaMat} 水面Y=${seaSurfaceY} 深さ=${seaSurfaceY-seabedY}ブロック`,'info');
+      let seaCount=0;
+      const colTotal=(tClipX1-tClipX0+1)*(tClipZ1-tClipZ0+1);
+      let ci=0,lastT=performance.now();
+      for(let bx=tClipX0;bx<=tClipX1;bx++){
+        for(let bz=tClipZ0;bz<=tClipZ1;bz++){
+          ci++;
+          const surf=heightMap.get(bx+','+bz);
+          // 陸地（海面より高い地形）は対象外
+          if(surf!==undefined && surf>seaSurfaceY) continue;
+          // 砂浜オプション：海面以下の地形表面を砂に置き換え（任意）
+          if(beachSand && surf!==undefined) cgSet(bx,surf,bz,'sand',true);
+          // 海底の床（崩落防止）：砂は重力で落下するため、まず下に落下しない土の
+          // 支えを置き、その上に砂を被せる。支えが無いと、近づいた瞬間に砂床が崩れ、
+          // 支えを失った水も滝のように落下して激しい処理落ちになる。
+          if(!cgHas(bx,seabedY-1,bz)){ cgSet(bx,seabedY-1,bz,'dirt'); seaCount++; }
+          if(!cgHas(bx,seabedY,bz)){ cgSet(bx,seabedY,bz,bedMat); seaCount++; }
+          // 海面まで水を充填（既存ブロックは上書きせず保護）
+          for(let wy=seabedY+1;wy<=seaSurfaceY;wy++){
+            if(!cgHas(bx,wy,bz)){ cgSet(bx,wy,bz,seaMat); seaCount++; }
+          }
+        }
+        const now=performance.now();
+        if(now-lastT>16){ setProgress(44+Math.round(ci/colTotal*3)); log(`海水面処理中: ${ci.toLocaleString()}/${colTotal.toLocaleString()} 水=${seaCount.toLocaleString()}`,'info'); await tick(); lastT=performance.now(); }
+      }
+      log(`水ブロック数: ${seaCount.toLocaleString()}`,'ok');
+      waterBlockCount=seaCount;
+    }
+
+    // ※ roadHeightMap は heightMap と同じ参照のため clear() しない
+    // （道路ボクセル化で使用後、スコープアウトで自然にGCされる）
+  }
+  setProgress(47);await tick();
+
+  // ── 道路ボクセル化 ──
+  // terrainCenterY は demTriangles ブロック内で設定済み（なければ0）
+  let roadBlockCount=0;
+  if(tranPolygons&&tranPolygons.length>0){
+    log('道路ボクセル化中...','info');
+    const yOffBlks=seaLevelY; // 標高0m = seaLevelY
+    const tranTotal=tranPolygons.length;
+    for(let i=0;i<tranTotal;i++){
+      const poly=tranPolygons[i];
+      const verts=poly.verts; // {x, z} のみ（高さなし）
+      if(verts.length<3) continue;
+      // XZ平面のスキャンライン充填
+      // 各グリッド点でDEM高さマップから高さを取得して配置
+      const pts=verts.map(v=>({u:v.x/bs,v:v.z/bs}));
+      // スキャンライン
+      let mnV=Infinity,mxV=-Infinity;
+      for(const p of pts){if(p.v<mnV)mnV=p.v;if(p.v>mxV)mxV=p.v;}
+      const n=pts.length;
+      for(let vi=Math.floor(mnV);vi<=Math.ceil(mxV);vi++){
+        const us=[];
+        for(let j=0;j<n;j++){
+          const p1=pts[j],p2=pts[(j+1)%n];
+          if((p1.v<=vi&&p2.v>vi)||(p2.v<=vi&&p1.v>vi)){
+            us.push(p1.u+(vi-p1.v)/(p2.v-p1.v)*(p2.u-p1.u));
+          }
+        }
+        us.sort((a,b)=>a-b);
+        for(let k=0;k+1<us.length;k+=2){
+          for(let ui=Math.floor(us[k]);ui<=Math.ceil(us[k+1]);ui++){
+            const bx=ui,bz=vi;
+            // 高さ決定: roadHeightMap（DEM由来）からブロック高を取得し yOffBlks を加算
+            // これが地形草ブロックの配置高さと一致する
+            let by;
+            if(roadHeightMap){
+              const hk=`${bx},${bz}`;
+              let rawH=roadHeightMap.get(hk);
+              if(rawH===undefined){
+                // 周辺8近傍を探す
+                rawH=roadHeightMap.get(`${bx+1},${bz}`)
+                  ??roadHeightMap.get(`${bx-1},${bz}`)
+                  ??roadHeightMap.get(`${bx},${bz+1}`)
+                  ??roadHeightMap.get(`${bx},${bz-1}`)
+                  ??roadHeightMap.get(`${bx+1},${bz+1}`)
+                  ??roadHeightMap.get(`${bx-1},${bz-1}`)
+                  ??roadHeightMap.get(`${bx+1},${bz-1}`)
+                  ??roadHeightMap.get(`${bx-1},${bz+1}`);
+              }
+              by=(rawH!==undefined?rawH:terrainCenterY)+yOffBlks;
+            } else {
+              by=yOffBlks;
+            }
+            // 道路は地形表面ブロックと同じ高さに上書き配置
+            cgSet(bx,by,bz,roadMat,true);
+            // 道路の1段上に草などが残っている場合があるため削除（空気で上書き）
+            // ※ただし建物ブロックは消さない → cgHas で確認せず単純に air は不要
+            // 実際は overwrite=true で同座標を道路に差し替えるだけで十分
+            roadBlockCount++;
+          }
+        }
+      }
+      if(i%200===0||i===tranTotal-1){
+        setProgress(47+Math.round(i/tranTotal*1));
+        await tick();
+      }
+    }
+    log(`道路ブロック数: ${roadBlockCount.toLocaleString()}`,'ok');
+  }
+
+  // ── 植生ボクセル化 ──
+  let vegBlockCount=0;
+  if(vegPolygons&&vegPolygons.length>0){
+    log('植生ボクセル化中...','info');
+    const vegTotal=vegPolygons.length;
+    const vegSizeBefore=blockMap.size;
+    for(let i=0;i<vegTotal;i++){
+      const poly=vegPolygons[i];
+      const role=poly.vegRole||'leaf';
+      if(role==='trunkcol'){
+        // 中心に幹（oak_log）の細い柱を立てる。地面付近に約3ブロック露出し、樹冠へ少し食い込む。
+        const bx=Math.round(poly.cx/bs), bz=Math.round(poly.cz/bs);
+        const baseY=Math.floor(poly.minY/bs);
+        const topY=Math.floor(poly.maxY/bs);
+        const treeH=topY-baseY;
+        const trimN=treeH>=6?4:(treeH>=4?2:0); // 樹冠の底から削るブロック数（葉と一致させる）
+        const trunkTopY=Math.max(baseY+1, Math.min(baseY+trimN+1, topY)); // 樹冠の底まで届かせる
+        for(let by=baseY;by<=trunkTopY;by++){
+          const k=`${bx},${by},${bz}`;
+          if(!blockMap.has(k)) blockMap.set(k,{bx,by,bz,mat:'oak_log'});
+        }
+      } else if(role==='cover'){
+        // PlantCover（植被）: 苔ブロックで地表を覆う（従来どおり）
+        voxelizeBldgPoly(poly,bs,blockMap,()=>'moss_block','moss_block');
+      } else {
+        // leaf（樹冠）: green_concrete。底のブロックを除去して幹を見せる（高い木ほど多めに削る）。
+        const baseY=Math.floor((poly.objMinY!==undefined?poly.objMinY:0)/bs);
+        const topY=Math.floor((poly.objMaxY!==undefined?poly.objMaxY:0)/bs);
+        const treeH=topY-baseY;
+        const trimN=(poly.objMinY!==undefined)?(treeH>=6?4:(treeH>=4?2:0)):0;
+        const floorY=trimN>0?baseY+trimN:undefined; // 底trimNブロック分の葉を除去
+        voxelizeBldgPoly(poly,bs,blockMap,()=>'green_concrete','green_concrete',floorY);
+      }
+      if(i%200===0||i===vegTotal-1){
+        setProgress(48+Math.round(i/vegTotal*1));
+        await tick();
+      }
+    }
+    vegBlockCount=blockMap.size-vegSizeBefore;
+    log(`植生ブロック数: ${vegBlockCount.toLocaleString()}`,'ok');
+  }
+  setProgress(49);await tick();
+
+  // ── Y オフセット適用（地形なし時のみ：数値キー形式で再構築） ──
+  const yOffBlocks=0; // 標高0m = Y=0
+  if(yOffBlocks!==0&&!demTriangles){
+    for(const[ck,bmap] of cg){
+      const newBmap=new Map();
+      for(const[lk,mat] of bmap){
+        const lx=lk&0xF, lz=(lk>>4)&0xF, by=(lk>>8)-BY_OFFSET;
+        newBmap.set(lx+lz*16+(by+yOffBlocks+BY_OFFSET)*256, mat);
+      }
+      cg.set(ck,newBmap);
+    }
+  }
+
+  // ── XZ・Y範囲計算（数値キーから） ──
+  setProgress(49);await tick();
+  const BASE_Y=64;
+  let mnCX=Infinity,mxCX=-Infinity,mnCZ=Infinity,mxCZ=-Infinity;
+  let mnBY=Infinity,mxBY=-Infinity;
+  for(const[ck,bmap] of cg){
+    const p=ck.indexOf(',');const cx=+ck.slice(0,p),cz=+ck.slice(p+1);
+    if(cx<mnCX)mnCX=cx;if(cx>mxCX)mxCX=cx;
+    if(cz<mnCZ)mnCZ=cz;if(cz>mxCZ)mxCZ=cz;
+    for(const lk of bmap.keys()){
+      const by=(lk>>8)-BY_OFFSET;
+      if(by<mnBY)mnBY=by;if(by>mxBY)mxBY=by;
+    }
+  }
+  const mnBX=mnCX*16, mnBZ=mnCZ*16;
+  const mxBX=(mxCX+1)*16-1, mxBZ=(mxCZ+1)*16-1;
+
+  // 変換後の簡易プレビューを描画（cg がまだ解放される前に実行）。失敗しても変換は続行する。
+  try{ await buildPreview(cg, BY_OFFSET, mnBX, mnBZ, mxBX, mxBZ); }
+  catch(e){ console.warn('プレビュー生成に失敗:', e); }
+
+  const ni=blockMap.size;
+  log(`正規化完了: ${ni.toLocaleString()} ブロック`,'info');
+  schemBlocksMap=cg; // cgを直接渡す（コピーなし）
+
+
+  // スポーン地点 = ブロック群のXZ中央, Y=地形最高点+2
+  const spawnX=Math.floor((mnBX+mxBX)/2);
+  const spawnZ=Math.floor((mnBZ+mxBZ)/2);
+  const spawnY=mxBY+BASE_Y+3; // 最高ブロックの3つ上
+  const W=mxBX-mnBX+1,H=Math.max(1,mxBY-mnBY+1),L=mxBZ-mnBZ+1;
+  log(`ワールドサイズ: ${W}×${H}×${L} / 合計: ${ni.toLocaleString()} ブロック`,'info');
+  worldSpawnX=spawnX; worldSpawnY=spawnY; worldSpawnZ=spawnZ;
+  log(`スポーン地点: X=${spawnX}, Y=${spawnY}, Z=${spawnZ}`,'info');
+  setProgress(49);await tick();
+
+  document.getElementById('stat-bblocks').textContent=bldgBlockCount.toLocaleString();
+  document.getElementById('stat-tblocks').textContent=terrainBlockCount.toLocaleString();
+  document.getElementById('stat-rblocks').textContent=roadBlockCount.toLocaleString();
+  document.getElementById('stat-vblocks').textContent=vegBlockCount.toLocaleString();
+  document.getElementById('stat-wblocks').textContent=waterBlockCount.toLocaleString();
+  document.getElementById('stat-total').textContent=ni.toLocaleString();
+  document.getElementById('resultStats').classList.remove('hidden');
+  setProgress(50);
+  log('変換完了！ワールドデータ作成中...','ok');
+  document.getElementById('step2-status').textContent='DONE ✓';
+
+  // 変換完了後そのままダウンロード実行（ゲージ50→100%）
+  try{
+    let _lastP=50; // ゲージを後退させない（チラつき防止）
+    await buildAndDownloadWorld(schemBlocksMap,worldSpawnX,worldSpawnY,worldSpawnZ,(pct,label)=>{
+      // 作業中（ワールドデータ生成・圧縮・ZIP書き込み）は 50→99% のみを使う。
+      // 100% は全処理が終わった最後だけにして、途中で一瞬100%にチラつくのを防ぐ。
+      let p=50+Math.round(pct*49);
+      if(!isFinite(p)) p=_lastP;
+      if(p>99) p=99;                       // 作業中は最大99%
+      if(p<_lastP) p=_lastP; else _lastP=p; // 後退させない
+      setProgress(p);
+    },(msg,cls)=>log(msg,cls||'info'));
+    setProgress(100); // ZIP確定・ダウンロード開始時のみ100%
+    document.getElementById('resultStats').classList.remove('hidden');
+    const dEl=document.getElementById('dlDoneWorld');
+    dEl.classList.remove('hidden');
+    setTimeout(()=>dEl.classList.add('hidden'),6000);
+  }catch(e){
+    log('❌ ワールドデータ作成エラー: '+e.message,'err');
+    console.error(e);
+  }
+  document.getElementById('btnProcess').disabled=false;
+});
+
+// =====================================================================
+// NBT HELPERS (動作実績済みLASツールから完全移植)
+// =====================================================================
+function nc(...a){let t=0;for(const x of a)t+=x.length;const o=new Uint8Array(t);let f=0;for(const x of a){o.set(x,f);f+=x.length;}return o;}
+function nByte(v){return new Uint8Array([v&0xFF]);}
+function nShort(v){const b=new Uint8Array(2);new DataView(b.buffer).setInt16(0,v,false);return b;}
+function nInt(v){const b=new Uint8Array(4);new DataView(b.buffer).setInt32(0,v,false);return b;}
+function nLong(lo,hi){const b=new Uint8Array(8);const d=new DataView(b.buffer);d.setInt32(0,hi,false);d.setInt32(4,lo,false);return b;}
+function nFloat(v){const b=new Uint8Array(4);new DataView(b.buffer).setFloat32(0,v,false);return b;}
+function nDouble(v){const b=new Uint8Array(8);new DataView(b.buffer).setFloat64(0,v,false);return b;}
+function nStr(s){const e=new TextEncoder().encode(s);return nc(nShort(e.length),e);}
+function nNamed(type,name,payload){return nc(nByte(type),nStr(name),payload);}
+function nComp(entries){return nc(...entries,new Uint8Array([0]));}
+function nList(itemType,items){return nc(nByte(itemType),nInt(items.length),...items);}
+const T={END:0,BYTE:1,SHORT:2,INT:3,LONG:4,FLOAT:5,DOUBLE:6,BARR:7,STR:8,LIST:9,COMP:10,IARR:11,LARR:12};
+
+function packBitsTyped(entries,bpe){
+  // Int32Array/配列どちらも受け取れる高速版
+  const len=entries.length;
+  const epl=Math.floor(64/bpe);
+  const nL=Math.ceil(len/epl);
+  const lo=new Int32Array(nL);
+  const hi=new Int32Array(nL);
+  const mask=(1<<bpe)-1;
+  for(let i=0;i<len;i++){
+    const li=Math.floor(i/epl);
+    const bp=(i%epl)*bpe;
+    const val=entries[i]&mask;
+    if(bp+bpe<=32){
+      lo[li]|=(val<<bp);
+    } else if(bp>=32){
+      hi[li]|=(val<<(bp-32));
+    } else {
+      lo[li]|=(val<<bp);
+      hi[li]|=(val>>>(32-bp));
+    }
+  }
+  const out=new Uint8Array(nL*8);const dv=new DataView(out.buffer);
+  for(let i=0;i<nL;i++){dv.setInt32(i*8,hi[i],false);dv.setInt32(i*8+4,lo[i],false);}
+  return out;
+}
+function packBits(entries,bpe){
+  // BigIntを使わずNumber演算で高速化（bpe<=20で安全）
+  const epl=Math.floor(64/bpe);
+  const nL=Math.ceil(entries.length/epl);
+  // lo/hi の32bit対で格納
+  const lo=new Int32Array(nL);
+  const hi=new Int32Array(nL);
+  const mask=(1<<bpe)-1;
+  for(let i=0;i<entries.length;i++){
+    const li=Math.floor(i/epl);
+    const bp=(i%epl)*bpe;
+    const val=entries[i]&mask;
+    if(bp<32){
+      // ビットがlo側に収まるケース
+      if(bp+bpe<=32){
+        lo[li]|=(val<<bp);
+      } else {
+        // lo/hiにまたがる
+        const bitsInLo=32-bp;
+        lo[li]|=(val<<bp);
+        hi[li]|=(val>>>bitsInLo);
+      }
+    } else {
+      hi[li]|=(val<<(bp-32));
+    }
+  }
+  const out=new Uint8Array(nL*8);const dv=new DataView(out.buffer);
+  for(let i=0;i<nL;i++){
+    dv.setInt32(i*8,hi[i],false);
+    dv.setInt32(i*8+4,lo[i],false);
+  }
+  return out;
+}
+
+// =====================================================================
+// ANVIL WORLD BUILDER (動作実績済み)
+// =====================================================================
+const SEC_MIN=-4,SEC_MAX=19,NUM_SECS=SEC_MAX-SEC_MIN+1;
+
+async function buildAnvilChunk(cx,cz,blockData){
+  // secMap: sy -> Int32Array(4096) of palette indices + palette
+  const secPalettes=new Map(); // sy -> string[]
+  const secPalMap=new Map();   // sy -> Map<name,index> 高速逆引き
+  const secIndices=new Map();  // sy -> Int32Array(4096)
+  // blockData: Map<number, string>  key=lx+lz*16+(by+64)*256  value=mat文字列
+  for(const[lk,mat]of blockData){
+    const lx=lk&0xF;
+    const lz=(lk>>4)&0xF;
+    const ly=(lk>>8)-64; // +64オフセットを除去して実際のbyを復元
+    const sy=Math.floor(ly/16);
+    const lyS=((ly%16)+16)%16;
+    if(!secPalettes.has(sy)){
+      secPalettes.set(sy,['minecraft:air']);
+      secPalMap.set(sy,new Map([['minecraft:air',0]]));
+      secIndices.set(sy,new Int32Array(4096));
+    }
+    const pa=secPalettes.get(sy);
+    const pm=secPalMap.get(sy);
+    const idx=secIndices.get(sy);
+    const n=BLOCK_NAME[mat]||'minecraft:stone';
+    let ni=pm.get(n);
+    if(ni===undefined){ni=pa.length;pa.push(n);pm.set(n,ni);}
+    idx[lyS*256+lz*16+lx]=ni;
+  }
+  // SkyLight: 全ニブルを15（0xFF）で埋める → シェーダーMod(Iris等)で真っ黒になるのを防ぐ
+  const fullSkyLight=new Uint8Array(2048).fill(0xFF);
+  const zeroBL=new Uint8Array(2048); // BlockLightは0のまま
+  const secNBTs=[];
+  for(let sy=SEC_MIN;sy<=SEC_MAX;sy++){
+    const biomes=nComp([nNamed(T.LIST,'palette',nList(T.STR,[nStr('minecraft:plains')]))]);
+    const pa=secPalettes.get(sy);
+    if(!pa){
+      const bs=nComp([nNamed(T.LIST,'palette',nList(T.COMP,[nComp([nNamed(T.STR,'Name',nStr('minecraft:air'))])]))]);
+      secNBTs.push(nComp([
+        nNamed(T.BYTE,'Y',nByte(sy)),nNamed(T.COMP,'block_states',bs),nNamed(T.COMP,'biomes',biomes),
+        nNamed(T.BARR,'SkyLight',nc(nInt(2048),fullSkyLight.slice())),
+        nNamed(T.BARR,'BlockLight',nc(nInt(2048),zeroBL.slice())),
+      ]));
+    }else{
+      const idx=secIndices.get(sy);
+      const bpe=Math.max(4,Math.ceil(Math.log2(pa.length||1)));
+      const packed=packBitsTyped(idx,bpe);
+      const peArr=pa.map(n=>nComp([nNamed(T.STR,'Name',nStr(n))]));
+      const bs=nComp([nNamed(T.LIST,'palette',nList(T.COMP,peArr)),nNamed(T.LARR,'data',nc(nInt(packed.length/8),packed))]);
+      secNBTs.push(nComp([
+        nNamed(T.BYTE,'Y',nByte(sy)),nNamed(T.COMP,'block_states',bs),nNamed(T.COMP,'biomes',biomes),
+        nNamed(T.BARR,'SkyLight',nc(nInt(2048),fullSkyLight.slice())),
+        nNamed(T.BARR,'BlockLight',nc(nInt(2048),zeroBL.slice())),
+      ]));
+    }
+  }
+  const emptyLP=nc(nByte(T.END),nInt(0));
+  const ppItems=Array.from({length:NUM_SECS},()=>emptyLP);
+  const cp=nComp([
+    nNamed(T.INT,'DataVersion',nInt(3463)),nNamed(T.INT,'xPos',nInt(cx)),
+    nNamed(T.INT,'yPos',nInt(SEC_MIN)),nNamed(T.INT,'zPos',nInt(cz)),
+    nNamed(T.LONG,'LastUpdate',nLong(0,0)),nNamed(T.LONG,'InhabitedTime',nLong(0,0)),
+    nNamed(T.BYTE,'isLightOn',nByte(1)),nNamed(T.STR,'Status',nStr('minecraft:full')),
+    nNamed(T.LIST,'sections',nList(T.COMP,secNBTs)),
+    nNamed(T.COMP,'Heightmaps',nComp([])),
+    nNamed(T.LIST,'block_entities',nList(T.COMP,[])),
+    nNamed(T.LIST,'fluid_ticks',nList(T.COMP,[])),
+    nNamed(T.LIST,'block_ticks',nList(T.COMP,[])),
+    nNamed(T.LIST,'PostProcessing',nList(T.LIST,ppItems)),
+    nNamed(T.COMP,'structures',nComp([nNamed(T.COMP,'References',nComp([])),nNamed(T.COMP,'starts',nComp([]))])),
+  ]);
+  return nc(nByte(T.COMP),nStr(''),cp);
+}
+
+async function buildRegionFile(regionX,regionZ,chunks,onProgress){
+  const SEC=4096;
+  const compressed=new Map();let done=0;
+  for(const[key,nbt]of chunks){
+    const cs=new CompressionStream('deflate');const w=cs.writable.getWriter();w.write(nbt);w.close();
+    const parts=[];const rd=cs.readable.getReader();
+    while(true){const{value,done:d}=await rd.read();if(d)break;parts.push(value);}
+    let tot=0;parts.forEach(p=>tot+=p.length);
+    const buf=new Uint8Array(tot);let o=0;parts.forEach(p=>{buf.set(p,o);o+=p.length;});
+    compressed.set(key,buf);done++;if(onProgress)onProgress(done/chunks.size);await tick();
+  }
+  const locs=new Uint8Array(SEC),ts=new Uint8Array(SEC),cs2=[];let so=2;
+  for(const[key,data]of compressed){
+    const[cx,cz]=key.split(',').map(Number);
+    const lx=((cx%32)+32)%32,lz=((cz%32)+32)%32;
+    const hi=(lx+lz*32)*4;
+    const sects=Math.ceil((4+data.length+1)/SEC);
+    const dv=new DataView(locs.buffer);
+    dv.setUint8(hi,(so>>16)&0xFF);dv.setUint8(hi+1,(so>>8)&0xFF);dv.setUint8(hi+2,so&0xFF);dv.setUint8(hi+3,sects);
+    cs2.push({offset:so,data,sects});so+=sects;
+  }
+  const out=new Uint8Array(so*SEC);out.set(locs,0);out.set(ts,SEC);
+  for(const{offset,data}of cs2){
+    const pos=offset*SEC;const dv=new DataView(out.buffer,pos,5);
+    dv.setUint32(0,data.length+1,false);dv.setUint8(4,2);out.set(data,pos+5);
+  }
+  return out;
+}
+
+// ── 変換後プレビュー（上から見た簡易マップ） ──
+const PREVIEW_COLORS={
+  grass_block:[90,150,60], dirt:[120,85,55], sand:[220,210,150], gravel:[130,130,130],
+  stone:[140,140,140], sandstone:[216,205,160], bricks:[150,80,65],
+  white_concrete:[225,225,225], quartz:[235,235,230], gray_concrete:[110,110,115],
+  light_gray_concrete:[160,160,165], cracked_stone_bricks:[120,120,120],
+  green_concrete:[55,95,40], oak_log:[120,90,55], moss_block:[85,115,55],
+  water:[60,110,165], ice:[160,200,230]
+};
+function previewColorFor(mat){ return PREVIEW_COLORS[mat]||[125,125,125]; }
+
+// cg（チャンク→ブロック）から最上部ブロックの色で2Dマップを作って #previewCanvas に描画
+async function buildPreview(cg, byOffset, mnBX, mnBZ, mxBX, mxBZ){
+  const W=mxBX-mnBX+1, L=mxBZ-mnBZ+1;
+  if(!isFinite(W)||!isFinite(L)||W<=0||L<=0) return;
+  const PREVIEW_MAX=512; // ピクセル上限（これ以上はまとめて縮小）
+  const scale=Math.max(1, Math.ceil(Math.max(W,L)/PREVIEW_MAX));
+  const cw=Math.max(1,Math.ceil(W/scale)), cl=Math.max(1,Math.ceil(L/scale));
+  const topY=new Int32Array(cw*cl); topY.fill(-2147483648);
+  const rgba=new Uint8ClampedArray(cw*cl*4);
+  let lastTick=performance.now();
+  for(const [ck,bmap] of cg){
+    const p=ck.indexOf(',');const cx=+ck.slice(0,p), cz=+ck.slice(p+1);
+    const baseBX=cx*16, baseBZ=cz*16;
+    for(const [lk,mat] of bmap){
+      const lx=lk&0xF, lz=(lk>>4)&0xF, by=(lk>>8)-byOffset;
+      const px=Math.floor((baseBX+lx-mnBX)/scale), pz=Math.floor((baseBZ+lz-mnBZ)/scale);
+      if(px<0||px>=cw||pz<0||pz>=cl) continue;
+      const idx=pz*cw+px;
+      if(by>topY[idx]){
+        topY[idx]=by;
+        const c=previewColorFor(mat), o=idx*4;
+        rgba[o]=c[0]; rgba[o+1]=c[1]; rgba[o+2]=c[2]; rgba[o+3]=255;
+      }
+    }
+    if(performance.now()-lastTick>30){ await tick(); lastTick=performance.now(); }
+  }
+  const cv=document.getElementById('previewCanvas');
+  cv.width=cw; cv.height=cl;
+  cv.getContext('2d').putImageData(new ImageData(rgba,cw,cl),0,0);
+  // 表示サイズ（大きい辺を約480pxに、pixelatedで拡大）
+  cv.style.width=Math.round(cw*(480/Math.max(cw,cl)))+'px';
+  document.getElementById('previewCaption').textContent=` … ${W.toLocaleString()}×${L.toLocaleString()}ブロックを ${scale}:1 で表示`;
+  document.getElementById('previewBox').classList.remove('hidden');
+}
+
+async function buildAndDownloadWorld(chunkGrid,spawnX,spawnY,spawnZ,onProgress,onLog){
+  onLog('Anvil ワールド生成中...','info');
+  const cg=chunkGrid;
+  onLog(`チャンク数: ${cg.size}`,'info');
+  await tick();
+
+  // リージョン → チャンクキー一覧を構築
+  const rg=new Map();
+  for(const[ck]of cg){
+    const p=ck.indexOf(',');
+    const cx=+ck.slice(0,p),cz=+ck.slice(p+1);
+    const rk=`${Math.floor(cx/32)},${Math.floor(cz/32)}`;
+    if(!rg.has(rk))rg.set(rk,[]);rg.get(rk).push(ck);
+  }
+  onLog(`リージョン数: ${rg.size}、チャンク数: ${cg.size}`,'info');
+  await tick();
+
+  // level.dat 生成
+  const nowMs=BigInt(Date.now());
+  function biToNL(v){return nLong(Number(BigInt.asIntN(32,v&0xFFFFFFFFn)),Number(BigInt.asIntN(32,v>>32n)));}
+  const ld=nc(nByte(T.COMP),nStr(''),nComp([nNamed(T.COMP,'Data',nComp([
+    nNamed(T.INT,'DataVersion',nInt(3463)),nNamed(T.INT,'version',nInt(19133)),
+    nNamed(T.STR,'LevelName',nStr('PLATEAU City')),nNamed(T.INT,'GameType',nInt(1)),
+    nNamed(T.STR,'Generator',nStr(String.fromCharCode(107,97,117,106,105))),nNamed(T.STR,'generatorName',nStr(String.fromCharCode(107,97,117,106,105)+' - PLATEAU to Minecraft')),
+    nNamed(T.STR,'kauji_Credit',nStr('This world data was generated using a tool created by kauji.')),
+    nNamed(T.BYTE,'Difficulty',nByte(2)),nNamed(T.BYTE,'hardcore',nByte(0)),
+    nNamed(T.BYTE,'DifficultyLocked',nByte(0)),
+    nNamed(T.LONG,'Time',nLong(0,0)),nNamed(T.LONG,'DayTime',nLong(6000,0)),
+    nNamed(T.LONG,'LastPlayed',biToNL(nowMs)),
+    nNamed(T.BYTE,'initialized',nByte(1)),nNamed(T.BYTE,'allowCommands',nByte(1)),
+    nNamed(T.BYTE,'WasModded',nByte(0)),
+    nNamed(T.INT,'SpawnX',nInt(spawnX)),nNamed(T.INT,'SpawnY',nInt(spawnY)),nNamed(T.INT,'SpawnZ',nInt(spawnZ)),
+    nNamed(T.FLOAT,'SpawnAngle',nFloat(0)),
+    nNamed(T.DOUBLE,'BorderCenterX',nDouble(0)),nNamed(T.DOUBLE,'BorderCenterZ',nDouble(0)),
+    nNamed(T.DOUBLE,'BorderSize',nDouble(59999968)),nNamed(T.DOUBLE,'BorderSizeLerpTarget',nDouble(59999968)),
+    nNamed(T.LONG,'BorderSizeLerpTime',nLong(0,0)),
+    nNamed(T.DOUBLE,'BorderSafeZone',nDouble(5)),nNamed(T.DOUBLE,'BorderDamagePerBlock',nDouble(0.2)),
+    nNamed(T.DOUBLE,'BorderWarningBlocks',nDouble(5)),nNamed(T.DOUBLE,'BorderWarningTime',nDouble(15)),
+    nNamed(T.BYTE,'raining',nByte(0)),nNamed(T.INT,'rainTime',nInt(1)),
+    nNamed(T.BYTE,'thundering',nByte(0)),nNamed(T.INT,'thunderTime',nInt(1)),
+    nNamed(T.INT,'clearWeatherTime',nInt(100000)),
+    nNamed(T.COMP,'Version',nComp([nNamed(T.INT,'Id',nInt(3463)),nNamed(T.STR,'Name',nStr('1.20')),nNamed(T.STR,'Series',nStr('main')),nNamed(T.BYTE,'Snapshot',nByte(0))])),
+    nNamed(T.COMP,'WorldGenSettings',nComp([
+      nNamed(T.BYTE,'generate_features',nByte(0)),nNamed(T.BYTE,'bonus_chest',nByte(0)),nNamed(T.LONG,'seed',nLong(12345,0)),
+      nNamed(T.COMP,'dimensions',nComp([
+        nNamed(T.COMP,'minecraft:overworld',nComp([nNamed(T.STR,'type',nStr('minecraft:overworld')),nNamed(T.COMP,'generator',nComp([nNamed(T.STR,'type',nStr('minecraft:flat')),nNamed(T.COMP,'settings',nComp([nNamed(T.BYTE,'features',nByte(0)),nNamed(T.BYTE,'lakes',nByte(0)),nNamed(T.STR,'biome',nStr('minecraft:plains')),nNamed(T.LIST,'layers',nList(T.COMP,[nComp([nNamed(T.STR,'block',nStr('minecraft:bedrock')),nNamed(T.INT,'height',nInt(1))]),nComp([nNamed(T.STR,'block',nStr('minecraft:dirt')),nNamed(T.INT,'height',nInt(2))]),nComp([nNamed(T.STR,'block',nStr('minecraft:grass_block')),nNamed(T.INT,'height',nInt(1))])])),nNamed(T.LIST,'structure_overrides',nList(T.STR,[]))]))]))])),
+        nNamed(T.COMP,'minecraft:the_nether',nComp([nNamed(T.STR,'type',nStr('minecraft:the_nether')),nNamed(T.COMP,'generator',nComp([nNamed(T.STR,'type',nStr('minecraft:noise')),nNamed(T.STR,'settings',nStr('minecraft:nether')),nNamed(T.COMP,'biome_source',nComp([nNamed(T.STR,'type',nStr('minecraft:multi_noise')),nNamed(T.STR,'preset',nStr('minecraft:nether'))]))]))])),
+        nNamed(T.COMP,'minecraft:the_end',nComp([nNamed(T.STR,'type',nStr('minecraft:the_end')),nNamed(T.COMP,'generator',nComp([nNamed(T.STR,'type',nStr('minecraft:noise')),nNamed(T.STR,'settings',nStr('minecraft:end')),nNamed(T.COMP,'biome_source',nComp([nNamed(T.STR,'type',nStr('minecraft:the_end'))]))]))])),
+      ])),
+    ])),
+    nNamed(T.COMP,'DataPacks',nComp([nNamed(T.LIST,'Enabled',nList(T.STR,[nStr('vanilla')])),nNamed(T.LIST,'Disabled',nList(T.STR,[]))])),
+    nNamed(T.COMP,'CustomBossEvents',nComp([])),
+    nNamed(T.COMP,'DragonFight',nComp([nNamed(T.BYTE,'NeedsStateScanning',nByte(0)),nNamed(T.BYTE,'DragonKilled',nByte(1)),nNamed(T.BYTE,'PreviouslyKilled',nByte(1)),nNamed(T.LIST,'Gateways',nList(T.INT,[]))])),
+    nNamed(T.LIST,'ScheduledEvents',nList(T.COMP,[])),
+    nNamed(T.LIST,'ServerBrands',nList(T.STR,[nStr('vanilla')])),
+    nNamed(T.COMP,'GameRules',nComp([nNamed(T.STR,'keepInventory',nStr('true')),nNamed(T.STR,'doDaylightCycle',nStr('true')),nNamed(T.STR,'doWeatherCycle',nStr('true')),nNamed(T.STR,'doMobSpawning',nStr('false'))])),
+  ])),]));
+  const cs3=new CompressionStream('gzip');const ww=cs3.writable.getWriter();ww.write(ld);ww.close();
+  const pts=[];const rdr2=cs3.readable.getReader();
+  while(true){const{value,done}=await rdr2.read();if(done)break;pts.push(value);}
+  let tot2=0;pts.forEach(p=>tot2+=p.length);
+  const ldgz=new Uint8Array(tot2);let o2=0;pts.forEach(p=>{ldgz.set(p,o2);o2+=p.length;});
+
+  // ── fflate Zip でZIP生成、Blobに蓄積してダウンロード ──
+  const zipChunks=[];
+  let zipError=null;
+  const zip=new fflate.Zip((err,data,final)=>{
+    if(err){zipError=err;return;}
+    zipChunks.push(new Uint8Array(data));
+  });
+
+  // level.dat 追加
+  const ldEntry=new fflate.ZipPassThrough('world/level.dat');
+  zip.add(ldEntry);
+  ldEntry.push(ldgz,true);
+  await tick();
+
+  // ── 内部識別子の付与（無圧縮で格納） ──
+  // ZIPエントリは ZipPassThrough（無圧縮）で格納されるため、中身のバイト列は
+  // そのまま走査できる。ファイル名は内部IDに偽装し、中身もランダム風トークンに
+  // 紛れ込ませることで一見して用途が分かりにくいようにしている。
+  // Minecraftはワールド内の未知ファイルを無視するため動作に影響しない。
+  {
+    const rnd=(n)=>Array.from({length:n},()=>Math.floor(Math.random()*16).toString(16)).join('');
+    const _k=String.fromCharCode(107,97,117,106,105);
+    const wmText = rnd(6)+'-'+_k+'-2026-'+rnd(8)+'\n';
+    const wmBytes = new TextEncoder().encode(wmText);
+    const wmEntry = new fflate.ZipPassThrough('world/data/.uid');
+    zip.add(wmEntry);
+    wmEntry.push(wmBytes, true);
+    await tick();
+  }
+
+  // リージョンを1つずつ処理してZIPストリームに流す
+  let totalDone=0;
+  const totalChunks=cg.size;
+  let dr=0;
+  for(const[rk,ckList]of rg){
+    if(zipError) throw zipError;
+    const p=rk.indexOf(',');
+    const rx=+rk.slice(0,p),rz=+rk.slice(p+1);
+
+    const rmap=new Map();
+    for(const ck of ckList){
+      const cp=ck.indexOf(',');
+      const cx=+ck.slice(0,cp),cz=+ck.slice(cp+1);
+      rmap.set(ck,await buildAnvilChunk(cx,cz,cg.get(ck)));
+      cg.delete(ck); // NBT変換済みチャンクを即解放
+      totalDone++;
+      if(totalDone%5===0){
+        if(onProgress)onProgress(totalDone/totalChunks*0.98,`チャンク ${totalDone}/${totalChunks}`);
+        await tick();
+      }
+    }
+
+    // リージョンファイル生成 → ZIPストリームへ書き込み → 即解放
+    const mcaData=await buildRegionFile(rx,rz,rmap,null);
+    rmap.clear();
+
+    const mcaEntry=new fflate.ZipPassThrough(`world/region/r.${rx}.${rz}.mca`);
+    zip.add(mcaEntry);
+    mcaEntry.push(mcaData,true);
+
+    // GCを促すためtick
+
+    dr++;
+    // リージョン完了の進捗はチャンク進捗(0〜0.98)に統合済み。後退チラつき防止のため個別報告はしない。
+    await tick();
+  }
+
+  // ZIPを閉じてBlobダウンロード
+  zip.end();
+  if(zipError) throw zipError;
+  if(onProgress)onProgress(0.99,'ZIP確定中...');
+  await tick();
+  const zb=new Blob(zipChunks,{type:'application/zip'});
+  zipChunks.length=0;
+  if(onProgress)onProgress(1.0,'完了');
+  const url=URL.createObjectURL(zb);
+  const fname='world.zip'; // 実際にダウンロードされるファイル名
+  const a=document.createElement('a');a.href=url;a.download=fname;a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+  onLog(`ワールドデータ作成完了！ ${fname} がダウンロードされました。`,'ok');
+}
+
+// ダウンロードは変換ボタンから自動実行されます
+
+</script>
+</body>
+</html>
