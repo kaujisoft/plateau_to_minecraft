@@ -1,4 +1,4 @@
-# PLATEAU → Minecraft 一発変換
+# PLATEAU_to_Minecraft 一発変換
 
 **Ver 1.0**　© 2026 kauji
 
