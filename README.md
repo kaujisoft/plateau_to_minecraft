@@ -2,6 +2,8 @@
 
 **Ver 1.0**　© 2026 kauji
 
+**ツールを使う：** https://kaujisoft.github.io/plateau_to_minecraft/
+
 <img src="img/1.png" width="100%">
 
 国土交通省「PLATEAU（プラトー）」が公開している 3D 都市データ（CityGML 形式の GML ファイル）を読み込み、**Minecraft（Java 版）でそのまま遊べるワールドデータに一発変換するブラウザアプリ**です。
