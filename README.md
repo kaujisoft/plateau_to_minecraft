@@ -176,8 +176,4 @@ PLATEAUのダウンロード ZIP に含まれるインデックス図（例：`1
 
 ---
 
-## お問い合わせ
 
-ご要望・ご質問は note のメッセージ機能または X（旧 Twitter）の DM までお願いします。
-
-X（旧 Twitter）：[@shimotsuki_dx](https://x.com/shimotsuki_dx)
