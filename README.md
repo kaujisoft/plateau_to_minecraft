@@ -7,7 +7,7 @@
 国土交通省「PLATEAU（プラトー）」が公開している 3D 都市データ（CityGML 形式の GML ファイル）を読み込み、**Minecraft（Java 版）でそのまま遊べるワールドデータに一発変換するブラウザアプリ**です。
 インストール不要。ブラウザだけで動作します。
 
-> ツールの詳しい使い方は[操作説明書（PDF）](PLATEAU_Minecraft一発変換ver1_0_操作説明書.pdf)を参照してください。
+> ツールの詳しい使い方は[操作説明書（PDF）](/doc/PLATEAU_to_Minecraft_ver1.0_manual.pdf)を参照してください。
 
 ---
 
