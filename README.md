@@ -15,8 +15,6 @@
 
 <img src="img/1.png" width="49%"> <img src="img/2.png" width="49%">
 
-*左：航空ビュー　右：ストリートビュー*
-
 ---
 
 ## 特長
