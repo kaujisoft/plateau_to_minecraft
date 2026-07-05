@@ -27,7 +27,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
 .container{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:24px 20px 60px}
 header{text-align:center;padding:32px 0 40px;border-bottom:1px solid var(--border);margin-bottom:36px}
-.logo-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:10px}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:10px;flex-wrap:wrap}
 .logo-icon{width:52px;height:52px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px;transform:rotate(15deg)}
 .logo-icon span{display:block;border-radius:2px}
 h1{font-family:'Share Tech Mono',monospace;font-size:clamp(1rem,3.5vw,1.7rem);color:var(--accent);letter-spacing:2px;text-shadow:0 0 20px rgba(0,229,255,0.4)}
@@ -39,7 +39,8 @@ h1{font-family:'Share Tech Mono',monospace;font-size:clamp(1rem,3.5vw,1.7rem);co
 @keyframes arrowPulse{0%,100%{opacity:.5;transform:translateY(0)}50%{opacity:1;transform:translateY(3px)}}
 .step{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .3s}
 .step.active{border-color:var(--accent)}.step.done{border-color:var(--accent2)}
-.step-header{display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(0,0,0,.2);border-bottom:1px solid var(--border)}
+.step-header{display:flex;align-items:center;gap:10px 14px;padding:14px 20px;background:rgba(0,0,0,.2);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.step-title{min-width:0;overflow-wrap:break-word}
 .step-num{font-family:'Share Tech Mono',monospace;font-size:.9rem;color:var(--accent);background:rgba(0,229,255,.08);border:1px solid var(--accent);border-radius:4px;padding:3px 8px;white-space:nowrap}
 .step.done .step-num{color:var(--accent2);border-color:var(--accent2);background:rgba(57,255,20,.08)}
 .step-title{font-size:1.08rem;font-weight:700}
@@ -49,6 +50,16 @@ h1{font-family:'Share Tech Mono',monospace;font-size:clamp(1rem,3.5vw,1.7rem);co
 /* ファイルドロップ 2列 */
 .drop-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0}
 @media(max-width:600px){.drop-row{grid-template-columns:1fr}}
+/* PC表示(インラインstyleでの列数指定)はそのまま維持しつつ、
+   スマホ・タブレット幅では列数を減らして横方向のはみ出し・見切れを防ぐ */
+@media(max-width:760px){
+  .drop-row{grid-template-columns:repeat(2,1fr)!important}
+  .settings-grid{grid-template-columns:repeat(2,1fr)!important}
+}
+@media(max-width:480px){
+  .drop-row{grid-template-columns:1fr!important}
+  .settings-grid{grid-template-columns:1fr!important}
+}
 .drop-row>div{display:flex;flex-direction:column}
 .drop-row .drop-zone{flex:1 0 auto}
 .drop-zone{border:2px dashed var(--border);border-radius:8px;padding:24px 14px;text-align:center;cursor:pointer;transition:all .2s;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
