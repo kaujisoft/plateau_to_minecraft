@@ -420,6 +420,10 @@ footer{text-align:center;margin-top:48px;font-size:.84rem;color:var(--text-dim);
         <input type="checkbox" id="hollowBldg" checked style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0">
         <label for="hollowBldg" style="text-transform:none;letter-spacing:0;font-size:1rem;cursor:pointer;line-height:1.45">🏚️ 建物を空洞化する<br><span style="font-size:.82rem;color:var(--text-dim)">外見はそのままで内部を空気に（窓から中が見えます）</span></label>
       </div>
+      <div class="field" style="flex-direction:row;align-items:center;gap:10px;padding-top:6px">
+        <input type="checkbox" id="showClouds" checked style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0">
+        <label for="showClouds" style="text-transform:none;letter-spacing:0;font-size:1rem;cursor:pointer;line-height:1.45">☁️ 雲を表示する<br><span style="font-size:.82rem;color:var(--text-dim)">標高の高い街では、雲が地面や建物の近くに出ることがあります。気になるときはチェックを外してください（このワールドだけ雲が消えます）</span></label>
+      </div>
     </div>
 
     <div class="settings-grid" style="grid-template-columns:1fr">
@@ -474,10 +478,21 @@ footer{text-align:center;margin-top:48px;font-size:.84rem;color:var(--text-dim);
     <div id="dlDoneWorld" class="hidden" style="font-family:'Share Tech Mono',monospace;font-size:1.05rem;color:var(--accent2);margin-top:10px;text-align:center;letter-spacing:1px">✔ <span id="dlDoneName">world.zip</span> ワールドデータ作成完了！</div>
     <div id="saveWorldBox" class="hidden" style="margin-top:12px;padding:12px 14px;border:1px solid rgba(0,229,255,.3);border-radius:6px;background:rgba(0,229,255,.05)">
       <div style="font-size:.86rem;color:var(--text-dim);margin-bottom:8px">作成したワールドデータ：<span id="saveWorldInfo" style="color:var(--accent)"></span></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-primary" id="btnShareWorld" type="button" onclick="shareWorldFile()">🎮 Minecraft で開く</button>
+      <div id="convWarnBox" class="hidden" style="margin:4px 0 12px;padding:10px 12px;border:1px solid rgba(255,107,53,.6);border-left:4px solid var(--accent3);border-radius:6px;background:rgba(255,107,53,.08)">
+        <div style="font-weight:bold;color:var(--accent3);margin-bottom:6px">⚠ 変換時の注意（<span id="convWarnCount">0</span>件）</div>
+        <div style="font-size:.82rem;color:var(--text-dim);margin-bottom:6px">ワールドはできていますが、次の点に注意してください。</div>
+        <ul id="convWarnList" style="margin:0;padding-left:1.3em;font-size:.86rem;color:var(--text);line-height:1.7"></ul>
       </div>
-      <div id="shareWorldNote" style="font-size:.78rem;color:var(--text-dim);margin-top:8px;line-height:1.6">押すと共有メニューが開きます。一覧から「Minecraft」を選ぶと、Minecraft が起動してワールドが取り込まれます（一覧に無いときは右端の「その他」から選択）。「"ファイル"に保存」で端末に保存することもできます。</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="btnShareWorld" type="button" onclick="shareWorldFile()">📤 共有</button>
+      </div>
+      <div id="shareWorldNote" style="font-size:.86rem;color:var(--text-dim);margin-top:10px;line-height:1.8">
+        <b style="color:var(--text)">Minecraft で遊ぶには</b><br>
+        1. 「共有」を押すと、共有メニュー（アプリの一覧）が開きます。<br>
+        2. 一覧から「Minecraft」を選ぶと、Minecraft が起動してワールドが取り込まれます。<br>
+        3. 一覧に「Minecraft」が無いときは、右端の「その他」から探してください。<br>
+        <span style="font-size:.8rem">※「"ファイル"に保存」を選ぶと、端末に保存するだけになります（Minecraft は起動しません）。</span>
+      </div>
     </div>
     <div id="shareSection" class="share-section hidden">
       <div class="share-row">
@@ -1206,6 +1221,15 @@ function showSidebar(idx) {
   });
 }
 
+// 画面下（アクションバー）のお知らせ。標高の常時表示で、すぐに上書きされないよう少しの間だけ優先する
+const msgTick = new Map();
+function notifyBar(player, msg) { player.onScreenDisplay.setActionBar(msg); msgTick.set(player.id, system.currentTick); }
+// 立っている場所の標高（m）。ワールドを作るときに下げたブロック数（CFG.elev.shift）を足して実際の標高に戻す
+function elevText(p) {
+  const e = CFG.elev || { shift: 0, bs: 1 };
+  const m = (Math.floor(p.location.y) - 1 + e.shift + 0.5) * e.bs;
+  return "§a標高§r " + (e.bs < 1 ? m.toFixed(1) : String(Math.floor(m))) + "m";
+}
 /** @param {import("@minecraft/server").Player} player */
 function switchTo(player, j) {
   const i = modeIndexAt(player.location.x);
@@ -1216,7 +1240,7 @@ function switchTo(player, j) {
     dimension: player.dimension,
     facingLocation: { x: head.x + dx + v.x * 10, y: head.y + v.y * 10, z: head.z + v.z * 10 },
   });
-  player.onScreenDisplay.setActionBar("§b表示：" + (CFG.modes[j].label || CFG.modes[j].name));
+  notifyBar(player, "§b表示：" + (CFG.modes[j].label || CFG.modes[j].name));
   if (CFG.modes[j].note) player.sendMessage("§7" + CFG.modes[j].note);
 }
 
@@ -1244,7 +1268,7 @@ function openMenu(player) {
     if (res.canceled || res.selection === undefined) return;
     if (res.selection < n) { switchTo(player, res.selection); return; }
     if (infoOn) player.addTag(INFO_OFF); else player.removeTag(INFO_OFF);
-    player.onScreenDisplay.setActionBar(infoOn ? "§7建物情報の表示：オフ" : "§b建物情報の表示：オン");
+    notifyBar(player, infoOn ? "§7建物情報の表示：オフ" : "§b建物情報の表示：オン");
   });
 }
 
@@ -1252,7 +1276,7 @@ function openMenu(player) {
 function toggleDayNight(player) {
   const toNight = world.getTimeOfDay() < 12000;
   world.setTimeOfDay(toNight ? 18000 : 6000);
-  player.onScreenDisplay.setActionBar(toNight ? "§9夜にしました" : "§e昼にしました");
+  notifyBar(player, toNight ? "§9夜にしました" : "§e昼にしました");
 }
 
 // 「アイテムを使う」操作：PC＝右クリック／スマホ＝画面をタップ／コントローラー＝左トリガー。
@@ -1408,18 +1432,18 @@ function depthText(v, pointed) {
 
 // 見ている建物の情報を画面下に表示。建物でなければ、浸水の表示中は「カーソルで指している場所」の浸水深
 // （何も指していないときは、自分が立っている場所の浸水深）を出す
-if (CFG.hasTool) system.runInterval(() => {
+system.runInterval(() => {
   for (const p of world.getAllPlayers()) {
     /** @type {string | null} */
     let text = null;
     let hit;
-    try { hit = p.getBlockFromViewDirection({ maxDistance: 96 }); } catch (e) { hit = undefined; }
+    if (CFG.hasTool) { try { hit = p.getBlockFromViewDirection({ maxDistance: 96 }); } catch (e) { hit = undefined; } }
     if (hit && !p.hasTag(INFO_OFF)) {
       const l = hit.block.location;
       const i = buildingAt(l.x, l.y, l.z);
       if (i >= 0) text = infoText(i, modeIndexAt(l.x));
     }
-    if (!text) {
+    if (!text && CFG.hasTool) {
       const m = CFG.modes[modeIndexAt(p.location.x)];
       if (m && m.flood) {
         const l = hit ? hit.block.location : p.location;
@@ -1427,6 +1451,14 @@ if (CFG.hasTool) system.runInterval(() => {
       }
     }
     if (text) p.onScreenDisplay.setActionBar(text);
+  }
+}, 10);
+
+// 立っている場所の標高を、画面の左上（プレイヤーの絵の右）に常に出す。
+// 「ELV:」で始まるタイトルを送ると、ワールドのリソースパック（ui/hud_screen.json）が左上の文字として表示する
+system.runInterval(() => {
+  for (const p of world.getAllPlayers()) {
+    try { p.onScreenDisplay.setTitle("ELV:" + elevText(p), { fadeInDuration: 0, stayDuration: 60, fadeOutDuration: 0 }); } catch (e) {}
   }
 }, 10);
 `;
@@ -1477,9 +1509,23 @@ function _appendLog(b,msg,cls){
   }
   b.scrollTop=b.scrollHeight;
 }
+// 変換中に出た注意（オレンジ）を集めて、ダウンロードボタンの上にまとめて出す
+let convWarnings=null;
 function log(msg,cls='info'){
   const b=document.getElementById('logBox');b.classList.remove('hidden');
   _appendLog(b,msg,cls);
+  if(cls==='warn'&&convWarnings){
+    const t=String(msg).replace(/^\s*⚠\s*/,'').trim();
+    if(t&&!convWarnings.includes(t)) convWarnings.push(t);
+  }
+}
+function renderConvWarnings(){
+  const box=document.getElementById('convWarnBox'), list=document.getElementById('convWarnList');
+  const w=convWarnings||[];
+  list.innerHTML='';
+  for(const t of w){ const li=document.createElement('li'); li.textContent=t; list.appendChild(li); }
+  document.getElementById('convWarnCount').textContent=w.length;
+  box.classList.toggle('hidden',!w.length);
 }
 // STEP01用ログ（読み込んだファイル・エラーを消えずに残す）
 function step1Log(msg,cls='info'){
@@ -2337,6 +2383,70 @@ async function handleVegFiles(files){
 }
 
 
+// ── 高さの調整：Minecraft で置ける高さは Y=-64〜319。標高（m）÷ブロックサイズ がこれを超えると作られない ──
+// 高い所がある地域は、全体を何ブロックか下げて作る（elevShiftBlocks）。ゲーム内の標高表示はこの分を足して実際の標高に戻す。
+const WORLD_TOP_SAFE=310, WORLD_BOTTOM_SAFE=-60;
+let elevShiftBlocks=0;      // 変換中に下げているブロック数
+let lastElevShift=0;        // 最後に作ったワールドで下げたブロック数（表示ツールの標高表示に使う）
+let _elevShiftAppliedM=0;   // いまデータから引いている高さ（m）
+const _zmPre={};            // 高さを下げる前に判定した「浸水想定の面の高さの扱い」
+function elevRange(){
+  let mn=Infinity,mx=-Infinity;
+  const vy=(y)=>{ if(y===y){ if(y<mn)mn=y; if(y>mx)mx=y; } };
+  for(const arr of [gmlPolygons,tranPolygons,vegPolygons]) if(arr) for(const p of arr){
+    if(p.verts) for(const v of p.verts) vy(v.y);
+    if(p.objMaxY!==undefined) vy(p.objMaxY);
+    if(p.maxY!==undefined) vy(p.maxY);
+  }
+  if(demTriangles&&demTriangles.a){ const a=demTriangles.a; for(let i=0;i<a.length;i++) vy(a[i]); }
+  // 浸水想定の水面は上側だけ見る（浸水深の表なら値は小さいので影響しない）
+  for(const k of Object.keys(hazardRasters)){ const r=hazardRasters[k]; if(r&&r.a){ const a=r.a; for(let i=0;i<a.length;i++){ const y=a[i]; if(y===y&&y>mx) mx=y; } } }
+  return mn<=mx?{min:mn,max:mx}:null;
+}
+// 下げるブロック数を決める（10ブロック単位）。ok=false なら高低差が大きすぎて一部が作れない
+function elevShiftFor(r,bs,depth){
+  if(!r) return {shift:0,top:0,bottom:0,ok:true};
+  const top=Math.ceil(r.max/bs), bottom=Math.floor(r.min/bs)-(depth||3);
+  let shift=0;
+  if(top>WORLD_TOP_SAFE) shift=Math.ceil((top-WORLD_TOP_SAFE)/10)*10;
+  return {shift,top,bottom,ok:(top-shift)<=319&&(bottom-shift)>=WORLD_BOTTOM_SAFE};
+}
+function applyElevShift(D){
+  if(!D) return;
+  const seen=new Set();
+  for(const arr of [gmlPolygons,tranPolygons,vegPolygons]) if(arr) for(const p of arr){
+    if(p.verts) for(const v of p.verts){ if(!seen.has(v)){ seen.add(v); v.y-=D; } }
+    if(p.objMinY!==undefined) p.objMinY-=D;
+    if(p.objMaxY!==undefined) p.objMaxY-=D;
+    if(p.minY!==undefined) p.minY-=D;
+    if(p.maxY!==undefined) p.maxY-=D;
+  }
+  if(demTriangles&&demTriangles.a){ const a=demTriangles.a; for(let i=0;i<a.length;i++) a[i]-=D; }
+  for(const k of Object.keys(hazardRasters)){
+    const r=hazardRasters[k];
+    if(r&&r.a&&!(_zmPre[k]&&_zmPre[k].isDepth)){ const a=r.a; for(let i=0;i<a.length;i++) a[i]-=D; }  // 浸水深の表は下げない
+  }
+  _elevShiftAppliedM+=D;
+}
+function restoreElevShift(){
+  if(_elevShiftAppliedM) applyElevShift(-_elevShiftAppliedM);
+  _elevShiftAppliedM=0; elevShiftBlocks=0;
+  for(const k of Object.keys(_zmPre)) delete _zmPre[k];
+}
+// STEP 01：読み込んだデータが高すぎる・低すぎるときは、変換の前に注意を出す
+let _elevWarnLast='';
+function warnElevRange(){
+  const bs=parseFloat(document.getElementById('blockSize').value)||1;
+  const depth=parseInt((document.getElementById('terrainDepth')||{}).value)||3;
+  const r=elevRange(); if(!r) return;
+  const e=elevShiftFor(r,bs,depth);
+  let msg='';
+  if(e.shift) msg=`⚠ 標高の高い所があります（最高 約${Math.round(r.max)}m）。1ブロック＝${bs}mでは Minecraft で作れる高さ（Y=319）を超えるため、変換時に街全体を ${e.shift}ブロック下げて作ります（ゲーム内の標高表示は実際の標高で出ます）。`;
+  if(!e.ok) msg+=`${msg?' ':'⚠ '}高低差が大きいため（約${Math.round(r.min)}〜${Math.round(r.max)}m）、一番低い所の一部が作れない可能性があります。「1ブロックあたりのサイズ」を大きくすると全体が入ります。`;
+  if(msg&&msg!==_elevWarnLast) step1Log(msg,'warn');
+  _elevWarnLast=msg;
+}
+
 function checkReadyToProcess(){
   const hasBldg = gmlPolygons&&gmlPolygons.length>0;
   const hasDem  = demTriangles&&demTriangles.length>0;
@@ -2345,6 +2455,7 @@ function checkReadyToProcess(){
   if(hasBldg||hasDem||hasTran||hasVeg){
     document.getElementById('step2-status').textContent='READY';
     document.getElementById('btnProcess').disabled=false;
+    try{ warnElevRange(); }catch(e){ console.warn(e); }
     const hints=[];
     if(hasBldg) hints.push(`建物 ${gmlPolygons.length} ポリゴン`);
     if(hasDem)  hints.push(`地形 ${demTriangles.length.toLocaleString()} 三角形`);
@@ -2637,7 +2748,8 @@ function voxelizeBldgPoly(poly,bs,blockMap,bldgMatResolver,roofMat,floorY){
 // =====================================================================
 // PROCESS BUTTON
 // =====================================================================
-document.getElementById('btnProcess').addEventListener('click',async()=>{
+async function _runProcess(){
+  convWarnings=[];
   {
     const _hasB=gmlPolygons&&gmlPolygons.length>0;
     const _hasD=demTriangles&&demTriangles.length>0;
@@ -2651,6 +2763,7 @@ document.getElementById('btnProcess').addEventListener('click',async()=>{
   document.getElementById('progressWrap').classList.remove('hidden');
   document.getElementById('logBox').classList.remove('hidden');
   document.getElementById('previewBox').classList.add('hidden'); // 前回のプレビューを消す
+  document.getElementById('saveWorldBox').classList.add('hidden');  // 前回のワールドデータのボタンを消す
   setProgress(0);
 
   const bs=parseFloat(document.getElementById('blockSize').value)||1.0;
@@ -2678,6 +2791,17 @@ document.getElementById('btnProcess').addEventListener('click',async()=>{
   const facadeMode=document.getElementById('facadeMode').value;
   const facadeFn=getFacadeFn(facadeMode);
   facadeSalt=(Math.random()*0x100000000)>>>0; // 自動（ランダム）は生成のたびに変化
+  // 高さの調整：高い所が Y=319 を超える地域は、街全体を下げて作る
+  {
+    const er=elevRange(), es=elevShiftFor(er,bs,terrainDepth);
+    elevShiftBlocks=es.shift; lastElevShift=es.shift;
+    if(es.shift){
+      for(const H of HAZARD_TYPES) if(hazardLoaded(H.kind)&&!_zmPre[H.kind]) _zmPre[H.kind]=detectHazardZMode(H.kind);
+      applyElevShift(es.shift*bs);
+      log(`⚠ 標高の高い所（最高 約${Math.round(er.max)}m）が Minecraft の高さの上限（Y=319）を超えるため、街全体を ${es.shift}ブロック下げて作ります（標高 ${es.shift*bs}m が Y=0）`,'warn');
+    }
+    if(!es.ok) log(`⚠ 高低差が大きいため（約${Math.round(er.min)}〜${Math.round(er.max)}m）、一番低い所の一部が作れない可能性があります（「1ブロックあたりのサイズ」を大きくすると全体が入ります）`,'warn');
+  }
 
   log(`変換開始 / ブロック=${bs}m / 建物=${bldgMat}`,'info');
   if(demTriangles)log(`地形=${terrainMat}/${terrainSubMat} / 三角形=${demTriangles.length.toLocaleString()}`,'info');
@@ -3049,7 +3173,7 @@ document.getElementById('btnProcess').addEventListener('click',async()=>{
     // 既存ブロック（建物・道路・地形）は上書きしないので保護される。
     if(seaMode!=='none'){
       const seaMat=seaMode==='ice'?'ice':'water';
-      const seaSurfaceY=seaOffset;                   // 水面Y
+      const seaSurfaceY=seaOffset-elevShiftBlocks;   // 水面Y（標高0m＋オフセット。高さを下げているときはその分下げる）
       lastSeaY=seaSurfaceY;
       const seaDepth=Math.max(3,Math.round(5/bs));   // 海の深さ（約5m）
       let seabedY=seaSurfaceY-seaDepth;              // 海底面Y
@@ -3329,6 +3453,7 @@ document.getElementById('btnProcess').addEventListener('click',async()=>{
     const _nm=worldNaming();
     worldTitleOverride=_nm?_nm.title:null;
     worldFileBase=_nm?_nm.base:null;
+    worldShowClouds=document.getElementById('showClouds').checked;
     if(_nm) log(`街の名前：${_nm.title}`,'info');
     document.getElementById('dlDoneName').textContent=worldFileBase
       ?(_edition==='bedrock'?`plateau_${worldFileBase}.mcworld`:`plateau_${worldFileBase}_java.zip`)
@@ -3357,7 +3482,13 @@ document.getElementById('btnProcess').addEventListener('click',async()=>{
     console.error(e);
   }
   document.getElementById('btnProcess').disabled=false;
+}
+document.getElementById('btnProcess').addEventListener('click',async()=>{
+  try{ await _runProcess(); }
+  catch(e){ console.error(e); log('❌ 変換エラー: '+(e.message||e),'err'); document.getElementById('btnProcess').disabled=false; }
+  finally{ restoreElevShift(); }   // 下げた高さを元のデータに戻す（もう一度変換しても同じ結果になるように）
 });
+document.getElementById('blockSize').addEventListener('change',()=>{ if(!document.getElementById('btnProcess').disabled) try{ warnElevRange(); }catch(e){} });
 
 function makeViews(opts,onLog){
   const owner=opts&&opts.tool?opts.owner:null;
@@ -4189,6 +4320,7 @@ function rasterAtM(rs,xm,zm){
 // ① 建物に付いている浸水深と比べる（Z ≒ 地面＋浸水深 なら標高、Z ≒ 浸水深 なら浸水深）
 // ② 建物の情報が足りなければ、Z が地面より低い場所の割合で判断（標高なら地面より低くならない）
 function detectHazardZMode(kind){
+  if(_zmPre[kind]) return _zmPre[kind];   // 高さを下げて変換している間は、下げる前の判定を使う
   const rs=hazardRasters[kind];
   if(!rs||!demTriangles) return {isDepth:false,how:'地形データなし（標高として扱う）'};
   const centers=new Map();
@@ -4433,6 +4565,10 @@ function worldNaming(){
 // ・ブロックされても困らないよう、画面に「保存」「共有」ボタンを出して手動でも保存できるようにする
 // =====================================================================
 let lastWorldFile=null; // {blob,name,url}
+// 雲を表示するか（STEP 02）。外したときは、雲の画像を透明にするリソースパックをワールドに入れる
+let worldShowClouds=true;
+const CLEAR_CLOUDS_PNG_B64='iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAABFUlEQVR42u3BMQEAAADCoPVP7WsIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAMBPAAB2ClDBAAAAABJRU5ErkJggg==';
+function clearCloudsPng(){ return Uint8Array.from(atob(CLEAR_CLOUDS_PNG_B64),c=>c.charCodeAt(0)); }
 function deliverWorldFile(blob,name,onLog){
   if(lastWorldFile&&lastWorldFile.url) URL.revokeObjectURL(lastWorldFile.url);
   const url=URL.createObjectURL(blob);
@@ -4446,25 +4582,28 @@ function deliverWorldFile(blob,name,onLog){
   let canShare=false;
   try{ canShare=!!(navigator.canShare&&navigator.canShare({files:[new File([blob],name,{type:'application/octet-stream'})]})); }catch(e){}
   // スマホ・タブレットかどうかは端末の種類で判定する
-  // （タッチ画面つきの Windows PC などは PC として扱い、従来どおり自動ダウンロード）
+  // （タッチ画面つきの Windows PC などは PC として扱い、ダウンロードボタンにする）
   const ua=navigator.userAgent||'';
   const isMobile=/iPhone|iPad|iPod|Android/i.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
   const useShare=canShare&&isMobile;
   const isMcworld=/\.mcworld$/.test(name);
-  document.getElementById('btnShareWorld').textContent=isMcworld?'🎮 Minecraft で開く':'📤 共有・ファイルに保存';
-  document.getElementById('shareWorldNote').classList.toggle('hidden',!isMcworld);
-  document.getElementById('saveWorldBox').classList.toggle('hidden',!useShare);
-  if(useShare){
-    // スマホではアプリ内の表示機能などで自動ダウンロードが止められることがあるため、行わない
-    onLog(`ワールドデータ作成完了！ ${name}（${sizeMB}MB）。下の「Minecraft で開く」を押してください。`,'ok');
-  }else{
-    // PC：自動でダウンロード
-    const t=document.createElement('a'); t.href=url; t.download=name; t.click();
-    onLog(`ワールドデータ作成完了！ ${name}（${sizeMB}MB）がダウンロードされました。`,'ok');
-  }
+  lastWorldFile.useShare=useShare;
+  document.getElementById('btnShareWorld').textContent=useShare?'📤 共有'
+    :(isMcworld?'⬇ ワールドデータをダウンロード（統合版・.mcworld）':'⬇ ワールドデータをダウンロード（Java版・.zip）');
+  document.getElementById('shareWorldNote').classList.toggle('hidden',!(isMcworld&&useShare));
+  renderConvWarnings();
+  document.getElementById('saveWorldBox').classList.remove('hidden');
+  // 自動ではダウンロードしない（3Dプレビューで確かめてから、下のボタンで保存する）
+  onLog(useShare
+    ?`ワールドデータ作成完了！ ${name}（${sizeMB}MB）。下の「共有」を押して、一覧から「Minecraft」を選んでください。`
+    :`ワールドデータ作成完了！ ${name}（${sizeMB}MB）。下の「ワールドデータをダウンロード」を押して保存してください。`,'ok');
 }
 async function shareWorldFile(){
   if(!lastWorldFile) return;
+  if(!lastWorldFile.useShare){
+    const t=document.createElement('a'); t.href=lastWorldFile.url; t.download=lastWorldFile.name; t.click();
+    return;
+  }
   try{
     const f=new File([lastWorldFile.blob],lastWorldFile.name,{type:'application/octet-stream'});
     await navigator.share({files:[f],title:lastWorldFile.name});
@@ -4681,7 +4820,7 @@ async function buildAndDownloadWorld(chunkGrid,spawnX,spawnY,spawnZ,onProgress,o
         nNamed(T.COMP,'minecraft:the_end',nComp([nNamed(T.STR,'type',nStr('minecraft:the_end')),nNamed(T.COMP,'generator',nComp([nNamed(T.STR,'type',nStr('minecraft:noise')),nNamed(T.STR,'settings',nStr('minecraft:end')),nNamed(T.COMP,'biome_source',nComp([nNamed(T.STR,'type',nStr('minecraft:the_end'))]))]))])),
       ])),
     ])),
-    nNamed(T.COMP,'DataPacks',nComp([nNamed(T.LIST,'Enabled',nList(T.STR,[nStr('vanilla')])),nNamed(T.LIST,'Disabled',nList(T.STR,[]))])),
+    nNamed(T.COMP,'DataPacks',nComp([nNamed(T.LIST,'Enabled',nList(T.STR,[nStr('vanilla'),nStr('file/plateau_elev')])),nNamed(T.LIST,'Disabled',nList(T.STR,[]))])),
     nNamed(T.COMP,'CustomBossEvents',nComp([])),
     nNamed(T.COMP,'DragonFight',nComp([nNamed(T.BYTE,'NeedsStateScanning',nByte(0)),nNamed(T.BYTE,'DragonKilled',nByte(1)),nNamed(T.BYTE,'PreviouslyKilled',nByte(1)),nNamed(T.LIST,'Gateways',nList(T.INT,[]))])),
     nNamed(T.LIST,'ScheduledEvents',nList(T.COMP,[])),
@@ -4709,6 +4848,35 @@ async function buildAndDownloadWorld(chunkGrid,spawnX,spawnY,spawnZ,onProgress,o
   zip.add(ldEntry);
   ldEntry.push(ldgz,true);
   await tick();
+  {
+    // 立っている場所の標高を画面下（アクションバー）に常に出すデータパック
+    const B=Math.round(lastBlockSize*100), sh=lastElevShift-1;
+    const tick=['execute as @a store result score @s plt_elev run data get entity @s Pos[1]',
+      sh>=0?`scoreboard players add @a plt_elev ${sh}`:`scoreboard players remove @a plt_elev ${-sh}`,
+      'scoreboard players operation @a plt_elev *= #bs plt_elev',
+      'scoreboard players operation @a plt_elev /= #c100 plt_elev',
+      'execute as @a run title @s actionbar [{"text":"標高 ","color":"green"},{"score":{"name":"@s","objective":"plt_elev"},"color":"white"},{"text":" m","color":"white"}]',''].join('\n');
+    const load=['scoreboard objectives add plt_elev dummy',`scoreboard players set #bs plt_elev ${B}`,'scoreboard players set #c100 plt_elev 100',''].join('\n');
+    const mcmeta={pack:{pack_format:15,supported_formats:{min_inclusive:15,max_inclusive:999},min_format:15,max_format:999,description:'PLATEAU: 標高の表示'}};
+    const te=(t)=>new TextEncoder().encode(t);
+    const dp={'pack.mcmeta':te(JSON.stringify(mcmeta,null,2))};
+    for(const f of ['function','functions']){            // 1.21 以降は function、それより前は functions
+      dp[`data/plateau/${f}/tick.mcfunction`]=te(tick);
+      dp[`data/plateau/${f}/load.mcfunction`]=te(load);
+      dp[`data/minecraft/tags/${f}/tick.json`]=te(JSON.stringify({values:['plateau:tick']}));
+      dp[`data/minecraft/tags/${f}/load.json`]=te(JSON.stringify({values:['plateau:load']}));
+    }
+    for(const [p,b] of Object.entries(dp)){ const en=new fflate.ZipPassThrough(`${wDir}/datapacks/plateau_elev/${p}`); zip.add(en); en.push(b,true); }
+  }
+  if(!worldShowClouds){
+    // 雲を消す：ワールドのフォルダに resources.zip（雲の画像を透明にしたリソースパック）を入れる
+    const mcmeta={pack:{pack_format:15,supported_formats:{min_inclusive:15,max_inclusive:999},min_format:15,max_format:999,description:'PLATEAU: no clouds'}};
+    const rz=fflate.zipSync({'pack.mcmeta':new TextEncoder().encode(JSON.stringify(mcmeta,null,2)),
+      'assets/minecraft/textures/environment/clouds.png':clearCloudsPng()},{level:6});
+    const rzEntry=new fflate.ZipPassThrough(`${wDir}/resources.zip`);
+    zip.add(rzEntry); rzEntry.push(rz,true);
+    onLog('雲を表示しない設定のため、雲を消すリソースパック（resources.zip）を入れました','info');
+  }
 
   // ── 内部識別子の付与（無圧縮で格納） ──
   // ZIPエントリは ZipPassThrough（無圧縮）で格納されるため、中身のバイト列は
@@ -5390,6 +5558,7 @@ async function buildAndDownloadMcworld(chunkGrid,spawnX,spawnY,spawnZ,onProgress
     if(!info) info={B:[],NAMES:[],FLOODTXT:[],FLOODSETS:[],USAGE:[],STRUCT:[]};
     const cfg={
       hasTool,
+      elev:{shift:lastElevShift,bs:lastBlockSize},
       maps:mapSys?mapSys.cfg:null,
       originX:minCx*16-GAP_C*8, strideX:strideC*16,
       floodKinds:FLOOD_KINDS.map(k=>k.key),
@@ -5413,6 +5582,43 @@ async function buildAndDownloadMcworld(chunkGrid,spawnX,spawnY,spawnZ,onProgress
     const bp=buildToolBehaviorPack(cfg,info);
     for(const[path,bytes]of Object.entries(bp.files)) addFile('behavior_packs/plateau_tool/'+path,bytes,true);
     addFile('world_behavior_packs.json',new TextEncoder().encode(JSON.stringify([{pack_id:bp.packId,version:[1,0,0]}],null,2)),false);
+  }
+  {
+    // 統合版のリソースパック（このワールドだけに適用）
+    //  ・標高の表示：画面左上（プレイヤーの絵の右）に出す。スクリプトが「ELV:」で始まるタイトルを送り、
+    //    画面の部品（ui/hud_screen.json）でそれを左上の小さな文字として出す（ふつうのタイトルとしては出さない）
+    //  ・雲を消す（設定でオフのとき）：雲の画像を透明にする
+    const rpId=_uuid();
+    const rpManifest={format_version:2,
+      header:{name:'PLATEAU 表示',description:'標高の表示'+(worldShowClouds?'':'・雲なし'),uuid:rpId,version:[1,0,0],min_engine_version:[1,20,30]},
+      modules:[{type:'resources',uuid:_uuid(),version:[1,0,0]}]};
+    const hud={
+      namespace:'hud',
+      plateau_elev_label:{
+        type:'label',anchor_from:'top_left',anchor_to:'top_left',offset:[40,16],layer:30,font_scale_factor:1.2,  // プレイヤーの絵の右（チャット欄と重ならない位置）
+        
+        color:[1,1,1],shadow:true,text:'#text',
+        bindings:[
+          {binding_name:'#hud_title_text_string',binding_condition:'always'},
+          {binding_type:'view',source_property_name:"(#hud_title_text_string - 'ELV:')",target_property_name:'#text'},
+          {binding_type:'view',source_property_name:"(not ((#hud_title_text_string - 'ELV:') = #hud_title_text_string))",target_property_name:'#visible'},
+        ],
+      },
+      root_panel:{modifications:[{array_name:'controls',operation:'insert_front',value:[{'plateau_elev@hud.plateau_elev_label':{}}]}]},
+      // 「ELV:」で始まるタイトルは、画面中央の大きなタイトルとしては出さない
+      hud_title_text:{bindings:[
+        {binding_name:'#hud_title_text_string',binding_condition:'always'},
+        {binding_type:'view',source_property_name:"((#hud_title_text_string - 'ELV:') = #hud_title_text_string)",target_property_name:'#visible'},
+      ]},
+    };
+    const te=(t)=>new TextEncoder().encode(t);
+    addFile('resource_packs/plateau_rp/manifest.json',te(JSON.stringify(rpManifest,null,2)),false);
+    addFile('resource_packs/plateau_rp/ui/hud_screen.json',te(JSON.stringify(hud,null,2)),false);
+    if(!worldShowClouds){
+      addFile('resource_packs/plateau_rp/textures/environment/clouds.png',clearCloudsPng(),false);
+      onLog('雲を表示しない設定のため、雲を消すリソースパックを入れました','info');
+    }
+    addFile('world_resource_packs.json',te(JSON.stringify([{pack_id:rpId,version:[1,0,0]}],null,2)),false);
   }
   addFile('db/CURRENT',new TextEncoder().encode('MANIFEST-000002\n'),false);
   addFile('db/MANIFEST-000002',buildLdbManifest(3,4),false);
@@ -5953,8 +6159,68 @@ function pruneFldLevels(byType){
   const hasL2=new Set(byType.fld.filter(f=>lv(f)==='l2').map(river));
   byType.fld=byType.fld.filter(f=>!(lv(f)==='l1'&&hasL2.has(river(f))));
 }
+// ── ZIP の中身の一覧（ファイル名）を、ZIP を丸ごと落とさずに読む ──
+// ZIP の末尾にある「中央ディレクトリ」だけを Range で取得する（数十KB〜数MB）。
+// PLATEAU の一覧（API）に載っていない・場所が間違っているファイルも、実在する名前で見つけられる。
+const _zipListCache=new Map();
+async function zipListing(zipUrl){
+  if(!zipUrl) return null;
+  if(_zipListCache.has(zipUrl)) return _zipListCache.get(zipUrl);
+  const job=(async()=>{
+    try{
+      const h=await fetch(zipUrl,{method:'HEAD'});
+      const len=+(h.headers.get('content-length')||0);
+      if(!h.ok||!len) return null;
+      const getRange=async(a,b)=>{
+        const r=await fetch(zipUrl,{headers:{Range:`bytes=${a}-${b}`}});
+        if(r.status!==206) throw new Error('Range 非対応 '+r.status);
+        return new Uint8Array(await r.arrayBuffer());
+      };
+      const tailN=Math.min(len,66000);
+      const tail=await getRange(len-tailN,len-1), tv=new DataView(tail.buffer);
+      let eo=-1;
+      for(let i=tail.length-22;i>=0;i--) if(tv.getUint32(i,true)===0x06054b50){eo=i;break;}
+      if(eo<0) return null;
+      let cdSize=tv.getUint32(eo+12,true), cdOff=tv.getUint32(eo+16,true);
+      for(let i=eo-20;i>=0&&i>eo-60;i--){                // ZIP64
+        if(tv.getUint32(i,true)===0x07064b50){
+          const o=Number(tv.getBigUint64(i+8,true)), z=await getRange(o,o+55), zv=new DataView(z.buffer);
+          cdSize=Number(zv.getBigUint64(40,true)); cdOff=Number(zv.getBigUint64(48,true)); break;
+        }
+      }
+      const cd=await getRange(cdOff,cdOff+cdSize-1), cv=new DataView(cd.buffer), td=new TextDecoder();
+      const out=[]; let p=0;
+      while(p+46<=cd.length&&cv.getUint32(p,true)===0x02014b50){
+        const nl=cv.getUint16(p+28,true), el=cv.getUint16(p+30,true), kl=cv.getUint16(p+32,true);
+        let size=cv.getUint32(p+24,true); if(size===0xFFFFFFFF) size=0;
+        out.push({name:td.decode(cd.subarray(p+46,p+46+nl)),size});
+        p+=46+nl+el+kl;
+      }
+      return out.length?out:null;
+    }catch(e){ console.warn('ZIP の一覧の取得に失敗:',zipUrl,e); return null; }
+  })();
+  _zipListCache.set(zipUrl,job);
+  return job;
+}
+// ZIP の中のファイル名 → 公開されている個別ファイルの URL（ZIP と同じ名前のフォルダに展開されている）
+function zipEntryUrl(zipUrl,name){
+  const base=zipUrl.split('?')[0].replace(/\.zip$/i,'');
+  const top=base.split('/').pop()+'/';
+  return base+'/'+(name.startsWith(top)?name.slice(top.length):name);
+}
+// 選んだマスの周り8マスのコード
+function neighborCells(cells){
+  const set=new Set(cells), out=new Set();
+  for(const c of cells){
+    const [i,j]=meshIJOf(c);
+    for(let di=-1;di<=1;di++) for(let dj=-1;dj<=1;dj++){
+      const n=meshCodeOf(i+di,j+dj); if(!set.has(n)) out.add(n);
+    }
+  }
+  return [...out];
+}
 async function discoverHazards(plan,cells,seq){
-  plan.hzChecking=plan.hzChecking||{}; plan.hzTried=plan.hzTried||{}; plan.hzKnown=plan.hzKnown||{};
+  plan.hzChecking=plan.hzChecking||{}; plan.hzTried=plan.hzTried||{}; plan.hzKnown=plan.hzKnown||{}; plan.hzListed=plan.hzListed||{}; plan.hzNear=plan.hzNear||{};
   const bases=new Map();
   for(const f of plan.byType.bldg){
     if(bases.has(f.city)) continue;
@@ -5970,6 +6236,46 @@ async function discoverHazards(plan,cells,seq){
     // API が正しい場所を返したファイルは、そのまま使う（場所が抜けているものは捨てて探し直す）
     const good=plan.byType[type].filter(f=>!re.test(f.url.split('?')[0]));
     if(good.length){ plan.hzChecking[type]=false; continue; }
+    // ① ZIP の中身の一覧から、実在するファイル名で探す（いちばん確実）
+    {
+      const fre=new RegExp('(?:^|/)udx/'+type+'/((?:[^/]+/)*)(\\d{6,10})_'+type+'_[^/]*\\.gml$');
+      const covers=(code,cs)=>cs.some(c=>code.length>=8?(code.startsWith(c)||c.startsWith(code)):c.startsWith(code));
+      const near=neighborCells(cells);
+      let listedAny=false, total=0, nearN=0; const hits=[];
+      for(const c of plan.cities){
+        const list=await zipListing(c.zip);
+        if(seq!==autoState.planSeq) return;
+        if(!list) continue;
+        listedAny=true;
+        for(const e of list){
+          const m=e.name.match(fre); if(!m) continue;
+          total++;
+          const code=m[2];
+          if(covers(code,c8)) hits.push({e,m,city:c.code,zip:c.zip,code});
+          else if(covers(code,near)) nearN++;
+        }
+      }
+      if(listedAny){
+        // 個別ファイルの場所が正しいか、1件だけ確かめる
+        let ok=!hits.length;
+        if(hits.length){
+          try{ const r=await fetch(zipEntryUrl(hits[0].zip,hits[0].e.name),{method:'HEAD'}); ok=r.ok; }catch(e){ ok=false; }
+        }
+        if(ok){
+          for(const h of hits){
+            const folder=h.m[1].replace(/\/$/,''), dn=folder.split('/').pop()||'';
+            const base=h.e.name.split('/').pop();
+            good.push({url:zipEntryUrl(h.zip,h.e.name),size:h.e.size||0,name:`${h.city}_${type}_${dn?dn+'_':''}${base}`,code:h.code,city:h.city,dir:dn});
+          }
+          plan.byType[type]=good; plan.hzChecking[type]=false; plan.hzListed[type]=total; plan.hzNear[type]=nearN;
+          if(type==='fld') pruneFldLevels(plan.byType);
+          console.info(`[PLATEAU] 浸水想定区域（${type}）を ZIP の一覧から探しました`,{この自治体のファイル数:total,選んだマス:hits.length,隣のマス:nearN});
+          if(!autoState.busy) renderPlan();
+          continue;
+        }
+      }
+    }
+    // ② ZIP の一覧が読めないときは、名前を組み立てて実在するか確かめる
     const tasks=[];
     for(const [city,b] of bases){
       const cat=await fetchHazardFolders(city,type);
@@ -5982,8 +6288,8 @@ async function discoverHazards(plan,cells,seq){
         let names;
         if(type==='fld'){
           const lvls=['l2','l1'].filter(l=>!ls.size||ls.has(l));
-          names=[]; for(const l of lvls) for(const m of [...c8,...c6]) names.push(`${m}_fld_${b.epsg}_${l}_${b.tail}`);
-        }else names=[...c6,...c8].map(m=>`${m}_${type}_${b.epsg}_${b.tail}`);
+          names=[]; for(const l of lvls) for(const m of [...c8,...c6]) names.push(`${m}_fld_${b.epsg}_${l}_${b.tail}`,`${m}_fld_${b.epsg}_${l}.gml`);
+        }else names=[...c6,...c8].flatMap(m=>[`${m}_${type}_${b.epsg}_${b.tail}`,`${m}_${type}_${b.epsg}.gml`]);
         for(const n of names) tasks.push({url:`${b.udx}${type}/${folder}/${n}`,name:n,folder,city,code:n.split('_')[0]});
       }
     }
@@ -6037,6 +6343,11 @@ function renderPlan(loading){
     if(hazardOf(t.key)&&plan.hzChecking&&plan.hzChecking[t.key]) return `<div class="auto-row"><span>${t.label}</span><span style="color:var(--text-dim)">区域ごとのファイルの場所を確認中...</span></div>`;
     if(hazardOf(t.key)&&!fs.length){
       // 浸水想定区域ファイルが無い種類は行ごと出さない。ただし、データカタログには登録があるのに見つからなかった種類は理由を出す
+      if(plan.hzListed&&plan.hzListed[t.key]>0){
+        const nn=(plan.hzNear&&plan.hzNear[t.key])||0;
+        return `<div class="auto-row"><span>${t.label}</span><span style="color:var(--text-dim)">なし（選んだマスは浸水想定区域の外です${nn?'。となりのマスには区域があります':''}）</span></div>`;
+      }
+      if(plan.hzListed&&plan.hzListed[t.key]===0) return '';
       if(plan.hzKnown&&plan.hzKnown[t.key]) return `<div class="auto-row"><span>${t.label}</span><span style="color:var(--text-dim)">なし（データはありますが、選んだマスのファイルの場所を特定できませんでした）</span></div>`;
       return '';
     }
@@ -6064,7 +6375,7 @@ function renderPlan(loading){
       (link?`<div class="auto-link">${label}：<a href="${esc(link)}" target="_blank" rel="noopener noreferrer">${esc(link)}</a></div>`:'');
   }).join('');
   // 浸水想定区域を探し終えて、どの種類も見つからなかった（カタログにも登録がない）ときは、探したことが分かるよう1行出す
-  const hzAny=HAZARD_TYPES.some(h=>plan.byType[h.type].length||(plan.hzKnown&&plan.hzKnown[h.type]));
+  const hzAny=HAZARD_TYPES.some(h=>plan.byType[h.type].length||(plan.hzListed&&plan.hzListed[h.type]>0)||(plan.hzKnown&&plan.hzKnown[h.type]&&!(plan.hzListed&&plan.hzListed[h.type]===0)));
   const hzDone=!!plan.hzChecking&&HAZARD_TYPES.every(h=>plan.hzChecking[h.type]===false);
   const hzNote=(!hzAny&&hzDone)?'<div class="auto-row"><span>🌊 浸水想定</span><span style="color:var(--text-dim)">なし（この地域では見つかりませんでした）</span></div>':'';
   el.innerHTML=cityHtml+rows+hzNote;
