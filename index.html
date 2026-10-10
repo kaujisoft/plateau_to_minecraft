@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PLATEAU → Minecraft 一発変換ツール</title>
 <meta name="generator" content="webpack-asset-a2F1aml8KGMpMjAyNiBLYXVqaXxQTEFURUFVMk1DfG5vLXJlZGlzdHJpYnV0aW9u">
-<!-- ▼ SNSシェア時のリンクカード用（OGP/Twitter Card）
-     og:url はご自身の公開URL（GitHub Pagesなど）に書き換えてください。
-     og:image を用意すると画像付きカードで表示されるので、スクショ画像を作って
-     images/ogp.png のようなパスに置き、下のURLを差し替えるのがおすすめです。 -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="PLATEAU → Minecraft 一発変換ツール">
 <meta property="og:description" content="国土交通省PLATEAUの3D都市データ（CityGML）を、ブラウザだけでマインクラフト（Java版・統合版）のワールドデータに変換できる無料ツール。ファイルはサーバーに送信されません。">
@@ -511,7 +507,7 @@ footer{text-align:center;margin-top:48px;font-size:.84rem;color:var(--text-dim);
     <div id="importGuideBedrock" class="hidden" style="margin-top:10px;padding:10px 14px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.15);border-radius:6px;font-size:.86rem;color:var(--text-dim);line-height:2">
       1. ダウンロードした <code style="color:var(--accent)">.mcworld</code> ファイルをダブルクリック<br>
       2. Minecraft が起動して自動で取り込まれます。「遊ぶ」→ ワールド一覧から該当ワールドを選択<br>
-      <span id="toolGuide">3. コンパス「PLATEAU 表示ツール」を手に持って「使う」と、表示を切り替えられます（PC＝右クリック／スマホ・タブレット＝画面をタップ／コントローラー＝左トリガー。スマホの操作モードが「ジョイスティックとクロスヘア」なら、画面右の「使う（置く）」ボタン。長押しは「壊す」操作になるので使えません）。色分け中は画面右に凡例が出ます<br>
+      <span id="toolGuide">3. コンパス「PLATEAU 表示ツール」を手に持って「使う」と、表示を切り替えられます。<br>
       4. 建物を見ると、画面下に建物の名前・用途・構造・建築年・階数が表示されます（メニューでOFFにもできます）<br></span>
       <span>時計を使うと昼と夜を切り替えられます（最初は昼で固定）<br></span>
       <span style="font-size:.8rem">※ 初回の読み込みはデータの展開のため少し時間がかかります。</span>
@@ -522,8 +518,8 @@ footer{text-align:center;margin-top:48px;font-size:.84rem;color:var(--text-dim);
 
 </div><!-- /steps -->
 <footer style="line-height:1.9">
-  <div style="letter-spacing:2px">制作：四国地方整備局 &nbsp;|&nbsp; データ：国土交通省 PLATEAU</div>
-  <div style="font-size:.78rem;letter-spacing:.5px;margin-top:4px">本ツールは四国地方整備局が制作した変換ツールです。<br>Minecraft は Mojang Studios / Microsoft の商標であり、本ツールは公式のものではありません。</div>
+  <div style="letter-spacing:2px">制作：Kauji &nbsp;|&nbsp; データ：国土交通省 PLATEAU</div>
+  <div style="font-size:.78rem;letter-spacing:.5px;margin-top:4px">本ツールはKaujiが制作した変換ツールです。<br>Minecraft は Mojang Studios / Microsoft の商標であり、本ツールは公式のものではありません。</div>
 </footer>
 </div>
 
@@ -6462,6 +6458,19 @@ async function runAutoFetch(){
   const jobs=AUTO_TYPES.filter(t=>plan.byType[t.key].length).map(t=>({...t,items:plan.byType[t.key].slice(0,FILE_LIMITS[t.key])}));
   const totalKnown=jobs.reduce((a,t)=>a+t.items.reduce((b,f)=>b+f.size,0),0);
   const totalFiles=jobs.reduce((a,t)=>a+t.items.length,0);
+  // スマホ・タブレットで、ダウンロードの合計が 100MB を超えるときは、始める前に確認する
+  {
+    const ua=navigator.userAgent||'';
+    const isMobile=/iPhone|iPad|iPod|Android/i.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
+    const unknownN=jobs.reduce((a,t)=>a+t.items.filter(f=>!f.size).length,0);
+    if(isMobile&&totalKnown>100e6){
+      const ok=confirm(`ダウンロードするデータの合計が ${fmtMB(totalKnown)}${unknownN?`以上（サイズ不明のファイル ${unknownN}件を含む）`:''}と大容量です。\n\n`+
+        `・モバイルデータ通信では、通信量が多くかかります（Wi-Fi でのご利用をおすすめします）。\n`+
+        `・時間がかかり、スマホのメモリが足りずに画面が再読み込みされることがあります。そのときは、選ぶマスの数を減らしてください。\n\n`+
+        `このままダウンロードしますか？`);
+      if(!ok){ autoMsg('ダウンロードを取りやめました。マスの数を減らすと、データ量を少なくできます。'); return; }
+    }
+  }
   autoState.busy=true; autoState.fetchDone=false; updateWork();
   const btn=document.getElementById('btnAutoFetch'); btn.disabled=true;
   const bar=document.getElementById('autoProgress'); bar.parentElement.classList.remove('hidden');
