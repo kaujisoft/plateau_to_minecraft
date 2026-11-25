@@ -6074,10 +6074,9 @@ async function buildPlan(){
     fillDatasetPages(autoState.plan,seq);
     // 一覧に地形が無いマスは、建物ファイルと同じ場所から地形ファイルを探す
     // → 浸水想定区域ファイルの場所（河川ごとのフォルダ）を直す → その後でサイズを確認
-    const _sz0=fillUnknownSizes(autoState.plan,seq).catch(e=>console.error(e));
     guessMissingDem(autoState.plan,codes,seq)
       .then(()=>discoverHazards(autoState.plan,codes,seq))
-      .then(()=>_sz0).then(()=>fillUnknownSizes(autoState.plan,seq))
+      .then(()=>fillUnknownSizes(autoState.plan,seq))
       .catch(e=>console.error(e))
       .finally(()=>{ if(seq===autoState.planSeq){ autoState.planning=false; updateWork(); } });
     if(!cities.size&&!Object.values(byType).some(a=>a.length)){
@@ -6162,8 +6161,8 @@ async function guessMissingDem(plan,cells,seq){
     while(k<tasks.length&&seq===autoState.planSeq){
       const t=tasks[k++];
       try{
-        const r=await headWithTimeout(t.url,15000);
-        if(r&&r.ok){
+        const r=await fetch(t.url,{method:'HEAD'});
+        if(r.ok){
           plan.byType.dem.push({url:t.url,size:+(r.headers.get('content-length')||0),name:t.name,code:t.code,city:t.city,guessed:true});
           found++;
         }
@@ -6177,40 +6176,24 @@ async function guessMissingDem(plan,cells,seq){
 }
 
 // API の一覧にサイズが載っていないファイルは、ファイルのサーバーに大きさだけ問い合わせる（HEAD）
-// 時間を区切った HEAD（ms を過ぎたら打ち切って null）
-//  続けて時間切れになるネットワークでは、待ち時間を短く（3秒）する
-let _headSlow=0;
-async function headWithTimeout(url,ms){
-  if(_headSlow>=3) ms=Math.min(ms,3000);
-  const ac=(typeof AbortController!=='undefined')?new AbortController():null;
-  let timedOut=false;
-  const tm=ac?setTimeout(()=>{ timedOut=true; ac.abort(); },ms):0;
-  try{ const r=await fetch(url,{method:'HEAD',signal:ac?ac.signal:undefined,cache:'no-store'}); _headSlow=0; return r; }
-  catch(e){ if(timedOut) _headSlow++; return null; }
-  finally{ if(tm) clearTimeout(tm); }
-}
 async function fillUnknownSizes(plan,seq){
   const items=[];
-  for(const t of Object.keys(plan.byType)) for(const f of plan.byType[t]) if(!f.size&&!f._sized){ f._sized=true; items.push(f); }
+  for(const t of Object.keys(plan.byType)) for(const f of plan.byType[t]) if(!f.size) items.push(f);
   if(!items.length) return;
-  plan.sizing=(plan.sizing||0)+1; renderPlan();
-  let k=0, ok=0, ng=0;
+  plan.sizing=true; renderPlan();
+  let k=0;
   const worker=async()=>{
     while(k<items.length&&seq===autoState.planSeq){
-      if(plan.sizeBlocked){ k=items.length; break; }
       const f=items[k++];
-      const r=await headWithTimeout(f.url,8000);
-      const n=r&&r.ok?+(r.headers.get('content-length')||0):0;
-      if(n>0){ f.size=n; ok++; } else { ng++; }
-      // 初めの 3 件がどれも確認できなければ、このネットワークでは大きさが分からないとみなして打ち切る
-      if(!ok&&ng>=3) plan.sizeBlocked=true;
-      if(plan.sizeBlocked) for(;k<items.length;k++) items[k]._sized=true;
-      if(seq===autoState.planSeq&&autoState.plan===plan&&!autoState.busy&&typeof autoDlSizeShow==='function') autoDlSizeShow();
+      try{
+        const r=await fetch(f.url,{method:'HEAD'});
+        const n=+(r.headers.get('content-length')||0);
+        if(r.ok&&n>0) f.size=n;
+      }catch(e){}
     }
   };
-  await Promise.all([worker(),worker(),worker(),worker(),worker(),worker()]);
-  if(!ok&&ng) plan.sizeBlocked=true;
-  plan.sizing=Math.max(0,(plan.sizing||1)-1)||false;
+  await Promise.all([worker(),worker(),worker(),worker()]);
+  plan.sizing=false;
   if(seq===autoState.planSeq&&autoState.plan===plan&&!autoState.busy) renderPlan();
 }
 
@@ -6293,8 +6276,8 @@ async function discoverHazards(plan,cells,seq){
       while(k<tasks.length&&seq===autoState.planSeq){
         const t=tasks[k++];
         try{
-          const r=await headWithTimeout(t.url,15000);
-          if(r&&r.ok){
+          const r=await fetch(t.url,{method:'HEAD'});
+          if(r.ok){
             const dn=t.folder.split('/').pop();
             good.push({url:t.url,size:+(r.headers.get('content-length')||0),name:`${t.city}_${type}_${dn}_${t.name}`,code:t.code,city:t.city,dir:dn});
             found++;
@@ -6338,7 +6321,7 @@ function autoDlSizeShow(){
     for(const f of fs){ n++; if(f.size>0) sum+=f.size; else unknown++; } }
   if(!n){ sp.textContent=''; return; }
   if(unknown&&plan.sizing){ sp.textContent='（サイズ確認中...）'; return; }
-  sp.textContent=sum?`約${fmtMB(sum)}${unknown?'以上':''}`:(unknown?'（サイズ不明）':'');
+  sp.textContent=sum?`約${fmtMB(sum)}${unknown?'以上':''}`:'';
 }
 function renderPlan(loading){
   const el=document.getElementById('autoPlan'), btn=document.getElementById('btnAutoFetch');
@@ -6367,7 +6350,7 @@ function renderPlan(loading){
       return `<div class="auto-row"><span>${t.label}</span><span style="color:var(--text-dim)">${why}</span></div>`;
     }
     const size=fs.reduce((a,f)=>a+f.size,0), known=fs.every(f=>f.size>0);
-    const sizeTxt=(!known&&plan.sizing)?'サイズ確認中...':size?`${known?'':'約'}${fmtMB(size)}${known?'':'以上'}`:(plan.sizeBlocked?'サイズ不明（このネットワークでは確認できません）':'サイズ不明');
+    const sizeTxt=(!known&&plan.sizing)?'サイズ確認中...':size?`${known?'':'約'}${fmtMB(size)}`:'サイズ不明';
     const gN=(t.key==='dem')?fs.filter(f=>f.guessed).length:0;
     const warn=t.key==='dem'?`<span class="auto-note">${gN?`一覧に載っていなかった地形ファイル${gN}件を、建物ファイルと同じ場所から見つけました。`:''}地形は広い範囲のファイルになることがあります</span>`:'';
     return `<div class="auto-row"><span>${t.label}</span><span>${fs.length}ファイル・ダウンロード${sizeTxt}${warn}</span></div>`;
